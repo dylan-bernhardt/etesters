@@ -3,8 +3,7 @@ import importlib
 import turtle
 import pandas as pd
 from typeguard import typechecked
-
-import select_test_points as tp
+import etesters.select_test_points as tp
 
 class GerberImage:
 	@typechecked

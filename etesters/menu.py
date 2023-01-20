@@ -2,11 +2,10 @@ import tkinter as tk
 import os
 from tkinter import filedialog
 from typeguard import typechecked
-
-import create_eagle_files as eagle
-import select_test_points as tp
-import draw_gerber as dg
-import download_files as df
+import etesters.create_eagle_files as eagle
+import etesters.select_test_points as tp
+import etesters.draw_gerber as dg
+import etesters.download_files as df
 
 
 
@@ -201,4 +200,3 @@ class App:
 
 
 
-App().display()

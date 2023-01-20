@@ -1,4 +1,3 @@
-
 import pandas as pd
 from typeguard import typechecked
 import tkinter as tk

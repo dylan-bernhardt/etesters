@@ -1,5 +1,5 @@
-import create_eagle_files as eagle
-import select_test_points as tp
+import etesters.create_eagle_files as eagle
+import etesters.select_test_points as tp
 import tkinter as tk
 import os
 from tkinter import filedialog
@@ -21,4 +21,3 @@ class files :
         
         return
         
-    
