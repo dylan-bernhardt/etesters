@@ -3,9 +3,9 @@ import os
 from tkinter import filedialog
 from typeguard import typechecked
 
-import etesters.create_eagle_files as eagle
-import etesters.select_test_points as tp
-import etesters.draw_gerber as dg
+import create_eagle_files as eagle
+import select_test_points as tp
+import draw_gerber as dg
 
 
 
@@ -89,8 +89,7 @@ class App:
                 self.btn4.configure(state=tk.DISABLED)
                 self.btn5.configure(state=tk.DISABLED)
                 self.btn6.configure(state=tk.DISABLED)
-                self.btn7.configure(state=tk.DISABLED)
-                self.btn8.configure(state=tk.DISABLED)
+   
 
         self.btn2.configure(state=tk.NORMAL)
         return 
@@ -111,8 +110,7 @@ class App:
                 self.btn4.configure(state=tk.DISABLED)
                 self.btn5.configure(state=tk.DISABLED)
                 self.btn6.configure(state=tk.DISABLED)
-                self.btn7.configure(state=tk.DISABLED)
-                self.btn8.configure(state=tk.DISABLED)
+
 
     
         self.btn3.configure(state=tk.NORMAL)
@@ -134,8 +132,7 @@ class App:
                 self.btn4.configure(state=tk.DISABLED)
                 self.btn5.configure(state=tk.DISABLED)
                 self.btn6.configure(state=tk.DISABLED)
-                self.btn7.configure(state=tk.DISABLED)
-                self.btn8.configure(state=tk.DISABLED)
+
            
         self.btn4.configure(state=tk.NORMAL)
         return
@@ -156,8 +153,7 @@ class App:
                 self.fct_4()
                 self.btn5.configure(state=tk.DISABLED)
                 self.btn6.configure(state=tk.DISABLED)
-                self.btn7.configure(state=tk.DISABLED)
-                self.btn8.configure(state=tk.DISABLED)
+
 
         self.btn5.configure(state=tk.NORMAL)
         return
@@ -177,8 +173,7 @@ class App:
                 self.compteur =5
                 self.fct_5()
                 self.btn6.configure(state=tk.DISABLED)
-                self.btn7.configure(state=tk.DISABLED)
-                self.btn8.configure(state=tk.DISABLED)
+
         
         self.btn6.configure(state=tk.NORMAL)
         return
@@ -194,7 +189,10 @@ class App:
                 os.makedirs(self.folder.path +"/new_files")
             self.folder.final_tp_names_bot_df.to_csv(self.folder.path +"/new_files/"+self.folder.pnp_bot, sep=",", mode="w", index=False, header= False)
             self.folder.final_tp_names_top_df.to_csv(self.folder.path +"/new_files/"+self.folder.pnp_top, sep=',', mode="w", index=False, header = False)
-            tk.messagebox.showinfo('INFO', 'Les deux nouveaux fichiers P&P ont été créés dans le dossier de production')
+            eagle.create_brd_file(self.folder)
+            eagle.create_sch_file(self.folder)
+
+            tk.messagebox.showinfo('INFO', 'Les nouveaux fichiers ont été créés dans le dossier de production')
             
             self.compteur+=1
 
@@ -203,43 +201,9 @@ class App:
             if restart=='yes':
                 self.compteur =6
                 self.fct_6()
-                self.btn7.configure(state=tk.DISABLED)
-                self.btn8.configure(state=tk.DISABLED)
-     
-        self.btn7.configure(state=tk.NORMAL)
+
         return      
 
-    @typechecked
-    def fct_7(self)-> None:
-
-        if self.compteur==7:
-            eagle.create_brd_file(self.folder)
-            tk.messagebox.showinfo('INFO', 'Le nouveau fichier .brd a été crée dans le dossier de production')
-            self.compteur+=1
-          
-        else :
-            restart = tk.messagebox.askquestion("Restart","Etes-vous sûr de vouloir refaire cette étape ?")
-            if restart=='yes':
-                self.compteur =7
-                self.fct_7()
-                self.btn8.configure(state=tk.DISABLED)
-
-        self.btn8.configure(state=tk.NORMAL)
-        return
-
-    @typechecked
-    def fct_8(self)-> None:
-        if self.compteur==8:
-            eagle.create_sch_file(self.folder)
-            tk.messagebox.showinfo('INFO', 'Le nouveau fichier .sch a été crée dans le dossier de production')
-            self.compteur+=1
-
-        else :
-            restart = tk.messagebox.askquestion("Restart","Etes-vous sûr de vouloir refaire cette étape ?")
-            if restart=='yes':
-                self.compteur =8
-                self.fct_8()
-        return
 
 
 App().display()

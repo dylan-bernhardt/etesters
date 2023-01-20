@@ -2,7 +2,7 @@ import pandas as pd
 from typeguard import typechecked
 
 
-import etesters.select_test_points as tp
+import select_test_points as tp
 
 class DefaultSCH:
 	@typechecked

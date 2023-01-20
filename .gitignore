@@ -1,0 +1,3 @@
+*.pyc
+/production/filtered_pnp
+/production/new_files
