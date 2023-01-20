@@ -22,9 +22,10 @@ class files :
         zone_right.pack(fill=tk.Y, side='right')
         path = filedialog.askdirectory(parent=zone_right, initialdir=currdir, title='Please select a directory')
         zone_right.destroy()
-        eagle.create_brd_file(self.folder, path)
-        eagle.create_sch_file(self.folder, path)
-        self.folder.final_tp_names_bot_df.to_csv(path +"/"+ self.folder.pnp_bot, sep=",", mode="w", index=False, header= False)
-        self.folder.final_tp_names_top_df.to_csv(path +"/"+ self.folder.pnp_top, sep=',', mode="w", index=False, header = False)
+        if path :
+            eagle.create_brd_file(self.folder, path)
+            eagle.create_sch_file(self.folder, path)
+            self.folder.final_tp_names_bot_df.to_csv(path +"/"+ self.folder.pnp_bot, sep=",", mode="w", index=False, header= False)
+            self.folder.final_tp_names_top_df.to_csv(path +"/"+ self.folder.pnp_top, sep=',', mode="w", index=False, header = False)
         return
         

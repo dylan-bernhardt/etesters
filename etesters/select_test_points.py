@@ -10,7 +10,6 @@ class Production_folder :
 
     @typechecked
     def __init__(self)-> None:
-        self.path = './production'
         self.tp_names_top=[]
         self.tp_names_bot=[]
         return 
@@ -21,6 +20,9 @@ class Production_folder :
         self.path = path
         return
 
+
+    def reset_path(self):
+        self.path = ""
 
     @typechecked
     def enter_files(self, pnp_bot: str, pnp_top: str, legend_top: str, legend_bot: str)-> None:
@@ -214,7 +216,11 @@ def gui_select_pnp_file(folder: Production_folder, root: tk.Tk, btn: tk.Button)-
     
     @typechecked
     def validate_fct()-> None:
-        folder.enter_files(pnp_bot=list_box1.get(list_box1.curselection()), pnp_top=list_box2.get(list_box2.curselection()), legend_bot =list_box3.get(list_box3.curselection()), legend_top= list_box4.get(list_box4.curselection()))
+        try :
+            folder.enter_files(pnp_bot=list_box1.get(list_box1.curselection()), pnp_top=list_box2.get(list_box2.curselection()), legend_bot =list_box3.get(list_box3.curselection()), legend_top= list_box4.get(list_box4.curselection()))
+        except :
+            tk.messagebox.showwarning(title = 'ATTENTION', message = "Attention ! Tous les fichiers n'ont pas été sélectionné")
+            pass
         frame.destroy()
         btn.configure(state = tk.NORMAL)    
         
@@ -223,6 +229,7 @@ def gui_select_pnp_file(folder: Production_folder, root: tk.Tk, btn: tk.Button)-
     frame.pack(fill=tk.Y, side='right')
 
     list_box1,label1 = create_files_listbox(frame, folder.path, 'bottom', 'Selectionner les fichiers P&P pour la face : ')
+
     
     label1.grid(row = 0, column=0, padx=10)
     list_box1.grid(row = 1, column=0)

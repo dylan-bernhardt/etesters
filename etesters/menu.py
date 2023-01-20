@@ -61,7 +61,7 @@ class App:
     @typechecked
     def fct_quitter(self)-> None:
         text = "Etes-vous sûr de vouloir quitter ?"
-        if self._compteur != 9:
+        if self._compteur != 7:
             text = "Vous n'avez pas terminé, êtes-vous sûr de vouloir quitter ? "
         else : 
             pass
@@ -69,27 +69,34 @@ class App:
         
         if quit=='yes':
             self.root.destroy()
-            for i in os.listdir(self.folder.path+"/filtered_pnp"):
-                os.remove(self.folder.path+"/filtered_pnp/%s" % i)
-            os.rmdir(self.folder.path+"/filtered_pnp")
+            try :
+                for i in os.listdir(self.folder.path+"/filtered_pnp"):
+                    os.remove(self.folder.path+"/filtered_pnp/%s" % i)
+                os.rmdir(self.folder.path+"/filtered_pnp")
+            except FileNotFoundError :
+                pass
         else: 
             pass
         return 
 
-
+ 
     @typechecked
     def fct_1(self)-> None:
     
         if self._compteur == 1:
+            self.folder.reset_path()
             currdir = os.getcwd()
             zone_right = tk.Frame(self.root)
             zone_right.pack(fill=tk.Y, side='right')
+
             path = filedialog.askdirectory(parent=zone_right, initialdir=currdir, title='Please select a directory')
-            self.folder.change_path(path)
+            try :
+                self.folder.change_path(path)
+            except TypeError :
+                pass
             zone_right.destroy()
             self._compteur+=1
-            print(self.folder.path)
-        
+            
         else :
             restart = tk.messagebox.askquestion("Restart","Etes-vous sûr de vouloir refaire cette étape ?")
             if restart=='yes':
@@ -100,10 +107,12 @@ class App:
                 self.btn5.configure(state=tk.DISABLED)
                 self.btn6.configure(state=tk.DISABLED)
                 self.fct_1()
+                
             else :
                 pass
-
-        self.btn2.configure(state=tk.NORMAL)
+        if self.folder.path :
+            print(self.folder.path)
+            self.btn2.configure(state=tk.NORMAL)
         return 
 
 
@@ -133,6 +142,7 @@ class App:
     def fct_3(self)-> None:
 
         if self._compteur==3:
+            self.folder.tp_names_list_clear()
             tp.gui_select_tp(self.folder, self.root, self.btn4)
             self._compteur+=1
            
@@ -140,7 +150,6 @@ class App:
             restart = tk.messagebox.askquestion("Restart","Etes-vous sûr de vouloir refaire cette étape ?")
             if restart=='yes':
                 self._compteur =3
-                self.folder.tp_names_list_clear()
                 self.btn4.configure(state=tk.DISABLED)
                 self.btn5.configure(state=tk.DISABLED)
                 self.btn6.configure(state=tk.DISABLED)
