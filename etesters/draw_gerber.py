@@ -35,13 +35,13 @@ class GerberImage:
 		return
 
 	@typechecked
-	def draw(self, root: tk.Tk)-> None:
-			
+	def draw(self, root: tk.Tk, btn: tk.Button)-> None:
+		self.btn = btn
 		self.xmin,self.ymin,self.xmax,self.ymax= min_max_values(self.d, self.side)
 		self.folder.set_pcb_dimension(self.xmin, self.xmax, self.ymin, self.ymax)
 		self.canva = tk.Canvas(root)
 		self.canva.pack(side='right')
-		tk.Button(self.canva,bg='#436D6D', text='Valider', fg='white', command=self.btn).pack()
+		tk.Button(self.canva,bg='#436D6D', text='Valider', fg='white', command=self.btn_func).pack()
 
 		screen=turtle.TurtleScreen(self.canva)
 		turtle.setup(width=1280, height=720)
@@ -82,11 +82,12 @@ class GerberImage:
 		return			        
 
 	@typechecked
-	def btn(self)-> None:
+	def btn_func(self)-> None:
 		self.tp_df.drop(self.tp_df[self.tp_df['color'] == 'red'].index, inplace=True)
 		self.tp_df.drop(['color'], axis=1, inplace=True)
 		self.folder.enter_final_tp_names(self.tp_df.reset_index(),self.side)
 		self.canva.destroy()
+		self.btn.configure(state = tk.NORMAL)
 		return
 
 

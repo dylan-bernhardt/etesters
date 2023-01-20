@@ -21,7 +21,7 @@ class App:
         return
 
     @typechecked
-    def configure(self,title: str,bg: str)-> None:
+    def configure(self,title: str ='ETESTERS',bg: str ='#2F4F4F')-> None:
         self.title = title
         self.bg = bg
         return
@@ -64,6 +64,9 @@ class App:
         quit = tk.messagebox.askquestion("Quitter",text)
         if quit=='yes':
             self.root.destroy()
+            for i in os.listdir(self.folder.path+"/filtered_pnp"):
+                os.remove(self.folder.path+"/filtered_pnp/%s" % i)
+            os.rmdir(self.folder.path+"/filtered_pnp")
         return 
 
     @typechecked
@@ -83,13 +86,12 @@ class App:
             restart = tk.messagebox.askquestion("Restart","Etes-vous sûr de vouloir refaire cette étape ?")
             if restart=='yes':
                 self.compteur=1
-                self.fct_1()
                 self.btn2.configure(state=tk.DISABLED)
                 self.btn3.configure(state=tk.DISABLED)
                 self.btn4.configure(state=tk.DISABLED)
                 self.btn5.configure(state=tk.DISABLED)
                 self.btn6.configure(state=tk.DISABLED)
-   
+                self.fct_1()
 
         self.btn2.configure(state=tk.NORMAL)
         return 
@@ -98,29 +100,26 @@ class App:
     def fct_2(self)-> None:
 
         if self.compteur==2:
-            tp.gui_select_pnp_file(self.folder, self.root)
+            tp.gui_select_pnp_file(self.folder, self.root, self.btn3)
             self.compteur +=1
 
         else : 
             restart = tk.messagebox.askquestion("Restart","Etes-vous sûr de vouloir refaire cette étape ?")
             if restart=='yes':
                 self.compteur =2
-                self.fct_2()
                 self.btn3.configure(state=tk.DISABLED)
                 self.btn4.configure(state=tk.DISABLED)
                 self.btn5.configure(state=tk.DISABLED)
                 self.btn6.configure(state=tk.DISABLED)
+                self.fct_2()
 
-
-    
-        self.btn3.configure(state=tk.NORMAL)
         return
 
     @typechecked
     def fct_3(self)-> None:
 
         if self.compteur==3:
-            tp.gui_select_tp(self.folder, self.root)
+            tp.gui_select_tp(self.folder, self.root, self.btn4)
             self.compteur+=1
            
         else:
@@ -128,13 +127,14 @@ class App:
             if restart=='yes':
                 self.compteur =3
                 self.folder.tp_names_list_clear()
-                self.fct_3()
                 self.btn4.configure(state=tk.DISABLED)
                 self.btn5.configure(state=tk.DISABLED)
                 self.btn6.configure(state=tk.DISABLED)
+                self.fct_3()
+                for i in os.listdir(self.folder.path+"/filtered_pnp"):
+                    os.remove(self.folder.path+"/filtered_pnp/%s" % i)
+                os.rmdir(self.folder.path+"/filtered_pnp")
 
-           
-        self.btn4.configure(state=tk.NORMAL)
         return
 
     @typechecked
@@ -143,19 +143,16 @@ class App:
         if self.compteur==4:
             image_bot = dg.GerberImage(self.folder, 'bottom')
             image_bot.center_0_0()
-            image_bot.draw(self.root)
+            image_bot.draw(self.root, self.btn5)
             self.compteur+=1
                 
         else :
             restart = tk.messagebox.askquestion("Restart","Etes-vous sûr de vouloir refaire cette étape ?")
             if restart=='yes':
                 self.compteur =4
-                self.fct_4()
                 self.btn5.configure(state=tk.DISABLED)
                 self.btn6.configure(state=tk.DISABLED)
-
-
-        self.btn5.configure(state=tk.NORMAL)
+                self.fct_4()
         return
 
     @typechecked
@@ -164,18 +161,16 @@ class App:
         if self.compteur==5:
             image_top = dg.GerberImage(self.folder,'top')
             image_top.center_0_0()
-            image_top.draw(self.root)
+            image_top.draw(self.root, self.btn6)
             self.compteur+=1
               
         else :
             restart = tk.messagebox.askquestion("Restart","Etes-vous sûr de vouloir refaire cette étape ?")
             if restart=='yes':
                 self.compteur =5
-                self.fct_5()
                 self.btn6.configure(state=tk.DISABLED)
+                self.fct_5()
 
-        
-        self.btn6.configure(state=tk.NORMAL)
         return
 
 

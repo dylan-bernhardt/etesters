@@ -110,7 +110,7 @@ def create_filtered_test_points_file(file_name: str, list_tp: list, folder_path:
 
 
 @typechecked
-def gui_select_tp(folder: Production_folder, root: tk.Tk, column_name: str = 'package') -> None:
+def gui_select_tp(folder: Production_folder, root: tk.Tk, btn: tk.Button, column_name: str = 'package') -> None:
     
     #@typechecked
     def select_all_checkbutton1(*args)-> None:
@@ -135,8 +135,8 @@ def gui_select_tp(folder: Production_folder, root: tk.Tk, column_name: str = 'pa
         for i in range(len(enable1)):
             if enable1[i].get()==1:
                 folder.enter_tp_names(l1[i].strip(),'bottom')
-        
-
+        if "filtered_pnp" in os.listdir(folder.path) :
+            btn.configure(state = tk.NORMAL)
         create_filtered_test_points_file(folder.pnp_bot, folder.tp_names_bot, folder.path)
         frame1.destroy()
         return
@@ -144,15 +144,18 @@ def gui_select_tp(folder: Production_folder, root: tk.Tk, column_name: str = 'pa
 
     @typechecked
     def exit2()-> None:
-
         for i in range(len(enable2)):
             if enable2[i].get()==1:
                 folder.enter_tp_names(l2[i].strip(),'top')
+        if "filtered_pnp" in os.listdir(folder.path) :
+            btn.configure(state = tk.NORMAL)
         create_filtered_test_points_file(folder.pnp_top, folder.tp_names_top, folder.path)
         frame2.destroy()
+        
         return
 
 
+    
     frame1 = tk.LabelFrame(root, text= 'Selectionner les noms des tp')
     frame1.pack(fill=tk.Y, side='right', padx=10, pady=10)
 
@@ -202,12 +205,13 @@ def gui_select_tp(folder: Production_folder, root: tk.Tk, column_name: str = 'pa
 
 
 @typechecked
-def gui_select_pnp_file(folder: Production_folder, root: tk.Tk)-> None :
+def gui_select_pnp_file(folder: Production_folder, root: tk.Tk, btn: tk.Button)-> None :
     
     @typechecked
     def validate_fct()-> None:
         folder.enter_files(pnp_bot=list_box1.get(list_box1.curselection()), pnp_top=list_box2.get(list_box2.curselection()), legend_bot =list_box3.get(list_box3.curselection()), legend_top= list_box4.get(list_box4.curselection()))
         frame.destroy()
+        btn.configure(state = tk.NORMAL)    
         
 
     frame = tk.Frame(root, bg ='#436D6D')
