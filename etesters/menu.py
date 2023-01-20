@@ -54,6 +54,8 @@ class App:
         self.btn6.pack( padx=10,pady=10)
         self.btnquitter.pack( padx=10,pady=10)
 
+        self.list_btn = [self.btn1, self.btn2, self.btn3, self.btn4, self.btn5, self.btn6]
+
         self.root.mainloop()
         return
 
@@ -73,7 +75,7 @@ class App:
                 for i in os.listdir(self.folder.path+"/filtered_pnp"):
                     os.remove(self.folder.path+"/filtered_pnp/%s" % i)
                 os.rmdir(self.folder.path+"/filtered_pnp")
-            except FileNotFoundError :
+            except (FileNotFoundError, AttributeError) :
                 pass
         else: 
             pass
@@ -82,7 +84,7 @@ class App:
  
     @typechecked
     def fct_1(self)-> None:
-    
+        self.enable_btn(0)
         if self._compteur == 1:
             self.folder.reset_path()
             currdir = os.getcwd()
@@ -95,30 +97,25 @@ class App:
             except TypeError :
                 pass
             zone_right.destroy()
-            self._compteur+=1
-            
+                        
         else :
             restart = tk.messagebox.askquestion("Restart","Etes-vous sûr de vouloir refaire cette étape ?")
             if restart=='yes':
                 self._compteur=1
-                self.btn2.configure(state=tk.DISABLED)
-                self.btn3.configure(state=tk.DISABLED)
-                self.btn4.configure(state=tk.DISABLED)
-                self.btn5.configure(state=tk.DISABLED)
-                self.btn6.configure(state=tk.DISABLED)
+                self.enable_btn(self._compteur)
                 self.fct_1()
                 
             else :
                 pass
         if self.folder.path :
-            print(self.folder.path)
-            self.btn2.configure(state=tk.NORMAL)
+            self._compteur+=1
+        self.enable_btn(self._compteur)
         return 
 
 
     @typechecked
     def fct_2(self)-> None:
-
+        self.enable_btn(0)
         if self._compteur==2:
             tp.gui_select_pnp_file(self.folder, self.root, self.btn3)
             self._compteur +=1
@@ -127,10 +124,7 @@ class App:
             restart = tk.messagebox.askquestion("Restart","Etes-vous sûr de vouloir refaire cette étape ?")
             if restart=='yes':
                 self._compteur =2
-                self.btn3.configure(state=tk.DISABLED)
-                self.btn4.configure(state=tk.DISABLED)
-                self.btn5.configure(state=tk.DISABLED)
-                self.btn6.configure(state=tk.DISABLED)
+                self.enable_btn(self._compteur)
                 self.fct_2()
             else:
                 pass
@@ -140,7 +134,7 @@ class App:
 
     @typechecked
     def fct_3(self)-> None:
-
+        self.enable_btn(0)
         if self._compteur==3:
             self.folder.tp_names_list_clear()
             tp.gui_select_tp(self.folder, self.root, self.btn4)
@@ -150,9 +144,7 @@ class App:
             restart = tk.messagebox.askquestion("Restart","Etes-vous sûr de vouloir refaire cette étape ?")
             if restart=='yes':
                 self._compteur =3
-                self.btn4.configure(state=tk.DISABLED)
-                self.btn5.configure(state=tk.DISABLED)
-                self.btn6.configure(state=tk.DISABLED)
+                self.enable_btn(self._compteur)
                 self.fct_3()
                 for i in os.listdir(self.folder.path+"/filtered_pnp"):
                     os.remove(self.folder.path+"/filtered_pnp/%s" % i)
@@ -165,7 +157,7 @@ class App:
 
     @typechecked
     def fct_4(self)-> None:
-    
+        self.enable_btn(0)
         if self._compteur==4:
             image_bot = dg.GerberImage(self.folder, 'bottom')
             self.center = tk.messagebox.askquestion("Center?","Voulez-vous déplacer le centre du repère au centre de la carte?")
@@ -180,8 +172,7 @@ class App:
             restart = tk.messagebox.askquestion("Restart","Etes-vous sûr de vouloir refaire cette étape ?")
             if restart=='yes':
                 self._compteur =4
-                self.btn5.configure(state=tk.DISABLED)
-                self.btn6.configure(state=tk.DISABLED)
+                self.enable_btn(self._compteur)
                 self.fct_4()
             else : 
                 pass
@@ -190,7 +181,7 @@ class App:
 
     @typechecked
     def fct_5(self)-> None:   
-
+        self.enable_btn(0)
         if self._compteur==5:
             image_top = dg.GerberImage(self.folder,'top')
             if self.center == 'yes':
@@ -204,7 +195,7 @@ class App:
             restart = tk.messagebox.askquestion("Restart","Etes-vous sûr de vouloir refaire cette étape ?")
             if restart=='yes':
                 self._compteur =5
-                self.btn6.configure(state=tk.DISABLED)
+                self.enable_btn(self._compteur)
                 self.fct_5()
             else : 
                 pass
@@ -214,7 +205,7 @@ class App:
 
     @typechecked
     def fct_6(self)-> None:
-       
+        self.enable_btn(0)
 
         if self._compteur==6:
             
@@ -227,6 +218,7 @@ class App:
             restart = tk.messagebox.askquestion("Restart","Etes-vous sûr de vouloir refaire cette étape ?")
             if restart=='yes':
                 self._compteur =6
+                self.enable_btn(self._compteur)
                 self.fct_6()
             else : 
                 pass
@@ -234,4 +226,12 @@ class App:
         return      
 
 
+    @typechecked
+    def enable_btn(self, compteur : int)-> None:
+        for i in range(len(self.list_btn)) :
+            if i < compteur :
+                self.list_btn[i].configure(state = tk.NORMAL)
+            else :
+                self.list_btn[i].configure(state = tk.DISABLED)
 
+        return
