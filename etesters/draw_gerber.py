@@ -5,7 +5,10 @@ import pandas as pd
 from typeguard import typechecked
 import etesters.select_test_points as tp
 
+
+
 class GerberImage:
+
 	@typechecked
 	def __init__(self,folder: tp.Production_folder, side: str)-> None:
 		importlib.reload(turtle)
@@ -22,6 +25,7 @@ class GerberImage:
 			self.tp_df=self.tp_df.assign(color='green')
 		return
 		
+
 	@typechecked
 	def center_0_0(self)-> None :
 		xmin,ymin,xmax,ymax = min_max_values(self.d, 'top')
@@ -33,6 +37,7 @@ class GerberImage:
 			self.d['x'][i] += x_add
 			self.d['y'][i] += y_add
 		return
+
 
 	@typechecked
 	def draw(self, root: tk.Tk, btn: tk.Button)-> None:
@@ -65,9 +70,9 @@ class GerberImage:
 		turtle.onscreenclick(self.recolor)
 		return
 
+
 	@typechecked
-	def recolor(self,x,y)-> None:
-		
+	def recolor(self,x,y)-> None:	
 		new_color = 'red'
 		for i in range(len(self.tp_df['x'])):
 			if abs(x-self.tp_df['x'][i])<10*abs(self.xmax-self.xmin)/1280 and abs(y-self.tp_df['y'][i])<10*abs(self.ymax-self.ymin)/720:
@@ -81,6 +86,7 @@ class GerberImage:
 		turtle.update()
 		return			        
 
+
 	@typechecked
 	def btn_func(self)-> None:
 		self.tp_df.drop(self.tp_df[self.tp_df['color'] == 'red'].index, inplace=True)
@@ -89,6 +95,7 @@ class GerberImage:
 		self.canva.destroy()
 		self.btn.configure(state = tk.NORMAL)
 		return
+
 
 
 @typechecked
@@ -102,7 +109,6 @@ def read_gerber(file_name :str,folder_path: str)-> list :
 
 @typechecked
 def rearrange_useful_values(lines :list)-> dict:
-
 	extract_dict = {'x': [], 'y': [], 'd': [], 'precision': 0}
 	for i in lines :
 		fsla=i.find('FSLA')
@@ -121,7 +127,6 @@ def rearrange_useful_values(lines :list)-> dict:
 
 @typechecked
 def min_max_values(d: dict, side: str='top')-> tuple:
-
 	xmin= min(d['x'])
 	ymin= min(d['y'])
 	xmax= max(d['x'])
@@ -133,7 +138,6 @@ def min_max_values(d: dict, side: str='top')-> tuple:
 
 @typechecked
 def draw_gerber(d: dict)-> None:
-
 	turtle.pu()
 	for i in range(len(d['x'])):
 		if d['d'][i] == 1:
@@ -151,7 +155,6 @@ def draw_gerber(d: dict)-> None:
 
 @typechecked
 def draw_tp(tp_df: pd.DataFrame)-> None:
-
 	for i in range(len(tp_df['x'])):
 		turtle.pu()
 		turtle.goto(tp_df['x'][i],tp_df['y'][i])
@@ -161,7 +164,6 @@ def draw_tp(tp_df: pd.DataFrame)-> None:
 
 @typechecked
 def draw_title(side: str, xmin: float, xmax: float, ymax: float, ymin : float)-> None:
-   
 	turtle.pu()
 	turtle.goto((xmax+xmin)/2,ymax+((ymax-ymin)/720)*100)
 	text= 'Sélectionner les test points que vous souhaitez garder pour le banc, puis fermer.\n Ne fermez pas tant que l image n est pas apparue'

@@ -4,7 +4,9 @@ import tkinter as tk
 import os
 
 
+
 class Production_folder :
+
 
     @typechecked
     def __init__(self)-> None:
@@ -13,10 +15,12 @@ class Production_folder :
         self.tp_names_bot=[]
         return 
 
+
     @typechecked
     def change_path(self, path : str)-> None:
         self.path = path
         return
+
 
     @typechecked
     def enter_files(self, pnp_bot: str, pnp_top: str, legend_top: str, legend_bot: str)-> None:
@@ -26,13 +30,17 @@ class Production_folder :
         self.legend_bot=legend_bot
         return 
 
+
     @typechecked
     def enter_tp_names(self, name : str, side : str)-> None:
         if side =='top':
             self.tp_names_top.append(name)
-        if side == 'bottom':
+        elif side == 'bottom':
             self.tp_names_bot.append(name)
+        else :
+            pass
         return
+
 
     @typechecked
     def tp_names_list_clear(self)-> None:
@@ -40,13 +48,17 @@ class Production_folder :
         self.tp_names_bot.clear()
         return 
 
+
     @typechecked
     def enter_final_tp_names(self, df: pd.DataFrame, side :str)-> None:
         if side=='top':
             self.final_tp_names_top_df=df
-        if side=='bottom':
+        elif side=='bottom':
             self.final_tp_names_bot_df=df
+        else :
+            pass
         return
+
 
     @typechecked
     def set_pcb_dimension(self, xmin: float, xmax: float, ymin: float, ymax: float)-> None:
@@ -101,12 +113,8 @@ def create_filtered_test_points_file(file_name: str, list_tp: list, folder_path:
     isExist = os.path.exists(folder_path+'/filtered_pnp')
     if not isExist:
         os.makedirs(folder_path+"/filtered_pnp")
-    
     filtered_df.to_csv(folder_path+'/filtered_pnp/'+filtered_name, sep=",", mode="w", index=False)
-    
     return
-
-
 
 
 @typechecked
@@ -130,6 +138,7 @@ def gui_select_tp(folder: Production_folder, root: tk.Tk, btn: tk.Button, column
                 btn2[i].deselect()
             return
 
+
     @typechecked
     def exit1()-> None:
         for i in range(len(enable1)):
@@ -151,7 +160,6 @@ def gui_select_tp(folder: Production_folder, root: tk.Tk, btn: tk.Button, column
             btn.configure(state = tk.NORMAL)
         create_filtered_test_points_file(folder.pnp_top, folder.tp_names_top, folder.path)
         frame2.destroy()
-        
         return
 
 
@@ -198,10 +206,7 @@ def gui_select_tp(folder: Production_folder, root: tk.Tk, btn: tk.Button, column
 
     tk.Button(frame1, text= 'Valider', command = exit1, fg="white", bg ='#2F4F4F').pack(padx=20,pady=20, anchor=tk.S)
     tk.Button(frame2, text= 'Valider', command = exit2, fg="white", bg ='#2F4F4F').pack(padx=20,pady=20, anchor=tk.S)
-    
-
     return
-
 
 
 @typechecked
@@ -242,11 +247,8 @@ def gui_select_pnp_file(folder: Production_folder, root: tk.Tk, btn: tk.Button)-
     return 
 
 
-
 @typechecked
 def create_files_listbox(root : tk.Frame, folder_path: str, side: str, text: str)-> tuple:
-
-
     t='\n'+text+side+'\n'
     label = tk.Label(root, text= t, font =(10), fg="white", bg ='#436D6D')
     
