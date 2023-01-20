@@ -14,7 +14,7 @@ class DefaultSCH:
 	
 	@typechecked
 	def write_file(self, path: str)-> None:
-		f = open(path, 'w')
+		f = open(path+"/scheme.sch", 'w')
 		for line in self.file :
 			f.write(line+'\n')
 		f.close()
@@ -62,7 +62,7 @@ class DefaultBRD:
 
 	@typechecked
 	def write_file(self, path)-> None:
-		f = open(path, 'w')
+		f = open(path+"/board.brd", 'w')
 		for line in self.file :
 			f.write(line+'\n')
 		f.close()
@@ -110,25 +110,25 @@ class DefaultBRD:
 
 
 @typechecked
-def create_brd_file(folder: tp.Production_folder)-> None:
+def create_brd_file(folder: tp.Production_folder, path: str)-> None:
 	brd_file= DefaultBRD()
 	brd_file.add_rectangular_board(folder.xmin, folder.ymin, folder.xmax, folder.ymax)
 	brd_file.add_all_elements(folder.final_tp_names_top_df)
 	brd_file.add_all_elements(folder.final_tp_names_bot_df)
 	brd_file.add_all_signals(folder.final_tp_names_top_df)
 	brd_file.add_all_signals(folder.final_tp_names_bot_df)
-	brd_file.write_file(folder.path+"/new_files/board.brd")
+	brd_file.write_file(path)
 	return
 
 
 @typechecked
-def create_sch_file(folder: tp.Production_folder)-> None:
+def create_sch_file(folder: tp.Production_folder, path: str)-> None:
 	sch_file = DefaultSCH()
 	sch_file.add_all_instances(folder.final_tp_names_top_df)
 	sch_file.add_all_instances(folder.final_tp_names_bot_df)
 	sch_file.add_all_parts(folder.final_tp_names_bot_df)
 	sch_file.add_all_parts(folder.final_tp_names_top_df)
-	sch_file.write_file(folder.path+"/new_files/scheme.sch")
+	sch_file.write_file(path)
 	return
 
 

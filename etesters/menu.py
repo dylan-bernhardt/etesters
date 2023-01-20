@@ -6,6 +6,7 @@ from typeguard import typechecked
 import create_eagle_files as eagle
 import select_test_points as tp
 import draw_gerber as dg
+import download_files as df
 
 
 
@@ -184,16 +185,10 @@ class App:
        
 
         if self.compteur==6:
-            isExist = os.path.exists(self.folder.path +"/new_files")
-            if not isExist:
-                os.makedirs(self.folder.path +"/new_files")
-            self.folder.final_tp_names_bot_df.to_csv(self.folder.path +"/new_files/"+self.folder.pnp_bot, sep=",", mode="w", index=False, header= False)
-            self.folder.final_tp_names_top_df.to_csv(self.folder.path +"/new_files/"+self.folder.pnp_top, sep=',', mode="w", index=False, header = False)
-            eagle.create_brd_file(self.folder)
-            eagle.create_sch_file(self.folder)
-
-            tk.messagebox.showinfo('INFO', 'Les nouveaux fichiers ont été créés dans le dossier de production')
             
+            df.files(self.folder).write_files(self.root)
+            tk.messagebox.showinfo('INFO', 'Les nouveaux fichiers ont bien été créés dans le dossier de production')
+
             self.compteur+=1
 
         else :
