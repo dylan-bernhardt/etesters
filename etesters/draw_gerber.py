@@ -40,8 +40,8 @@ class GerberImage:
 
 
 	@typechecked
-	def draw(self, root: tk.Tk, btn: tk.Button)-> None:
-		self.btn = btn
+	def draw(self, root: tk.Tk, list_btn: list)-> None:
+		self.list_btn = list_btn
 		self.xmin,self.ymin,self.xmax,self.ymax= min_max_values(self.d, self.side)
 		self.folder.set_pcb_dimension(self.xmin, self.xmax, self.ymin, self.ymax)
 		self.canva = tk.Canvas(root)
@@ -93,7 +93,8 @@ class GerberImage:
 		self.tp_df.drop(['color'], axis=1, inplace=True)
 		self.folder.enter_final_tp_names(self.tp_df.reset_index(),self.side)
 		self.canva.destroy()
-		self.btn.configure(state = tk.NORMAL)
+		for btn in self.list_btn :
+			btn.configure(state = tk.NORMAL)
 		return
 
 

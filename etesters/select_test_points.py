@@ -121,7 +121,7 @@ def create_filtered_test_points_file(file_name: str, list_tp: list, folder_path:
 
 
 @typechecked
-def gui_select_tp(folder: Production_folder, root: tk.Tk, btn: tk.Button, column_name: str = 'package') -> None:
+def gui_select_tp(folder: Production_folder, root: tk.Tk, list_btn: list , column_name: str = 'package') -> None:
     
     #@typechecked
     def select_all_checkbutton1(*args)-> None:
@@ -148,7 +148,8 @@ def gui_select_tp(folder: Production_folder, root: tk.Tk, btn: tk.Button, column
             if enable1[i].get()==1:
                 folder.enter_tp_names(l1[i].strip(),'bottom')
         if "filtered_pnp" in os.listdir(folder.path) :
-            btn.configure(state = tk.NORMAL)
+            for btn in list_btn :
+                btn.configure(state = tk.NORMAL)
         create_filtered_test_points_file(folder.pnp_bot, folder.tp_names_bot, folder.path)
         frame1.destroy()
         return
@@ -160,7 +161,8 @@ def gui_select_tp(folder: Production_folder, root: tk.Tk, btn: tk.Button, column
             if enable2[i].get()==1:
                 folder.enter_tp_names(l2[i].strip(),'top')
         if "filtered_pnp" in os.listdir(folder.path) :
-            btn.configure(state = tk.NORMAL)
+            for btn in list_btn :
+                btn.configure(state = tk.NORMAL)
         create_filtered_test_points_file(folder.pnp_top, folder.tp_names_top, folder.path)
         frame2.destroy()
         return
@@ -213,7 +215,7 @@ def gui_select_tp(folder: Production_folder, root: tk.Tk, btn: tk.Button, column
 
 
 @typechecked
-def gui_select_pnp_file(folder: Production_folder, root: tk.Tk, btn: tk.Button)-> None :
+def gui_select_pnp_file(folder: Production_folder, root: tk.Tk, list_btn: list)-> None :
     
     @typechecked
     def validate_fct()-> None:
@@ -223,7 +225,8 @@ def gui_select_pnp_file(folder: Production_folder, root: tk.Tk, btn: tk.Button)-
             tk.messagebox.showwarning(title = 'ATTENTION', message = "Attention ! Tous les fichiers n'ont pas été sélectionné")
             pass
         frame.destroy()
-        btn.configure(state = tk.NORMAL)    
+        for btn in list_btn :
+            btn.configure(state = tk.NORMAL)    
         
 
     frame = tk.Frame(root, bg ='#436D6D')
