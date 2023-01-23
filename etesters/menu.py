@@ -87,8 +87,8 @@ class App:
  
     @typechecked
     def fct_1(self)-> None:
-        self.enable_btn(0)
         if self._compteur == 1:
+            self.enable_btn(0)
             self.folder.reset_path()
             currdir = os.getcwd()
             zone_right = tk.Frame(self.root)
@@ -118,8 +118,8 @@ class App:
 
     @typechecked
     def fct_2(self)-> None:
-        self.enable_btn(0)
         if self._compteur==2:
+            self.enable_btn(0)
             self._compteur +=1
             tp.gui_select_pnp_file(self.folder, self.root, self.list_btn[:self._compteur])
 
@@ -136,8 +136,8 @@ class App:
 
     @typechecked
     def fct_3(self)-> None:
-        self.enable_btn(0)
         if self._compteur==3:
+            self.enable_btn(0)
             self._compteur+=1
             self.folder.tp_names_list_clear()
             tp.gui_select_tp(self.folder, self.root, self.list_btn[:self._compteur])
@@ -158,8 +158,8 @@ class App:
 
     @typechecked
     def fct_4(self)-> None:
-        self.enable_btn(0)
         if self._compteur==4:
+            self.enable_btn(0)
             self._compteur+=1
             image_bot = dg.GerberImage(self.folder, 'bottom')
             self.center = tk.messagebox.askquestion("Center?","Voulez-vous déplacer le centre du repère au centre de la carte? (Fortement conseillé, peu potentiellement buggué si non.) ")
@@ -181,8 +181,8 @@ class App:
 
     @typechecked
     def fct_5(self)-> None:   
-        self.enable_btn(0)
         if self._compteur==5:
+            self.enable_btn(0)
             self._compteur+=1
             image_top = dg.GerberImage(self.folder,'top')
             if self.center == 'yes':
@@ -203,8 +203,8 @@ class App:
 
     @typechecked
     def fct_6(self) -> None :
-        self.enable_btn(0)
         if self._compteur==6 : 
+            self.enable_btn(0)
             self._compteur+=1
             etesters.pcb_dimension.dimension_gui(self.folder, self.center).display(self.root, self.list_btn[:self._compteur])
         
@@ -221,10 +221,10 @@ class App:
 
     @typechecked
     def fct_7(self)-> None:
-        self.enable_btn(0)
 
         if self._compteur==7:
             
+            self.enable_btn(0)
             self._compteur+=1
             df.files(self.folder).write_files(self.root)
             tk.messagebox.showinfo('INFO', 'Les nouveaux fichiers ont bien été créés dans le dossier de production')
