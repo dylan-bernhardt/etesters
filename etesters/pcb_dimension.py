@@ -33,8 +33,8 @@ class dimension_gui :
         self.list_btn =  list_btn
         self.frame = tk.Frame(root, bg ='#436D6D')
         self.frame.pack(fill=tk.Y, side='right')
-        tk.Label(self.frame, text= 'Longueur').grid(row=0, column= 0, pady =10, padx=10)
-        tk.Label(self.frame, text= 'Largeur').grid(row=0, column= 1, pady =10, padx=10)
+        tk.Label(self.frame, text= 'Longueur', bg = '#436D6D', fg = 'white').grid(row=0, column= 0, pady =10, padx=10)
+        tk.Label(self.frame, text= 'Largeur', bg= '#436D6D', fg = 'white').grid(row=0, column= 1, pady =10, padx=10)
         self.s1 = tk.Spinbox(self.frame, from_=abs(self.folder.xmin) + abs(self.folder.xmax), to=(abs(self.folder.xmin) + abs(self.folder.xmax))*10)
         self.s2 = tk.Spinbox(self.frame, from_=abs(self.folder.ymin) + abs(self.folder.ymax),  to=(abs(self.folder.xmin) + abs(self.folder.xmax))*10)
         self.s1.grid(row = 1, column = 0, pady =10, padx=10)
