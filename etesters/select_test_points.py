@@ -71,6 +71,14 @@ class Production_folder :
         self.ymax = ymax
         return
 
+    @typechecked
+    def set_pcb_test_dimension(self, xmin: float, xmax: float, ymin: float, ymax: float)-> None:
+        self.xmax_pcb_test = xmax
+        self.xmin_pcb_test = xmin
+        self.ymin_pcb_test = ymin
+        self.ymax_pcb_test = ymax
+        return
+
 
 
 @typechecked

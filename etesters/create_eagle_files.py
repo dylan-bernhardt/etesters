@@ -123,7 +123,7 @@ class DefaultBRD:
 @typechecked
 def create_brd_file(folder: tp.Production_folder, path: str)-> None:
 	brd_file= DefaultBRD()
-	brd_file.add_rectangular_board(folder.xmin, folder.ymin, folder.xmax, folder.ymax)
+	brd_file.add_rectangular_board(folder.xmin_pcb_test, folder.ymin_pcb_test, folder.xmax_pcb_test, folder.ymax_pcb_test)
 	brd_file.add_all_elements(folder.final_tp_names_top_df)
 	brd_file.add_all_elements(folder.final_tp_names_bot_df)
 	brd_file.add_all_signals(folder.final_tp_names_top_df)

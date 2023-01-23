@@ -6,6 +6,7 @@ import etesters.create_eagle_files as eagle
 import etesters.select_test_points as tp
 import etesters.draw_gerber as dg
 import etesters.download_files as df
+import etesters.pcb_dimension
 
 
 
@@ -41,7 +42,8 @@ class App:
         self.btn3 = tk.Button(self.zone_left, width = 60, text="[3] Selectionner les noms des packages correspondant aux tests points", fg="white", bg=self.bg, command=self.fct_3, state=tk.DISABLED)
         self.btn4 = tk.Button(self.zone_left, width = 60, text="[4] Selectionner les points de test à garder pour la face bottom", fg="white", bg=self.bg, command = self.fct_4, state=tk.DISABLED)
         self.btn5 = tk.Button(self.zone_left, width = 60, text="[5] Selectionner les points de test à garder pour la face top", fg="white", bg=self.bg, command =self.fct_5, state=tk.DISABLED)
-        self.btn6 = tk.Button(self.zone_left, width = 60, text="[6] Télécharger les nouveaux fichiers", fg="white", bg=self.bg, command = self.fct_6, state=tk.DISABLED)
+        self.btn6 = tk.Button(self.zone_left, width = 60, text="[6] Entrer les dimensions du pcb de test", fg="white", bg=self.bg, command = self.fct_6, state=tk.DISABLED)
+        self.btn7 = tk.Button(self.zone_left, width = 60, text="[7] Télécharger les nouveaux fichiers", fg="white", bg=self.bg, command = self.fct_7, state=tk.DISABLED)
         self.btnquitter = tk.Button(self.zone_left, width = 60, text="Quitter", fg="white", bg=self.bg, command=self.fct_quitter)
         
         self.zone_left.pack(fill=tk.Y, side='left')
@@ -52,9 +54,10 @@ class App:
         self.btn4.pack(padx=10,pady=10)
         self.btn5.pack(padx=10,pady=10)
         self.btn6.pack(padx=10,pady=10)
+        self.btn7.pack(padx=10,pady=10)
         self.btnquitter.pack( padx=10,pady=10)
 
-        self.list_btn = [self.btn1, self.btn2, self.btn3, self.btn4, self.btn5, self.btn6]
+        self.list_btn = [self.btn1, self.btn2, self.btn3, self.btn4, self.btn5, self.btn6, self.btn7]
 
         self.root.mainloop()
         return
@@ -159,7 +162,7 @@ class App:
         if self._compteur==4:
             self._compteur+=1
             image_bot = dg.GerberImage(self.folder, 'bottom')
-            self.center = tk.messagebox.askquestion("Center?","Voulez-vous déplacer le centre du repère au centre de la carte?")
+            self.center = tk.messagebox.askquestion("Center?","Voulez-vous déplacer le centre du repère au centre de la carte? (Fortement conseillé, peu potentiellement buggué si non.) ")
             if self.center =='yes':
                 image_bot.center_0_0()
             else :
@@ -198,12 +201,29 @@ class App:
 
         return
 
+    @typechecked
+    def fct_6(self) -> None :
+        self.enable_btn(0)
+        if self._compteur==6 : 
+            self._compteur+=1
+            etesters.pcb_dimension.dimension_gui(self.folder, self.center).display(self.root, self.list_btn[:self._compteur])
+        
+        else : 
+            restart = tk.messagebox.askquestion("Restart","Etes-vous sûr de vouloir refaire cette étape ?")
+            if restart=='yes':
+                self._compteur =6
+                self.fct_6()
+            else : 
+                pass
+
+        return 
+
 
     @typechecked
-    def fct_6(self)-> None:
+    def fct_7(self)-> None:
         self.enable_btn(0)
 
-        if self._compteur==6:
+        if self._compteur==7:
             
             self._compteur+=1
             df.files(self.folder).write_files(self.root)
@@ -213,8 +233,8 @@ class App:
         else :
             restart = tk.messagebox.askquestion("Restart","Etes-vous sûr de vouloir refaire cette étape ?")
             if restart=='yes':
-                self._compteur =6
-                self.fct_6()
+                self._compteur =7
+                self.fct_7()
             else : 
                 pass
 
