@@ -1,0 +1,865 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>etesters package &mdash; etesters  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/sphinx_rtd_size.css" type="text/css" />
+      <link rel="stylesheet" href="_static/style.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="etesters" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> etesters
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">etesters</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">etesters package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-etesters.create_eagle_files">etesters.create_eagle_files module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#etesters.create_eagle_files.DefaultBRD"><code class="docutils literal notranslate"><span class="pre">DefaultBRD</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#etesters.create_eagle_files.DefaultSCH"><code class="docutils literal notranslate"><span class="pre">DefaultSCH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#etesters.create_eagle_files.create_brd_file"><code class="docutils literal notranslate"><span class="pre">create_brd_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#etesters.create_eagle_files.create_sch_file"><code class="docutils literal notranslate"><span class="pre">create_sch_file()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-etesters.download_files">etesters.download_files module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#etesters.download_files.files"><code class="docutils literal notranslate"><span class="pre">files</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-etesters.draw_gerber">etesters.draw_gerber module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#etesters.draw_gerber.GerberImage"><code class="docutils literal notranslate"><span class="pre">GerberImage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#etesters.draw_gerber.draw_gerber"><code class="docutils literal notranslate"><span class="pre">draw_gerber()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#etesters.draw_gerber.draw_title"><code class="docutils literal notranslate"><span class="pre">draw_title()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#etesters.draw_gerber.draw_tp"><code class="docutils literal notranslate"><span class="pre">draw_tp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#etesters.draw_gerber.min_max_values"><code class="docutils literal notranslate"><span class="pre">min_max_values()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#etesters.draw_gerber.read_gerber"><code class="docutils literal notranslate"><span class="pre">read_gerber()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#etesters.draw_gerber.rearrange_useful_values"><code class="docutils literal notranslate"><span class="pre">rearrange_useful_values()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-etesters.menu">etesters.menu module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#etesters.menu.App"><code class="docutils literal notranslate"><span class="pre">App</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-etesters.pcb_dimension">etesters.pcb_dimension module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#etesters.pcb_dimension.dimension_gui"><code class="docutils literal notranslate"><span class="pre">dimension_gui</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-etesters.select_test_points">etesters.select_test_points module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#etesters.select_test_points.Production_folder"><code class="docutils literal notranslate"><span class="pre">Production_folder</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#etesters.select_test_points.create_files_listbox"><code class="docutils literal notranslate"><span class="pre">create_files_listbox()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#etesters.select_test_points.create_filtered_test_points_file"><code class="docutils literal notranslate"><span class="pre">create_filtered_test_points_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#etesters.select_test_points.filter_test_points"><code class="docutils literal notranslate"><span class="pre">filter_test_points()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#etesters.select_test_points.filter_test_points_file"><code class="docutils literal notranslate"><span class="pre">filter_test_points_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#etesters.select_test_points.gui_select_pnp_file"><code class="docutils literal notranslate"><span class="pre">gui_select_pnp_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#etesters.select_test_points.gui_select_tp"><code class="docutils literal notranslate"><span class="pre">gui_select_tp()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-etesters">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">etesters</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">etesters</a></li>
+      <li class="breadcrumb-item active">etesters package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/etesters.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="etesters-package">
+<h1>etesters package<a class="headerlink" href="#etesters-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-etesters.create_eagle_files">
+<span id="etesters-create-eagle-files-module"></span><h2>etesters.create_eagle_files module<a class="headerlink" href="#module-etesters.create_eagle_files" title="Permalink to this heading"></a></h2>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.create_eagle_files.DefaultBRD" title="etesters.create_eagle_files.DefaultBRD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DefaultBRD</span></code></a>([file_path])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#etesters.create_eagle_files.DefaultSCH" title="etesters.create_eagle_files.DefaultSCH"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DefaultSCH</span></code></a>([file_path])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Functions:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.create_eagle_files.create_brd_file" title="etesters.create_eagle_files.create_brd_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_brd_file</span></code></a>(folder, path)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#etesters.create_eagle_files.create_sch_file" title="etesters.create_eagle_files.create_sch_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_sch_file</span></code></a>(folder, path)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="etesters.create_eagle_files.DefaultBRD">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">etesters.create_eagle_files.</span></span><span class="sig-name descname"><span class="pre">DefaultBRD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./eagle_default/default.brd'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/etesters/create_eagle_files.html#DefaultBRD"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.create_eagle_files.DefaultBRD" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.create_eagle_files.DefaultBRD.__init__" title="etesters.create_eagle_files.DefaultBRD.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([file_path])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#etesters.create_eagle_files.DefaultBRD.add_all_elements" title="etesters.create_eagle_files.DefaultBRD.add_all_elements"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_all_elements</span></code></a>(df)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.create_eagle_files.DefaultBRD.add_all_signals" title="etesters.create_eagle_files.DefaultBRD.add_all_signals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_all_signals</span></code></a>(df)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#etesters.create_eagle_files.DefaultBRD.add_one_element" title="etesters.create_eagle_files.DefaultBRD.add_one_element"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_one_element</span></code></a>(index, name, x, y, value, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.create_eagle_files.DefaultBRD.add_one_signal" title="etesters.create_eagle_files.DefaultBRD.add_one_signal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_one_signal</span></code></a>(index, name[, pad])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#etesters.create_eagle_files.DefaultBRD.add_rectangular_board" title="etesters.create_eagle_files.DefaultBRD.add_rectangular_board"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_rectangular_board</span></code></a>(x0, y0, x1, y1)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.create_eagle_files.DefaultBRD.write_file" title="etesters.create_eagle_files.DefaultBRD.write_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_file</span></code></a>(path)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.create_eagle_files.DefaultBRD.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./eagle_default/default.brd'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/create_eagle_files.html#DefaultBRD.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.create_eagle_files.DefaultBRD.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.create_eagle_files.DefaultBRD.add_all_elements">
+<span class="sig-name descname"><span class="pre">add_all_elements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/create_eagle_files.html#DefaultBRD.add_all_elements"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.create_eagle_files.DefaultBRD.add_all_elements" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.create_eagle_files.DefaultBRD.add_all_signals">
+<span class="sig-name descname"><span class="pre">add_all_signals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/create_eagle_files.html#DefaultBRD.add_all_signals"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.create_eagle_files.DefaultBRD.add_all_signals" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.create_eagle_files.DefaultBRD.add_one_element">
+<span class="sig-name descname"><span class="pre">add_one_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">package</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">library</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Generics_stg'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">package3d_urn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'urn:adsk.eagle:package:19402626/2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smashed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'yes'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'center-left'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/create_eagle_files.html#DefaultBRD.add_one_element"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.create_eagle_files.DefaultBRD.add_one_element" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.create_eagle_files.DefaultBRD.add_one_signal">
+<span class="sig-name descname"><span class="pre">add_one_signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'1'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/create_eagle_files.html#DefaultBRD.add_one_signal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.create_eagle_files.DefaultBRD.add_one_signal" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.create_eagle_files.DefaultBRD.add_rectangular_board">
+<span class="sig-name descname"><span class="pre">add_rectangular_board</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/create_eagle_files.html#DefaultBRD.add_rectangular_board"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.create_eagle_files.DefaultBRD.add_rectangular_board" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.create_eagle_files.DefaultBRD.write_file">
+<span class="sig-name descname"><span class="pre">write_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/create_eagle_files.html#DefaultBRD.write_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.create_eagle_files.DefaultBRD.write_file" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="etesters.create_eagle_files.DefaultSCH">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">etesters.create_eagle_files.</span></span><span class="sig-name descname"><span class="pre">DefaultSCH</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./eagle_default/default.sch'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/etesters/create_eagle_files.html#DefaultSCH"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.create_eagle_files.DefaultSCH" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.create_eagle_files.DefaultSCH.__init__" title="etesters.create_eagle_files.DefaultSCH.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([file_path])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#etesters.create_eagle_files.DefaultSCH.add_all_instances" title="etesters.create_eagle_files.DefaultSCH.add_all_instances"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_all_instances</span></code></a>(df)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.create_eagle_files.DefaultSCH.add_all_parts" title="etesters.create_eagle_files.DefaultSCH.add_all_parts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_all_parts</span></code></a>(df)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#etesters.create_eagle_files.DefaultSCH.add_one_instance" title="etesters.create_eagle_files.DefaultSCH.add_one_instance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_one_instance</span></code></a>(index, name, part, x, y[, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.create_eagle_files.DefaultSCH.add_one_part" title="etesters.create_eagle_files.DefaultSCH.add_one_part"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_one_part</span></code></a>(index, name, value[, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#etesters.create_eagle_files.DefaultSCH.write_file" title="etesters.create_eagle_files.DefaultSCH.write_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_file</span></code></a>(path)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.create_eagle_files.DefaultSCH.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./eagle_default/default.sch'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/create_eagle_files.html#DefaultSCH.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.create_eagle_files.DefaultSCH.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.create_eagle_files.DefaultSCH.add_all_instances">
+<span class="sig-name descname"><span class="pre">add_all_instances</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/etesters/create_eagle_files.html#DefaultSCH.add_all_instances"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.create_eagle_files.DefaultSCH.add_all_instances" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.create_eagle_files.DefaultSCH.add_all_parts">
+<span class="sig-name descname"><span class="pre">add_all_parts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/create_eagle_files.html#DefaultSCH.add_all_parts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.create_eagle_files.DefaultSCH.add_all_parts" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.create_eagle_files.DefaultSCH.add_one_instance">
+<span class="sig-name descname"><span class="pre">add_one_instance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">part</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smashed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'yes'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'TP1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'2.54'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'95'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'vector'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/create_eagle_files.html#DefaultSCH.add_one_instance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.create_eagle_files.DefaultSCH.add_one_instance" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.create_eagle_files.DefaultSCH.add_one_part">
+<span class="sig-name descname"><span class="pre">add_one_part</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deviceset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'TESPOINT'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'-SMD1.5MM'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">library</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Generics_stg'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">package3d_urn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'urn:adsk.eagle:package:19402626/2'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/create_eagle_files.html#DefaultSCH.add_one_part"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.create_eagle_files.DefaultSCH.add_one_part" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.create_eagle_files.DefaultSCH.write_file">
+<span class="sig-name descname"><span class="pre">write_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/create_eagle_files.html#DefaultSCH.write_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.create_eagle_files.DefaultSCH.write_file" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="etesters.create_eagle_files.create_brd_file">
+<span class="sig-prename descclassname"><span class="pre">etesters.create_eagle_files.</span></span><span class="sig-name descname"><span class="pre">create_brd_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#etesters.select_test_points.Production_folder" title="etesters.select_test_points.Production_folder"><span class="pre">Production_folder</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/create_eagle_files.html#create_brd_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.create_eagle_files.create_brd_file" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="etesters.create_eagle_files.create_sch_file">
+<span class="sig-prename descclassname"><span class="pre">etesters.create_eagle_files.</span></span><span class="sig-name descname"><span class="pre">create_sch_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#etesters.select_test_points.Production_folder" title="etesters.select_test_points.Production_folder"><span class="pre">Production_folder</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/create_eagle_files.html#create_sch_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.create_eagle_files.create_sch_file" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-etesters.download_files">
+<span id="etesters-download-files-module"></span><h2>etesters.download_files module<a class="headerlink" href="#module-etesters.download_files" title="Permalink to this heading"></a></h2>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.download_files.files" title="etesters.download_files.files"><code class="xref py py-obj docutils literal notranslate"><span class="pre">files</span></code></a>(folder)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="etesters.download_files.files">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">etesters.download_files.</span></span><span class="sig-name descname"><span class="pre">files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#etesters.select_test_points.Production_folder" title="etesters.select_test_points.Production_folder"><span class="pre">Production_folder</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/etesters/download_files.html#files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.download_files.files" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.download_files.files.__init__" title="etesters.download_files.files.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(folder)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#etesters.download_files.files.write_files" title="etesters.download_files.files.write_files"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_files</span></code></a>(root)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.download_files.files.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#etesters.select_test_points.Production_folder" title="etesters.select_test_points.Production_folder"><span class="pre">Production_folder</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/download_files.html#files.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.download_files.files.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.download_files.files.write_files">
+<span class="sig-name descname"><span class="pre">write_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tk</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/download_files.html#files.write_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.download_files.files.write_files" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-etesters.draw_gerber">
+<span id="etesters-draw-gerber-module"></span><h2>etesters.draw_gerber module<a class="headerlink" href="#module-etesters.draw_gerber" title="Permalink to this heading"></a></h2>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.draw_gerber.GerberImage" title="etesters.draw_gerber.GerberImage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GerberImage</span></code></a>(folder, side)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Functions:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.draw_gerber.draw_gerber" title="etesters.draw_gerber.draw_gerber"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_gerber</span></code></a>(d)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#etesters.draw_gerber.draw_title" title="etesters.draw_gerber.draw_title"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_title</span></code></a>(side, xmin, xmax, ymax, ymin)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.draw_gerber.draw_tp" title="etesters.draw_gerber.draw_tp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_tp</span></code></a>(tp_df)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#etesters.draw_gerber.min_max_values" title="etesters.draw_gerber.min_max_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">min_max_values</span></code></a>(d[, side])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.draw_gerber.read_gerber" title="etesters.draw_gerber.read_gerber"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_gerber</span></code></a>(file_name, folder_path)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#etesters.draw_gerber.rearrange_useful_values" title="etesters.draw_gerber.rearrange_useful_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rearrange_useful_values</span></code></a>(lines)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="etesters.draw_gerber.GerberImage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">etesters.draw_gerber.</span></span><span class="sig-name descname"><span class="pre">GerberImage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#etesters.select_test_points.Production_folder" title="etesters.select_test_points.Production_folder"><span class="pre">Production_folder</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">side</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/etesters/draw_gerber.html#GerberImage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.draw_gerber.GerberImage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.draw_gerber.GerberImage.__init__" title="etesters.draw_gerber.GerberImage.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(folder, side)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#etesters.draw_gerber.GerberImage.btn_func" title="etesters.draw_gerber.GerberImage.btn_func"><code class="xref py py-obj docutils literal notranslate"><span class="pre">btn_func</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.draw_gerber.GerberImage.center_0_0" title="etesters.draw_gerber.GerberImage.center_0_0"><code class="xref py py-obj docutils literal notranslate"><span class="pre">center_0_0</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#etesters.draw_gerber.GerberImage.draw" title="etesters.draw_gerber.GerberImage.draw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw</span></code></a>(root, list_btn)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.draw_gerber.GerberImage.recolor" title="etesters.draw_gerber.GerberImage.recolor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">recolor</span></code></a>(x, y)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.draw_gerber.GerberImage.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#etesters.select_test_points.Production_folder" title="etesters.select_test_points.Production_folder"><span class="pre">Production_folder</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">side</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/draw_gerber.html#GerberImage.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.draw_gerber.GerberImage.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.draw_gerber.GerberImage.btn_func">
+<span class="sig-name descname"><span class="pre">btn_func</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/draw_gerber.html#GerberImage.btn_func"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.draw_gerber.GerberImage.btn_func" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.draw_gerber.GerberImage.center_0_0">
+<span class="sig-name descname"><span class="pre">center_0_0</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/draw_gerber.html#GerberImage.center_0_0"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.draw_gerber.GerberImage.center_0_0" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.draw_gerber.GerberImage.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tk</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_btn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/draw_gerber.html#GerberImage.draw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.draw_gerber.GerberImage.draw" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.draw_gerber.GerberImage.recolor">
+<span class="sig-name descname"><span class="pre">recolor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/draw_gerber.html#GerberImage.recolor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.draw_gerber.GerberImage.recolor" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="etesters.draw_gerber.draw_gerber">
+<span class="sig-prename descclassname"><span class="pre">etesters.draw_gerber.</span></span><span class="sig-name descname"><span class="pre">draw_gerber</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/draw_gerber.html#draw_gerber"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.draw_gerber.draw_gerber" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="etesters.draw_gerber.draw_title">
+<span class="sig-prename descclassname"><span class="pre">etesters.draw_gerber.</span></span><span class="sig-name descname"><span class="pre">draw_title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">side</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/draw_gerber.html#draw_title"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.draw_gerber.draw_title" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="etesters.draw_gerber.draw_tp">
+<span class="sig-prename descclassname"><span class="pre">etesters.draw_gerber.</span></span><span class="sig-name descname"><span class="pre">draw_tp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tp_df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/draw_gerber.html#draw_tp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.draw_gerber.draw_tp" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="etesters.draw_gerber.min_max_values">
+<span class="sig-prename descclassname"><span class="pre">etesters.draw_gerber.</span></span><span class="sig-name descname"><span class="pre">min_max_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">side</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'top'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="_modules/etesters/draw_gerber.html#min_max_values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.draw_gerber.min_max_values" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="etesters.draw_gerber.read_gerber">
+<span class="sig-prename descclassname"><span class="pre">etesters.draw_gerber.</span></span><span class="sig-name descname"><span class="pre">read_gerber</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">folder_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="_modules/etesters/draw_gerber.html#read_gerber"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.draw_gerber.read_gerber" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="etesters.draw_gerber.rearrange_useful_values">
+<span class="sig-prename descclassname"><span class="pre">etesters.draw_gerber.</span></span><span class="sig-name descname"><span class="pre">rearrange_useful_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/etesters/draw_gerber.html#rearrange_useful_values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.draw_gerber.rearrange_useful_values" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-etesters.menu">
+<span id="etesters-menu-module"></span><h2>etesters.menu module<a class="headerlink" href="#module-etesters.menu" title="Permalink to this heading"></a></h2>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.menu.App" title="etesters.menu.App"><code class="xref py py-obj docutils literal notranslate"><span class="pre">App</span></code></a>([title, bg])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="etesters.menu.App">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">etesters.menu.</span></span><span class="sig-name descname"><span class="pre">App</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ETESTERS'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'#2F4F4F'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/etesters/menu.html#App"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.menu.App.__init__" title="etesters.menu.App.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([title, bg])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#etesters.menu.App.configure" title="etesters.menu.App.configure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">configure</span></code></a>([title, bg])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.menu.App.display" title="etesters.menu.App.display"><code class="xref py py-obj docutils literal notranslate"><span class="pre">display</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#etesters.menu.App.enable_btn" title="etesters.menu.App.enable_btn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enable_btn</span></code></a>(compteur)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.menu.App.fct_1" title="etesters.menu.App.fct_1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fct_1</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#etesters.menu.App.fct_2" title="etesters.menu.App.fct_2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fct_2</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.menu.App.fct_3" title="etesters.menu.App.fct_3"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fct_3</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#etesters.menu.App.fct_4" title="etesters.menu.App.fct_4"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fct_4</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.menu.App.fct_5" title="etesters.menu.App.fct_5"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fct_5</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#etesters.menu.App.fct_6" title="etesters.menu.App.fct_6"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fct_6</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.menu.App.fct_7" title="etesters.menu.App.fct_7"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fct_7</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#etesters.menu.App.fct_quitter" title="etesters.menu.App.fct_quitter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fct_quitter</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.menu.App.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ETESTERS'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'#2F4F4F'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.menu.App.configure">
+<span class="sig-name descname"><span class="pre">configure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ETESTERS'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'#2F4F4F'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.configure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.configure" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.menu.App.display">
+<span class="sig-name descname"><span class="pre">display</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.display"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.display" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.menu.App.enable_btn">
+<span class="sig-name descname"><span class="pre">enable_btn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">compteur</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.enable_btn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.enable_btn" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.menu.App.fct_1">
+<span class="sig-name descname"><span class="pre">fct_1</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.fct_1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.fct_1" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.menu.App.fct_2">
+<span class="sig-name descname"><span class="pre">fct_2</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.fct_2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.fct_2" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.menu.App.fct_3">
+<span class="sig-name descname"><span class="pre">fct_3</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.fct_3"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.fct_3" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.menu.App.fct_4">
+<span class="sig-name descname"><span class="pre">fct_4</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.fct_4"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.fct_4" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.menu.App.fct_5">
+<span class="sig-name descname"><span class="pre">fct_5</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.fct_5"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.fct_5" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.menu.App.fct_6">
+<span class="sig-name descname"><span class="pre">fct_6</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.fct_6"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.fct_6" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.menu.App.fct_7">
+<span class="sig-name descname"><span class="pre">fct_7</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.fct_7"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.fct_7" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.menu.App.fct_quitter">
+<span class="sig-name descname"><span class="pre">fct_quitter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.fct_quitter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.fct_quitter" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-etesters.pcb_dimension">
+<span id="etesters-pcb-dimension-module"></span><h2>etesters.pcb_dimension module<a class="headerlink" href="#module-etesters.pcb_dimension" title="Permalink to this heading"></a></h2>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.pcb_dimension.dimension_gui" title="etesters.pcb_dimension.dimension_gui"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dimension_gui</span></code></a>(folder, center)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="etesters.pcb_dimension.dimension_gui">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">etesters.pcb_dimension.</span></span><span class="sig-name descname"><span class="pre">dimension_gui</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#etesters.select_test_points.Production_folder" title="etesters.select_test_points.Production_folder"><span class="pre">Production_folder</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/etesters/pcb_dimension.html#dimension_gui"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.pcb_dimension.dimension_gui" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.pcb_dimension.dimension_gui.__init__" title="etesters.pcb_dimension.dimension_gui.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(folder, center)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#etesters.pcb_dimension.dimension_gui.display" title="etesters.pcb_dimension.dimension_gui.display"><code class="xref py py-obj docutils literal notranslate"><span class="pre">display</span></code></a>(root, list_btn)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.pcb_dimension.dimension_gui.validate_fct" title="etesters.pcb_dimension.dimension_gui.validate_fct"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate_fct</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.pcb_dimension.dimension_gui.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#etesters.select_test_points.Production_folder" title="etesters.select_test_points.Production_folder"><span class="pre">Production_folder</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/pcb_dimension.html#dimension_gui.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.pcb_dimension.dimension_gui.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.pcb_dimension.dimension_gui.display">
+<span class="sig-name descname"><span class="pre">display</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tk</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_btn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/pcb_dimension.html#dimension_gui.display"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.pcb_dimension.dimension_gui.display" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.pcb_dimension.dimension_gui.validate_fct">
+<span class="sig-name descname"><span class="pre">validate_fct</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/pcb_dimension.html#dimension_gui.validate_fct"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.pcb_dimension.dimension_gui.validate_fct" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-etesters.select_test_points">
+<span id="etesters-select-test-points-module"></span><h2>etesters.select_test_points module<a class="headerlink" href="#module-etesters.select_test_points" title="Permalink to this heading"></a></h2>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.select_test_points.Production_folder" title="etesters.select_test_points.Production_folder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Production_folder</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Functions:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.select_test_points.create_files_listbox" title="etesters.select_test_points.create_files_listbox"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_files_listbox</span></code></a>(root, folder_path, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#etesters.select_test_points.create_filtered_test_points_file" title="etesters.select_test_points.create_filtered_test_points_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_filtered_test_points_file</span></code></a>(file_name, ...)</p></td>
+<td><p>Create a new csv file with the filtered test points of a csv file &#64;param file_name: name of the csv file to filter &#64;param list_tp: list of test points to filter &#64;param column_name: name of the column to filter &#64;param filtered_name: name of the new csv file</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.select_test_points.filter_test_points" title="etesters.select_test_points.filter_test_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter_test_points</span></code></a>(pd, list_tp[, column_name])</p></td>
+<td><p>Filter a dataframe with test points &#64;param pd: dataframe to filter &#64;param list_tp: list of test points to filter &#64;param column_name: name of the column to filter &#64;return: filtered dataframe</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#etesters.select_test_points.filter_test_points_file" title="etesters.select_test_points.filter_test_points_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter_test_points_file</span></code></a>(file_name, list_tp, ...)</p></td>
+<td><p>Filter a csv file with test points &#64;param file_name: name of the csv file to filter &#64;param list_tp: list of test points to filter &#64;param column_name: name of the column to filter &#64;return: filtered dataframe</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.select_test_points.gui_select_pnp_file" title="etesters.select_test_points.gui_select_pnp_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gui_select_pnp_file</span></code></a>(folder, root, list_btn)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#etesters.select_test_points.gui_select_tp" title="etesters.select_test_points.gui_select_tp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gui_select_tp</span></code></a>(folder, root, list_btn[, ...])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="etesters.select_test_points.Production_folder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">etesters.select_test_points.</span></span><span class="sig-name descname"><span class="pre">Production_folder</span></span><a class="reference internal" href="_modules/etesters/select_test_points.html#Production_folder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.select_test_points.Production_folder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.select_test_points.Production_folder.__init__" title="etesters.select_test_points.Production_folder.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#etesters.select_test_points.Production_folder.change_path" title="etesters.select_test_points.Production_folder.change_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">change_path</span></code></a>(path)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.select_test_points.Production_folder.enter_files" title="etesters.select_test_points.Production_folder.enter_files"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enter_files</span></code></a>(pnp_bot, pnp_top, legend_top, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#etesters.select_test_points.Production_folder.enter_final_tp_names" title="etesters.select_test_points.Production_folder.enter_final_tp_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enter_final_tp_names</span></code></a>(df, side)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.select_test_points.Production_folder.enter_tp_names" title="etesters.select_test_points.Production_folder.enter_tp_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enter_tp_names</span></code></a>(name, side)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#etesters.select_test_points.Production_folder.reset_path" title="etesters.select_test_points.Production_folder.reset_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_path</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.select_test_points.Production_folder.set_pcb_dimension" title="etesters.select_test_points.Production_folder.set_pcb_dimension"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_pcb_dimension</span></code></a>(xmin, xmax, ymin, ymax)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#etesters.select_test_points.Production_folder.set_pcb_test_dimension" title="etesters.select_test_points.Production_folder.set_pcb_test_dimension"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_pcb_test_dimension</span></code></a>(xmin, xmax, ymin, ymax)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.select_test_points.Production_folder.tp_names_list_clear" title="etesters.select_test_points.Production_folder.tp_names_list_clear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tp_names_list_clear</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.select_test_points.Production_folder.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/select_test_points.html#Production_folder.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.select_test_points.Production_folder.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.select_test_points.Production_folder.change_path">
+<span class="sig-name descname"><span class="pre">change_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/select_test_points.html#Production_folder.change_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.select_test_points.Production_folder.change_path" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.select_test_points.Production_folder.enter_files">
+<span class="sig-name descname"><span class="pre">enter_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pnp_bot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pnp_top</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legend_top</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legend_bot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/select_test_points.html#Production_folder.enter_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.select_test_points.Production_folder.enter_files" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.select_test_points.Production_folder.enter_final_tp_names">
+<span class="sig-name descname"><span class="pre">enter_final_tp_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">side</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/select_test_points.html#Production_folder.enter_final_tp_names"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.select_test_points.Production_folder.enter_final_tp_names" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.select_test_points.Production_folder.enter_tp_names">
+<span class="sig-name descname"><span class="pre">enter_tp_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">side</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/select_test_points.html#Production_folder.enter_tp_names"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.select_test_points.Production_folder.enter_tp_names" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.select_test_points.Production_folder.reset_path">
+<span class="sig-name descname"><span class="pre">reset_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/etesters/select_test_points.html#Production_folder.reset_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.select_test_points.Production_folder.reset_path" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.select_test_points.Production_folder.set_pcb_dimension">
+<span class="sig-name descname"><span class="pre">set_pcb_dimension</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xmin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/select_test_points.html#Production_folder.set_pcb_dimension"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.select_test_points.Production_folder.set_pcb_dimension" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.select_test_points.Production_folder.set_pcb_test_dimension">
+<span class="sig-name descname"><span class="pre">set_pcb_test_dimension</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xmin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/select_test_points.html#Production_folder.set_pcb_test_dimension"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.select_test_points.Production_folder.set_pcb_test_dimension" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.select_test_points.Production_folder.tp_names_list_clear">
+<span class="sig-name descname"><span class="pre">tp_names_list_clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/select_test_points.html#Production_folder.tp_names_list_clear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.select_test_points.Production_folder.tp_names_list_clear" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="etesters.select_test_points.create_files_listbox">
+<span class="sig-prename descclassname"><span class="pre">etesters.select_test_points.</span></span><span class="sig-name descname"><span class="pre">create_files_listbox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">folder_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">side</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="_modules/etesters/select_test_points.html#create_files_listbox"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.select_test_points.create_files_listbox" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="etesters.select_test_points.create_filtered_test_points_file">
+<span class="sig-prename descclassname"><span class="pre">etesters.select_test_points.</span></span><span class="sig-name descname"><span class="pre">create_filtered_test_points_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_tp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">folder_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'package'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/select_test_points.html#create_filtered_test_points_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.select_test_points.create_filtered_test_points_file" title="Permalink to this definition"></a></dt>
+<dd><p>Create a new csv file with the filtered test points of a csv file
+&#64;param file_name: name of the csv file to filter
+&#64;param list_tp: list of test points to filter
+&#64;param column_name: name of the column to filter
+&#64;param filtered_name: name of the new csv file</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="etesters.select_test_points.filter_test_points">
+<span class="sig-prename descclassname"><span class="pre">etesters.select_test_points.</span></span><span class="sig-name descname"><span class="pre">filter_test_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_tp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'package'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/etesters/select_test_points.html#filter_test_points"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.select_test_points.filter_test_points" title="Permalink to this definition"></a></dt>
+<dd><p>Filter a dataframe with test points
+&#64;param pd: dataframe to filter
+&#64;param list_tp: list of test points to filter
+&#64;param column_name: name of the column to filter
+&#64;return: filtered dataframe</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="etesters.select_test_points.filter_test_points_file">
+<span class="sig-prename descclassname"><span class="pre">etesters.select_test_points.</span></span><span class="sig-name descname"><span class="pre">filter_test_points_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_tp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">folder_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'package'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/etesters/select_test_points.html#filter_test_points_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.select_test_points.filter_test_points_file" title="Permalink to this definition"></a></dt>
+<dd><p>Filter a csv file with test points
+&#64;param file_name: name of the csv file to filter
+&#64;param list_tp: list of test points to filter
+&#64;param column_name: name of the column to filter
+&#64;return: filtered dataframe</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="etesters.select_test_points.gui_select_pnp_file">
+<span class="sig-prename descclassname"><span class="pre">etesters.select_test_points.</span></span><span class="sig-name descname"><span class="pre">gui_select_pnp_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#etesters.select_test_points.Production_folder" title="etesters.select_test_points.Production_folder"><span class="pre">Production_folder</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tk</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_btn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/select_test_points.html#gui_select_pnp_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.select_test_points.gui_select_pnp_file" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="etesters.select_test_points.gui_select_tp">
+<span class="sig-prename descclassname"><span class="pre">etesters.select_test_points.</span></span><span class="sig-name descname"><span class="pre">gui_select_tp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#etesters.select_test_points.Production_folder" title="etesters.select_test_points.Production_folder"><span class="pre">Production_folder</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tk</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_btn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'package'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/select_test_points.html#gui_select_tp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.select_test_points.gui_select_tp" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-etesters">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-etesters" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="etesters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Dylan Bernhardt.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

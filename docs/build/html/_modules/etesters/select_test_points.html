@@ -1,0 +1,394 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>etesters.select_test_points &mdash; etesters  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/sphinx_rtd_size.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> etesters
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">etesters</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">etesters</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">etesters.select_test_points</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for etesters.select_test_points</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">typeguard</span> <span class="kn">import</span> <span class="n">typechecked</span>
+<span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">etesters.menu</span> <span class="k">as</span> <span class="nn">menu</span>
+
+
+
+<div class="viewcode-block" id="Production_folder"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.Production_folder">[docs]</a><span class="k">class</span> <span class="nc">Production_folder</span> <span class="p">:</span>
+
+
+<div class="viewcode-block" id="Production_folder.__init__"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.Production_folder.__init__">[docs]</a>    <span class="nd">@typechecked</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tp_names_top</span><span class="o">=</span><span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tp_names_bot</span><span class="o">=</span><span class="p">[]</span>
+        <span class="k">return</span> </div>
+
+
+<div class="viewcode-block" id="Production_folder.change_path"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.Production_folder.change_path">[docs]</a>    <span class="nd">@typechecked</span>
+    <span class="k">def</span> <span class="nf">change_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">path</span>
+        <span class="k">return</span></div>
+
+
+<div class="viewcode-block" id="Production_folder.reset_path"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.Production_folder.reset_path">[docs]</a>    <span class="k">def</span> <span class="nf">reset_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="Production_folder.enter_files"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.Production_folder.enter_files">[docs]</a>    <span class="nd">@typechecked</span>
+    <span class="k">def</span> <span class="nf">enter_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pnp_bot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">pnp_top</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">legend_top</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">legend_bot</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pnp_bot</span><span class="o">=</span><span class="n">pnp_bot</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pnp_top</span><span class="o">=</span><span class="n">pnp_top</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">legend_top</span> <span class="o">=</span> <span class="n">legend_top</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">legend_bot</span><span class="o">=</span><span class="n">legend_bot</span>
+        <span class="k">return</span> </div>
+
+
+<div class="viewcode-block" id="Production_folder.enter_tp_names"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.Production_folder.enter_tp_names">[docs]</a>    <span class="nd">@typechecked</span>
+    <span class="k">def</span> <span class="nf">enter_tp_names</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">side</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">side</span> <span class="o">==</span><span class="s1">&#39;top&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tp_names_top</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">side</span> <span class="o">==</span> <span class="s1">&#39;bottom&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tp_names_bot</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">return</span></div>
+
+
+<div class="viewcode-block" id="Production_folder.tp_names_list_clear"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.Production_folder.tp_names_list_clear">[docs]</a>    <span class="nd">@typechecked</span>
+    <span class="k">def</span> <span class="nf">tp_names_list_clear</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tp_names_top</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tp_names_bot</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="k">return</span> </div>
+
+
+<div class="viewcode-block" id="Production_folder.enter_final_tp_names"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.Production_folder.enter_final_tp_names">[docs]</a>    <span class="nd">@typechecked</span>
+    <span class="k">def</span> <span class="nf">enter_final_tp_names</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">side</span> <span class="p">:</span><span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">side</span><span class="o">==</span><span class="s1">&#39;top&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">final_tp_names_top_df</span><span class="o">=</span><span class="n">df</span>
+        <span class="k">elif</span> <span class="n">side</span><span class="o">==</span><span class="s1">&#39;bottom&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">final_tp_names_bot_df</span><span class="o">=</span><span class="n">df</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">return</span></div>
+
+
+<div class="viewcode-block" id="Production_folder.set_pcb_dimension"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.Production_folder.set_pcb_dimension">[docs]</a>    <span class="nd">@typechecked</span>
+    <span class="k">def</span> <span class="nf">set_pcb_dimension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xmin</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">xmax</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">ymin</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">ymax</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">xmax</span> <span class="o">=</span> <span class="n">xmax</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">xmin</span> <span class="o">=</span> <span class="n">xmin</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ymin</span> <span class="o">=</span> <span class="n">ymin</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ymax</span> <span class="o">=</span> <span class="n">ymax</span>
+        <span class="k">return</span></div>
+
+<div class="viewcode-block" id="Production_folder.set_pcb_test_dimension"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.Production_folder.set_pcb_test_dimension">[docs]</a>    <span class="nd">@typechecked</span>
+    <span class="k">def</span> <span class="nf">set_pcb_test_dimension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xmin</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">xmax</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">ymin</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">ymax</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">xmax_pcb_test</span> <span class="o">=</span> <span class="n">xmax</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">xmin_pcb_test</span> <span class="o">=</span> <span class="n">xmin</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ymin_pcb_test</span> <span class="o">=</span> <span class="n">ymin</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ymax_pcb_test</span> <span class="o">=</span> <span class="n">ymax</span>
+        <span class="k">return</span></div></div>
+
+
+
+<div class="viewcode-block" id="filter_test_points"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.filter_test_points">[docs]</a><span class="nd">@typechecked</span>
+<span class="k">def</span> <span class="nf">filter_test_points</span><span class="p">(</span><span class="n">pd</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">list_tp</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">column_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;package&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Filter a dataframe with test points</span>
+<span class="sd">    @param pd: dataframe to filter</span>
+<span class="sd">    @param list_tp: list of test points to filter</span>
+<span class="sd">    @param column_name: name of the column to filter</span>
+<span class="sd">    @return: filtered dataframe</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">filtered_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">[</span><span class="n">pd</span><span class="p">[</span><span class="n">column_name</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">list_tp</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">filtered_df</span></div>
+
+
+<div class="viewcode-block" id="filter_test_points_file"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.filter_test_points_file">[docs]</a><span class="nd">@typechecked</span>
+<span class="k">def</span> <span class="nf">filter_test_points_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">list_tp</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">folder_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">column_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;package&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Filter a csv file with test points</span>
+<span class="sd">    @param file_name: name of the csv file to filter</span>
+<span class="sd">    @param list_tp: list of test points to filter</span>
+<span class="sd">    @param column_name: name of the column to filter</span>
+<span class="sd">    @return: filtered dataframe</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">folder_path</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="n">file_name</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;signal_name&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;angle&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">column_name</span><span class="p">])</span>
+    <span class="n">filtered_df</span> <span class="o">=</span> <span class="n">filter_test_points</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">list_tp</span><span class="p">,</span> <span class="n">column_name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">filtered_df</span></div>
+
+
+<div class="viewcode-block" id="create_filtered_test_points_file"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.create_filtered_test_points_file">[docs]</a><span class="nd">@typechecked</span>
+<span class="k">def</span> <span class="nf">create_filtered_test_points_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">list_tp</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">folder_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">column_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;package&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create a new csv file with the filtered test points of a csv file</span>
+<span class="sd">    @param file_name: name of the csv file to filter</span>
+<span class="sd">    @param list_tp: list of test points to filter</span>
+<span class="sd">    @param column_name: name of the column to filter</span>
+<span class="sd">    @param filtered_name: name of the new csv file</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">filtered_name</span><span class="o">=</span> <span class="s1">&#39;FILTERED__&#39;</span><span class="o">+</span><span class="n">file_name</span>
+    <span class="n">filtered_df</span> <span class="o">=</span> <span class="n">filter_test_points_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">list_tp</span><span class="p">,</span> <span class="n">folder_path</span><span class="p">,</span> <span class="n">column_name</span><span class="p">)</span>
+
+
+    <span class="n">isExist</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">folder_path</span><span class="o">+</span><span class="s1">&#39;/filtered_pnp&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">isExist</span><span class="p">:</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">folder_path</span><span class="o">+</span><span class="s2">&quot;/filtered_pnp&quot;</span><span class="p">)</span>
+    <span class="n">filtered_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">folder_path</span><span class="o">+</span><span class="s1">&#39;/filtered_pnp/&#39;</span><span class="o">+</span><span class="n">filtered_name</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">return</span></div>
+
+
+<div class="viewcode-block" id="gui_select_tp"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.gui_select_tp">[docs]</a><span class="nd">@typechecked</span>
+<span class="k">def</span> <span class="nf">gui_select_tp</span><span class="p">(</span><span class="n">folder</span><span class="p">:</span> <span class="n">Production_folder</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">,</span> <span class="n">list_btn</span><span class="p">:</span> <span class="nb">list</span> <span class="p">,</span> <span class="n">column_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;package&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    
+    <span class="c1">#@typechecked</span>
+    <span class="k">def</span> <span class="nf">select_all_checkbutton1</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">btn1</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">select_all1</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">btn1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">select</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">btn1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">deselect</span><span class="p">()</span>
+        <span class="k">return</span>
+
+    <span class="c1">#@typechecked</span>
+    <span class="k">def</span> <span class="nf">select_all_checkbutton2</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">btn2</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">select_all2</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">btn2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">select</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">btn2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">deselect</span><span class="p">()</span>
+            <span class="k">return</span>
+
+
+    <span class="nd">@typechecked</span>
+    <span class="k">def</span> <span class="nf">exit1</span><span class="p">()</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">enable1</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">enable1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">folder</span><span class="o">.</span><span class="n">enter_tp_names</span><span class="p">(</span><span class="n">l1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;filtered_pnp&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">folder</span><span class="o">.</span><span class="n">path</span><span class="p">)</span> <span class="p">:</span>
+            <span class="k">for</span> <span class="n">btn</span> <span class="ow">in</span> <span class="n">list_btn</span> <span class="p">:</span>
+                <span class="n">btn</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">state</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">NORMAL</span><span class="p">)</span>
+        <span class="n">create_filtered_test_points_file</span><span class="p">(</span><span class="n">folder</span><span class="o">.</span><span class="n">pnp_bot</span><span class="p">,</span> <span class="n">folder</span><span class="o">.</span><span class="n">tp_names_bot</span><span class="p">,</span> <span class="n">folder</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+        <span class="n">frame1</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
+        <span class="k">return</span>
+
+
+    <span class="nd">@typechecked</span>
+    <span class="k">def</span> <span class="nf">exit2</span><span class="p">()</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">enable2</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">enable2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">folder</span><span class="o">.</span><span class="n">enter_tp_names</span><span class="p">(</span><span class="n">l2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;filtered_pnp&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">folder</span><span class="o">.</span><span class="n">path</span><span class="p">)</span> <span class="p">:</span>
+            <span class="k">for</span> <span class="n">btn</span> <span class="ow">in</span> <span class="n">list_btn</span> <span class="p">:</span>
+                <span class="n">btn</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">state</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">NORMAL</span><span class="p">)</span>
+        <span class="n">create_filtered_test_points_file</span><span class="p">(</span><span class="n">folder</span><span class="o">.</span><span class="n">pnp_top</span><span class="p">,</span> <span class="n">folder</span><span class="o">.</span><span class="n">tp_names_top</span><span class="p">,</span> <span class="n">folder</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+        <span class="n">frame2</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
+        <span class="k">return</span>
+
+
+    
+    <span class="n">frame1</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">LabelFrame</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span> <span class="s1">&#39;Selectionner les noms des tp&#39;</span><span class="p">)</span>
+    <span class="n">frame1</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+
+    <span class="n">frame2</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">LabelFrame</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span> <span class="s1">&#39;Selectionner les noms des tp&#39;</span><span class="p">)</span>
+    <span class="n">frame2</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    
+
+    <span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">folder</span><span class="o">.</span><span class="n">path</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="n">folder</span><span class="o">.</span><span class="n">pnp_bot</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;signal_name&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;angle&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">column_name</span><span class="p">])</span>
+    <span class="n">l1</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span> <span class="o">=</span> <span class="p">[</span><span class="n">column_name</span><span class="p">])[</span><span class="n">column_name</span><span class="p">]</span>
+    <span class="n">l1</span><span class="o">=</span><span class="n">l1</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()[</span><span class="n">column_name</span><span class="p">]</span>
+
+    <span class="n">enable1</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">l1</span><span class="p">))]</span>
+    <span class="n">btn1</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">l1</span><span class="p">))]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">l1</span><span class="p">))</span> <span class="p">:</span>
+        <span class="n">enable1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">IntVar</span><span class="p">()</span>
+        <span class="n">btn1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Checkbutton</span><span class="p">(</span><span class="n">frame1</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">l1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">variable</span><span class="o">=</span><span class="n">enable1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">onvalue</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">offvalue</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">btn1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">anchor</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">W</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="n">select_all1</span><span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">IntVar</span><span class="p">()</span>
+    <span class="n">select_all1</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">select_all_checkbutton1</span><span class="p">)</span>
+    <span class="n">tk</span><span class="o">.</span><span class="n">Checkbutton</span><span class="p">(</span><span class="n">frame1</span> <span class="p">,</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Select all&quot;</span><span class="p">,</span><span class="n">variable</span><span class="o">=</span><span class="n">select_all1</span><span class="p">,</span> <span class="n">onvalue</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">offvalue</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">anchor</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">W</span><span class="p">)</span>
+
+
+    <span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">folder</span><span class="o">.</span><span class="n">path</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="n">folder</span><span class="o">.</span><span class="n">pnp_top</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;signal_name&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;angle&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">column_name</span><span class="p">])</span>
+    <span class="n">l2</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span> <span class="o">=</span> <span class="p">[</span><span class="n">column_name</span><span class="p">])[</span><span class="n">column_name</span><span class="p">]</span>
+    <span class="n">l2</span><span class="o">=</span><span class="n">l2</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()[</span><span class="n">column_name</span><span class="p">]</span>
+
+    <span class="n">enable2</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">l2</span><span class="p">))]</span>
+    <span class="n">btn2</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">l2</span><span class="p">))]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">l2</span><span class="p">))</span> <span class="p">:</span>
+        <span class="n">enable2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">IntVar</span><span class="p">()</span>
+        <span class="n">btn2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Checkbutton</span><span class="p">(</span><span class="n">frame2</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">l2</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">variable</span><span class="o">=</span><span class="n">enable2</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">onvalue</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">offvalue</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">btn2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">anchor</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">W</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="p">)</span>
+
+
+    <span class="n">select_all2</span><span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">IntVar</span><span class="p">()</span>
+    <span class="n">select_all2</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">select_all_checkbutton2</span><span class="p">)</span>
+    <span class="n">tk</span><span class="o">.</span><span class="n">Checkbutton</span><span class="p">(</span><span class="n">frame2</span> <span class="p">,</span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Select all&quot;</span><span class="p">,</span><span class="n">variable</span><span class="o">=</span><span class="n">select_all2</span><span class="p">,</span> <span class="n">onvalue</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">offvalue</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">anchor</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">W</span><span class="p">)</span>
+
+    <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">frame1</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span> <span class="s1">&#39;Valider&#39;</span><span class="p">,</span> <span class="n">command</span> <span class="o">=</span> <span class="n">exit1</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">bg</span> <span class="o">=</span><span class="s1">&#39;#2F4F4F&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">padx</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">pady</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">S</span><span class="p">)</span>
+    <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">frame2</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span> <span class="s1">&#39;Valider&#39;</span><span class="p">,</span> <span class="n">command</span> <span class="o">=</span> <span class="n">exit2</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">bg</span> <span class="o">=</span><span class="s1">&#39;#2F4F4F&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">padx</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">pady</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">S</span><span class="p">)</span>
+    <span class="k">return</span></div>
+
+
+<div class="viewcode-block" id="gui_select_pnp_file"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.gui_select_pnp_file">[docs]</a><span class="nd">@typechecked</span>
+<span class="k">def</span> <span class="nf">gui_select_pnp_file</span><span class="p">(</span><span class="n">folder</span><span class="p">:</span> <span class="n">Production_folder</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">,</span> <span class="n">list_btn</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span> <span class="p">:</span>
+    
+    <span class="nd">@typechecked</span>
+    <span class="k">def</span> <span class="nf">validate_fct</span><span class="p">()</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">try</span> <span class="p">:</span>
+            <span class="n">folder</span><span class="o">.</span><span class="n">enter_files</span><span class="p">(</span><span class="n">pnp_bot</span><span class="o">=</span><span class="n">list_box1</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">list_box1</span><span class="o">.</span><span class="n">curselection</span><span class="p">()),</span> <span class="n">pnp_top</span><span class="o">=</span><span class="n">list_box2</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">list_box2</span><span class="o">.</span><span class="n">curselection</span><span class="p">()),</span> <span class="n">legend_bot</span> <span class="o">=</span><span class="n">list_box3</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">list_box3</span><span class="o">.</span><span class="n">curselection</span><span class="p">()),</span> <span class="n">legend_top</span><span class="o">=</span> <span class="n">list_box4</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">list_box4</span><span class="o">.</span><span class="n">curselection</span><span class="p">()))</span>
+        <span class="k">except</span> <span class="p">:</span>
+            <span class="n">tk</span><span class="o">.</span><span class="n">messagebox</span><span class="o">.</span><span class="n">showwarning</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;ATTENTION&#39;</span><span class="p">,</span> <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;Attention ! Tous les fichiers n&#39;ont pas été sélectionné&quot;</span><span class="p">)</span>
+            <span class="k">pass</span>
+        <span class="n">frame</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">btn</span> <span class="ow">in</span> <span class="n">list_btn</span> <span class="p">:</span>
+            <span class="n">btn</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">state</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">NORMAL</span><span class="p">)</span>    
+        
+
+    <span class="n">frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">bg</span> <span class="o">=</span><span class="s1">&#39;#436D6D&#39;</span><span class="p">)</span>
+    <span class="n">frame</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+
+    <span class="n">list_box1</span><span class="p">,</span><span class="n">label1</span> <span class="o">=</span> <span class="n">create_files_listbox</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">folder</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="s1">&#39;Selectionner les fichiers P&amp;P pour la face : &#39;</span><span class="p">)</span>
+
+    
+    <span class="n">label1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">list_box1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">list_box2</span><span class="p">,</span> <span class="n">label2</span> <span class="o">=</span> <span class="n">create_files_listbox</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">folder</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="s1">&#39;Selectionner les fichiers P&amp;P pour la face : &#39;</span><span class="p">)</span>
+    
+    <span class="n">label2</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">list_box2</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="n">list_box3</span><span class="p">,</span> <span class="n">label3</span> <span class="o">=</span> <span class="n">create_files_listbox</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">folder</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="s1">&#39;Selectionner les fichiers de légende pour la face : &#39;</span><span class="p">)</span>
+    
+    <span class="n">label3</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">list_box3</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">list_box4</span><span class="p">,</span> <span class="n">label4</span> <span class="o">=</span> <span class="n">create_files_listbox</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">folder</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="s1">&#39;Selectionner les fichiers de légende pour la face : &#39;</span><span class="p">)</span>
+    
+    <span class="n">label4</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span> <span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">list_box4</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Valider&quot;</span><span class="p">,</span><span class="n">fg</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">bg</span> <span class="o">=</span><span class="s1">&#39;#436D6D&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">validate_fct</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">column</span> <span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+    
+    <span class="k">return</span> </div>
+
+
+<div class="viewcode-block" id="create_files_listbox"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.create_files_listbox">[docs]</a><span class="nd">@typechecked</span>
+<span class="k">def</span> <span class="nf">create_files_listbox</span><span class="p">(</span><span class="n">root</span> <span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">,</span> <span class="n">folder_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">side</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+    <span class="n">t</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span><span class="n">text</span><span class="o">+</span><span class="n">side</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span> <span class="n">t</span><span class="p">,</span> <span class="n">font</span> <span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">fg</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">bg</span> <span class="o">=</span><span class="s1">&#39;#436D6D&#39;</span><span class="p">)</span>
+    
+    <span class="n">l</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">folder_path</span><span class="p">)</span>
+    <span class="n">list_box</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Listbox</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">),</span><span class="n">width</span> <span class="o">=</span> <span class="mi">40</span><span class="p">,</span> <span class="n">relief</span><span class="o">=</span><span class="s1">&#39;flat&#39;</span><span class="p">,</span> <span class="n">selectbackground</span><span class="o">=</span><span class="s2">&quot;#2F4F4F&quot;</span><span class="p">,</span> <span class="n">bg</span> <span class="o">=</span><span class="s1">&#39;#436D6D&#39;</span><span class="p">,</span> <span class="n">fg</span> <span class="o">=</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">selectforeground</span> <span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">exportselection</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">highlightcolor</span> <span class="o">=</span> <span class="s1">&#39;white&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">)):</span>
+        <span class="n">list_box</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">l</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> 
+
+    <span class="k">return</span> <span class="n">list_box</span><span class="p">,</span><span class="n">label</span></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Dylan Bernhardt.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

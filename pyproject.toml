@@ -14,3 +14,14 @@ typeguard = "^2.13.3"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.docs]
+optional = true
+[tool.poetry.group.docs.dependencies]
+Sphinx = "5.3"
+sphinx-rtd-theme = "1.1.1"
+sphinxcontrib-napoleon = "0.7"
+numpydoc = "1.5.0"
+autodocsumm = "0.2.10"
+autoclass = "2.2.0"
+sphinx-rtd-size = "0.2.0"
