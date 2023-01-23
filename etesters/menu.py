@@ -11,9 +11,73 @@ import etesters.pcb_dimension
 
 
 class App:
+    """
+    Gui to configure & export the files that will be used to build the electronic test bench
 
+    ...
+
+    Attributes
+    --------------------
+    title: str
+        The title of the gui
+    bg : str
+        The color of the background
+    folder : select_test_points.Production_folder
+        Corresponds to the folder containing all the production files
+    root : tkinter.Tk
+        The root of the gui
+    zone_left : tkinter.Frame
+        A zone on the left of the screen containing the buttons
+    btn1-7 : tkinter.Button 
+        Button
+    center : str
+        "yes" if the origin matches with the center of the pcb
+        else "no"
+    list_btn: list
+        The list containing every buttons. Useful if you want to disable consecutive buttons.
+
+
+    Methods
+    --------------------
+    configure(title :str, bg: str)
+        Configuring the gui appearance
+    display()
+        Displays the gui
+    fct_quitter()
+        Action done when exit button is pressed
+    enable_btn(compteur)
+        Enables all the compteur'th buttons and disables the others
+    fct_1()
+        Function triggered by pression the 1st button 
+    fct_2()
+        Function triggered by pression the 2nd button
+    fct_3()
+        Function triggered by pression the 3rd button
+    fct_4()
+        Function triggered by pression the 4th button
+    fct_5()
+        Function triggered by pression the 5th button
+    fct_6()
+        Function triggered by pression the 6th button
+    fct_7()
+        Function triggered by pression the 7th button
+    """
     @typechecked
     def __init__(self, title :str ='ETESTERS', bg: str = '#2F4F4F')-> None :
+        """
+        Init useful attributes for the gui as title, bg or _compteur.
+        _compteur prevents the user to do the steps in the wrong order.
+
+        ...
+
+        Parameters
+        ----------------
+        title : str, default = 'ETESTERS'
+            the title of the gui
+        bg : str, default = "#2F4F4F"
+            the bg color
+        """
+
         self.title = title
         self.bg = bg
         self._compteur = 1
@@ -23,6 +87,18 @@ class App:
 
     @typechecked
     def configure(self,title: str ='ETESTERS',bg: str ='#2F4F4F')-> None:
+        """
+        to configure appearance settings
+
+        ...
+
+        Parameters
+        -------------
+        title : str, default = 'ETESTERS'
+            title of the gui
+        bg: str, default = '#2F4F4F'
+            background color
+        """
         self.title = title
         self.bg = bg
         return
@@ -30,6 +106,9 @@ class App:
 
     @typechecked
     def display(self)-> None :
+        """
+        Displays the gui 
+        """
         self.root = tk.Tk()
         self.root.title(self.title)
         self.root.resizable(width= 0, height= 0)
@@ -65,6 +144,11 @@ class App:
 
     @typechecked
     def fct_quitter(self)-> None:
+        """
+        Asks to close the gui if the user wants to leave
+
+        """
+
         text = "Etes-vous sûr de vouloir quitter ?"
         if self._compteur != 7:
             text = "Vous n'avez pas terminé, êtes-vous sûr de vouloir quitter ? "
@@ -87,6 +171,11 @@ class App:
  
     @typechecked
     def fct_1(self)-> None:
+        """
+        Function triggered when the first button is pressed. A gui is opened. The users has to select the folder which contains the production files.
+        The action can be remade as many times as wanted.
+        If the users closes the gui without selecting a folder, he cannot do the next action.
+        """
         if self._compteur == 1:
             self.enable_btn(0)
             self.folder.reset_path()
@@ -118,6 +207,10 @@ class App:
 
     @typechecked
     def fct_2(self)-> None:
+        """
+        Function triggered when button 2 is pressed. It allows the user to select the two PnP files & the two legend files in the folder he selected at previous step.
+        The step can be remade as many times as wanted.
+        """
         if self._compteur==2:
             self.enable_btn(0)
             self._compteur +=1
@@ -136,6 +229,10 @@ class App:
 
     @typechecked
     def fct_3(self)-> None:
+        """
+        Function triggered when the 3rd button is pressed. 
+        The user has to select the names of the testpoints he wants to keep on the test bench.        
+        """
         if self._compteur==3:
             self.enable_btn(0)
             self._compteur+=1
@@ -158,6 +255,14 @@ class App:
 
     @typechecked
     def fct_4(self)-> None:
+        """
+        Function triggered when the 4th button is pressed.
+        It opens an image of the bottom side of the card. The user has to recolor in 'red' the testpoints that he wants to forget for the bench.
+        A gui is firstly openned and asks if the origin should match the center of the card.
+        The step can be remade as many times as wanted.
+        On the image, the blue point represents the origin.
+
+        """
         if self._compteur==4:
             self.enable_btn(0)
             self._compteur+=1
@@ -181,6 +286,12 @@ class App:
 
     @typechecked
     def fct_5(self)-> None:   
+        """
+        Function triggered when the 5th button is pressed.
+        It opens an image of the top side of the card. The user has to recolor in 'red' the testpoints that he wants to forget for the bench.
+        The step can be remade as many times as wanted.
+        On the image, the blue point represents the origin.
+        """
         if self._compteur==5:
             self.enable_btn(0)
             self._compteur+=1
@@ -203,6 +314,11 @@ class App:
 
     @typechecked
     def fct_6(self) -> None :
+        """
+        Function triggered when the 6th button is pressed.
+        The user has to enter the size of the future pcb containing the test points.
+        The step can be remade as many times as wanted.
+        """
         if self._compteur==6 : 
             self.enable_btn(0)
             self._compteur+=1
@@ -221,7 +337,11 @@ class App:
 
     @typechecked
     def fct_7(self)-> None:
-
+        """
+        Function triggered when the 7th button is pressed.
+        A gui is openned and the user has to choose the repertory where the files will be saved.
+        The step can be remade as many times as wanted.
+        """
         if self._compteur==7:
             
             self.enable_btn(0)
@@ -243,6 +363,9 @@ class App:
 
     @typechecked
     def enable_btn(self, compteur : int)-> None:
+        """
+        Enable and disable consecutive buttons. 
+        """
         for i in range(len(self.list_btn)) :
             if i < compteur :
                 self.list_btn[i].configure(state = tk.NORMAL)

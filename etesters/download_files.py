@@ -8,7 +8,22 @@ from typeguard import typechecked
 
 
 class files :
+    """
+    4 files that can be written in a folder chosen by the user : 2 eagle files & 2 PnP files
+    These files are necessary to build the electronic test bench
 
+    ...
+    
+    Attributes
+    ----------------
+    folder : select_test_points.Production_folder
+        object that corresponds to the gerber production folder
+
+    Methods
+    ----------------
+    write_files(root : tkinter.Tk)
+        Open a gui to choose a folder where to write and save the files
+    """
     @typechecked
     def __init__(self, folder :tp.Production_folder)-> None :
         self.folder = folder
@@ -17,6 +32,16 @@ class files :
 
     @typechecked
     def write_files(self, root: tk.Tk)-> None: 
+        """
+        Asking the user where to save the files on the root specified in parameters
+
+        ...
+
+        Parameters
+        ---------------
+        root : tkinter.Tk
+            The root of the main gui
+        """
         currdir = os.getcwd()
         zone_right = tk.Frame(root)
         zone_right.pack(fill=tk.Y, side='right')

@@ -310,7 +310,7 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#etesters.download_files.files" title="etesters.download_files.files"><code class="xref py py-obj docutils literal notranslate"><span class="pre">files</span></code></a>(folder)</p></td>
-<td><p></p></td>
+<td><p>4 files that can be written in a folder chosen by the user : 2 eagle files &amp; 2 PnP files These files are necessary to build the electronic test bench</p></td>
 </tr>
 </tbody>
 </table>
@@ -318,6 +318,26 @@
 <dt class="sig sig-object py" id="etesters.download_files.files">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">etesters.download_files.</span></span><span class="sig-name descname"><span class="pre">files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#etesters.select_test_points.Production_folder" title="etesters.select_test_points.Production_folder"><span class="pre">Production_folder</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/etesters/download_files.html#files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.download_files.files" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>4 files that can be written in a folder chosen by the user : 2 eagle files &amp; 2 PnP files
+These files are necessary to build the electronic test bench</p>
+<p>…</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="etesters.download_files.files.folder">
+<span class="sig-name descname"><span class="pre">folder</span></span><a class="headerlink" href="#etesters.download_files.files.folder" title="Permalink to this definition"></a></dt>
+<dd><p>object that corresponds to the gerber production folder</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#etesters.select_test_points.Production_folder" title="etesters.select_test_points.Production_folder">select_test_points.Production_folder</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.download_files.files.write_files">
+<span class="sig-name descname"><span class="pre">write_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tkinter.Tk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/etesters/download_files.html#files.write_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.download_files.files.write_files" title="Permalink to this definition"></a></dt>
+<dd><p>Open a gui to choose a folder where to write and save the files</p>
+</dd></dl>
+
 <p><strong>Methods:</strong></p>
 <table class="autosummary longtable docutils align-default">
 <colgroup>
@@ -328,8 +348,8 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#etesters.download_files.files.__init__" title="etesters.download_files.files.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(folder)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#etesters.download_files.files.write_files" title="etesters.download_files.files.write_files"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_files</span></code></a>(root)</p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#id0" title="etesters.download_files.files.write_files"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_files</span></code></a>(root)</p></td>
+<td><p>Asking the user where to save the files on the root specified in parameters</p></td>
 </tr>
 </tbody>
 </table>
@@ -339,9 +359,16 @@
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="etesters.download_files.files.write_files">
-<span class="sig-name descname"><span class="pre">write_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tk</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/download_files.html#files.write_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.download_files.files.write_files" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">write_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tk</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/download_files.html#files.write_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id0" title="Permalink to this definition"></a></dt>
+<dd><p>Asking the user where to save the files on the root specified in parameters</p>
+<p>…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>root</strong> (<em>tkinter.Tk</em>) – The root of the main gui</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -483,7 +510,7 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#etesters.menu.App" title="etesters.menu.App"><code class="xref py py-obj docutils literal notranslate"><span class="pre">App</span></code></a>([title, bg])</p></td>
-<td><p></p></td>
+<td><p>Gui to configure &amp; export the files that will be used to build the electronic test bench</p></td>
 </tr>
 </tbody>
 </table>
@@ -491,6 +518,163 @@
 <dt class="sig sig-object py" id="etesters.menu.App">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">etesters.menu.</span></span><span class="sig-name descname"><span class="pre">App</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ETESTERS'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'#2F4F4F'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/etesters/menu.html#App"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Gui to configure &amp; export the files that will be used to build the electronic test bench</p>
+<p>…</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="etesters.menu.App.title">
+<span class="sig-name descname"><span class="pre">title</span></span><a class="headerlink" href="#etesters.menu.App.title" title="Permalink to this definition"></a></dt>
+<dd><p>The title of the gui</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="etesters.menu.App.bg">
+<span class="sig-name descname"><span class="pre">bg</span></span><a class="headerlink" href="#etesters.menu.App.bg" title="Permalink to this definition"></a></dt>
+<dd><p>The color of the background</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="etesters.menu.App.folder">
+<span class="sig-name descname"><span class="pre">folder</span></span><a class="headerlink" href="#etesters.menu.App.folder" title="Permalink to this definition"></a></dt>
+<dd><p>Corresponds to the folder containing all the production files</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#etesters.select_test_points.Production_folder" title="etesters.select_test_points.Production_folder">select_test_points.Production_folder</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="etesters.menu.App.root">
+<span class="sig-name descname"><span class="pre">root</span></span><a class="headerlink" href="#etesters.menu.App.root" title="Permalink to this definition"></a></dt>
+<dd><p>The root of the gui</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>tkinter.Tk</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="etesters.menu.App.zone_left">
+<span class="sig-name descname"><span class="pre">zone_left</span></span><a class="headerlink" href="#etesters.menu.App.zone_left" title="Permalink to this definition"></a></dt>
+<dd><p>A zone on the left of the screen containing the buttons</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>tkinter.Frame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">btn1-7</span></span></dt>
+<dd><p>Button</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>tkinter.Button</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="etesters.menu.App.center">
+<span class="sig-name descname"><span class="pre">center</span></span><a class="headerlink" href="#etesters.menu.App.center" title="Permalink to this definition"></a></dt>
+<dd><p>“yes” if the origin matches with the center of the pcb
+else “no”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="etesters.menu.App.list_btn">
+<span class="sig-name descname"><span class="pre">list_btn</span></span><a class="headerlink" href="#etesters.menu.App.list_btn" title="Permalink to this definition"></a></dt>
+<dd><p>The list containing every buttons. Useful if you want to disable consecutive buttons.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.menu.App.configure">
+<span class="sig-name descname"><span class="pre">configure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/etesters/menu.html#App.configure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.configure" title="Permalink to this definition"></a></dt>
+<dd><p>Configuring the gui appearance</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.menu.App.display">
+<span class="sig-name descname"><span class="pre">display</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/etesters/menu.html#App.display"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.display" title="Permalink to this definition"></a></dt>
+<dd><p>Displays the gui</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.menu.App.fct_quitter">
+<span class="sig-name descname"><span class="pre">fct_quitter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/etesters/menu.html#App.fct_quitter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.fct_quitter" title="Permalink to this definition"></a></dt>
+<dd><p>Action done when exit button is pressed</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.menu.App.enable_btn">
+<span class="sig-name descname"><span class="pre">enable_btn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">compteur</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/etesters/menu.html#App.enable_btn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.enable_btn" title="Permalink to this definition"></a></dt>
+<dd><p>Enables all the compteur’th buttons and disables the others</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.menu.App.fct_1">
+<span class="sig-name descname"><span class="pre">fct_1</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/etesters/menu.html#App.fct_1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.fct_1" title="Permalink to this definition"></a></dt>
+<dd><p>Function triggered by pression the 1st button</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.menu.App.fct_2">
+<span class="sig-name descname"><span class="pre">fct_2</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/etesters/menu.html#App.fct_2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.fct_2" title="Permalink to this definition"></a></dt>
+<dd><p>Function triggered by pression the 2nd button</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.menu.App.fct_3">
+<span class="sig-name descname"><span class="pre">fct_3</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/etesters/menu.html#App.fct_3"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.fct_3" title="Permalink to this definition"></a></dt>
+<dd><p>Function triggered by pression the 3rd button</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.menu.App.fct_4">
+<span class="sig-name descname"><span class="pre">fct_4</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/etesters/menu.html#App.fct_4"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.fct_4" title="Permalink to this definition"></a></dt>
+<dd><p>Function triggered by pression the 4th button</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.menu.App.fct_5">
+<span class="sig-name descname"><span class="pre">fct_5</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/etesters/menu.html#App.fct_5"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.fct_5" title="Permalink to this definition"></a></dt>
+<dd><p>Function triggered by pression the 5th button</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.menu.App.fct_6">
+<span class="sig-name descname"><span class="pre">fct_6</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/etesters/menu.html#App.fct_6"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.fct_6" title="Permalink to this definition"></a></dt>
+<dd><p>Function triggered by pression the 6th button</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="etesters.menu.App.fct_7">
+<span class="sig-name descname"><span class="pre">fct_7</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/etesters/menu.html#App.fct_7"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.fct_7" title="Permalink to this definition"></a></dt>
+<dd><p>Function triggered by pression the 7th button</p>
+</dd></dl>
+
 <p><strong>Methods:</strong></p>
 <table class="autosummary longtable docutils align-default">
 <colgroup>
@@ -499,102 +683,148 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#etesters.menu.App.__init__" title="etesters.menu.App.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([title, bg])</p></td>
-<td><p></p></td>
+<td><p>Init useful attributes for the gui as title, bg or _compteur.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#etesters.menu.App.configure" title="etesters.menu.App.configure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">configure</span></code></a>([title, bg])</p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#id1" title="etesters.menu.App.configure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">configure</span></code></a>([title, bg])</p></td>
+<td><p>to configure appearance settings</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.menu.App.display" title="etesters.menu.App.display"><code class="xref py py-obj docutils literal notranslate"><span class="pre">display</span></code></a>()</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id2" title="etesters.menu.App.display"><code class="xref py py-obj docutils literal notranslate"><span class="pre">display</span></code></a>()</p></td>
+<td><p>Displays the gui</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#etesters.menu.App.enable_btn" title="etesters.menu.App.enable_btn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enable_btn</span></code></a>(compteur)</p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#id3" title="etesters.menu.App.enable_btn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enable_btn</span></code></a>(compteur)</p></td>
+<td><p>Enable and disable consecutive buttons.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.menu.App.fct_1" title="etesters.menu.App.fct_1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fct_1</span></code></a>()</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id4" title="etesters.menu.App.fct_1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fct_1</span></code></a>()</p></td>
+<td><p>Function triggered when the first button is pressed.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#etesters.menu.App.fct_2" title="etesters.menu.App.fct_2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fct_2</span></code></a>()</p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#id5" title="etesters.menu.App.fct_2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fct_2</span></code></a>()</p></td>
+<td><p>Function triggered when button 2 is pressed.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.menu.App.fct_3" title="etesters.menu.App.fct_3"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fct_3</span></code></a>()</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id6" title="etesters.menu.App.fct_3"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fct_3</span></code></a>()</p></td>
+<td><p>Function triggered when the 3rd button is pressed.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#etesters.menu.App.fct_4" title="etesters.menu.App.fct_4"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fct_4</span></code></a>()</p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#id7" title="etesters.menu.App.fct_4"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fct_4</span></code></a>()</p></td>
+<td><p>Function triggered when the 4th button is pressed.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.menu.App.fct_5" title="etesters.menu.App.fct_5"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fct_5</span></code></a>()</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id8" title="etesters.menu.App.fct_5"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fct_5</span></code></a>()</p></td>
+<td><p>Function triggered when the 5th button is pressed.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#etesters.menu.App.fct_6" title="etesters.menu.App.fct_6"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fct_6</span></code></a>()</p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#id9" title="etesters.menu.App.fct_6"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fct_6</span></code></a>()</p></td>
+<td><p>Function triggered when the 6th button is pressed.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.menu.App.fct_7" title="etesters.menu.App.fct_7"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fct_7</span></code></a>()</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id10" title="etesters.menu.App.fct_7"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fct_7</span></code></a>()</p></td>
+<td><p>Function triggered when the 7th button is pressed.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#etesters.menu.App.fct_quitter" title="etesters.menu.App.fct_quitter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fct_quitter</span></code></a>()</p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#id11" title="etesters.menu.App.fct_quitter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fct_quitter</span></code></a>()</p></td>
+<td><p>Asks to close the gui if the user wants to leave</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="etesters.menu.App.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ETESTERS'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'#2F4F4F'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.__init__" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Init useful attributes for the gui as title, bg or _compteur.
+_compteur prevents the user to do the steps in the wrong order.</p>
+<p>…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> (<em>str</em><em>, </em><em>default = 'ETESTERS'</em>) – the title of the gui</p></li>
+<li><p><strong>bg</strong> (<em>str</em><em>, </em><em>default = &quot;#2F4F4F&quot;</em>) – the bg color</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="etesters.menu.App.configure">
-<span class="sig-name descname"><span class="pre">configure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ETESTERS'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'#2F4F4F'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.configure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.configure" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">configure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ETESTERS'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'#2F4F4F'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.configure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id1" title="Permalink to this definition"></a></dt>
+<dd><p>to configure appearance settings</p>
+<p>…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> (<em>str</em><em>, </em><em>default = 'ETESTERS'</em>) – title of the gui</p></li>
+<li><p><strong>bg</strong> (<em>str</em><em>, </em><em>default = '#2F4F4F'</em>) – background color</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="etesters.menu.App.display">
-<span class="sig-name descname"><span class="pre">display</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.display"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.display" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">display</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.display"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id2" title="Permalink to this definition"></a></dt>
+<dd><p>Displays the gui</p>
+</dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="etesters.menu.App.enable_btn">
-<span class="sig-name descname"><span class="pre">enable_btn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">compteur</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.enable_btn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.enable_btn" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">enable_btn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">compteur</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.enable_btn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id3" title="Permalink to this definition"></a></dt>
+<dd><p>Enable and disable consecutive buttons.</p>
+</dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="etesters.menu.App.fct_1">
-<span class="sig-name descname"><span class="pre">fct_1</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.fct_1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.fct_1" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">fct_1</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.fct_1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id4" title="Permalink to this definition"></a></dt>
+<dd><p>Function triggered when the first button is pressed. A gui is opened. The users has to select the folder which contains the production files.
+The action can be remade as many times as wanted.
+If the users closes the gui without selecting a folder, he cannot do the next action.</p>
+</dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="etesters.menu.App.fct_2">
-<span class="sig-name descname"><span class="pre">fct_2</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.fct_2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.fct_2" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="id5">
+<span class="sig-name descname"><span class="pre">fct_2</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.fct_2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id5" title="Permalink to this definition"></a></dt>
+<dd><p>Function triggered when button 2 is pressed. It allows the user to select the two PnP files &amp; the two legend files in the folder he selected at previous step.
+The step can be remade as many times as wanted.</p>
+</dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="etesters.menu.App.fct_3">
-<span class="sig-name descname"><span class="pre">fct_3</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.fct_3"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.fct_3" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="id6">
+<span class="sig-name descname"><span class="pre">fct_3</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.fct_3"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id6" title="Permalink to this definition"></a></dt>
+<dd><p>Function triggered when the 3rd button is pressed.
+The user has to select the names of the testpoints he wants to keep on the test bench.</p>
+</dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="etesters.menu.App.fct_4">
-<span class="sig-name descname"><span class="pre">fct_4</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.fct_4"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.fct_4" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="id7">
+<span class="sig-name descname"><span class="pre">fct_4</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.fct_4"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id7" title="Permalink to this definition"></a></dt>
+<dd><p>Function triggered when the 4th button is pressed.
+It opens an image of the bottom side of the card. The user has to recolor in ‘red’ the testpoints that he wants to forget for the bench.
+A gui is firstly openned and asks if the origin should match the center of the card.
+The step can be remade as many times as wanted.
+On the image, the blue point represents the origin.</p>
+</dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="etesters.menu.App.fct_5">
-<span class="sig-name descname"><span class="pre">fct_5</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.fct_5"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.fct_5" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="id8">
+<span class="sig-name descname"><span class="pre">fct_5</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.fct_5"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id8" title="Permalink to this definition"></a></dt>
+<dd><p>Function triggered when the 5th button is pressed.
+It opens an image of the top side of the card. The user has to recolor in ‘red’ the testpoints that he wants to forget for the bench.
+The step can be remade as many times as wanted.
+On the image, the blue point represents the origin.</p>
+</dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="etesters.menu.App.fct_6">
-<span class="sig-name descname"><span class="pre">fct_6</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.fct_6"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.fct_6" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="id9">
+<span class="sig-name descname"><span class="pre">fct_6</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.fct_6"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id9" title="Permalink to this definition"></a></dt>
+<dd><p>Function triggered when the 6th button is pressed.
+The user has to enter the size of the future pcb containing the test points.
+The step can be remade as many times as wanted.</p>
+</dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="etesters.menu.App.fct_7">
-<span class="sig-name descname"><span class="pre">fct_7</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.fct_7"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.fct_7" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="id10">
+<span class="sig-name descname"><span class="pre">fct_7</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.fct_7"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id10" title="Permalink to this definition"></a></dt>
+<dd><p>Function triggered when the 7th button is pressed.
+A gui is openned and the user has to choose the repertory where the files will be saved.
+The step can be remade as many times as wanted.</p>
+</dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="etesters.menu.App.fct_quitter">
-<span class="sig-name descname"><span class="pre">fct_quitter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.fct_quitter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.fct_quitter" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="id11">
+<span class="sig-name descname"><span class="pre">fct_quitter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.fct_quitter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id11" title="Permalink to this definition"></a></dt>
+<dd><p>Asks to close the gui if the user wants to leave</p>
+</dd></dl>
 
 </dd></dl>
 

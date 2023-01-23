@@ -80,7 +80,22 @@
 
 
 <div class="viewcode-block" id="files"><a class="viewcode-back" href="../../etesters.html#etesters.download_files.files">[docs]</a><span class="k">class</span> <span class="nc">files</span> <span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    4 files that can be written in a folder chosen by the user : 2 eagle files &amp; 2 PnP files</span>
+<span class="sd">    These files are necessary to build the electronic test bench</span>
 
+<span class="sd">    ...</span>
+<span class="sd">    </span>
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    folder : select_test_points.Production_folder</span>
+<span class="sd">        object that corresponds to the gerber production folder</span>
+
+<span class="sd">    Methods</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    write_files(root : tkinter.Tk)</span>
+<span class="sd">        Open a gui to choose a folder where to write and save the files</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="files.__init__"><a class="viewcode-back" href="../../etesters.html#etesters.download_files.files.__init__">[docs]</a>    <span class="nd">@typechecked</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">folder</span> <span class="p">:</span><span class="n">tp</span><span class="o">.</span><span class="n">Production_folder</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span> <span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">folder</span> <span class="o">=</span> <span class="n">folder</span>
@@ -89,6 +104,16 @@
 
 <div class="viewcode-block" id="files.write_files"><a class="viewcode-back" href="../../etesters.html#etesters.download_files.files.write_files">[docs]</a>    <span class="nd">@typechecked</span>
     <span class="k">def</span> <span class="nf">write_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> 
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Asking the user where to save the files on the root specified in parameters</span>
+
+<span class="sd">        ...</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ---------------</span>
+<span class="sd">        root : tkinter.Tk</span>
+<span class="sd">            The root of the main gui</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">currdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
         <span class="n">zone_right</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
         <span class="n">zone_right</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>

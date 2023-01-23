@@ -83,9 +83,73 @@
 
 
 <div class="viewcode-block" id="App"><a class="viewcode-back" href="../../etesters.html#etesters.menu.App">[docs]</a><span class="k">class</span> <span class="nc">App</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Gui to configure &amp; export the files that will be used to build the electronic test bench</span>
 
+<span class="sd">    ...</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    --------------------</span>
+<span class="sd">    title: str</span>
+<span class="sd">        The title of the gui</span>
+<span class="sd">    bg : str</span>
+<span class="sd">        The color of the background</span>
+<span class="sd">    folder : select_test_points.Production_folder</span>
+<span class="sd">        Corresponds to the folder containing all the production files</span>
+<span class="sd">    root : tkinter.Tk</span>
+<span class="sd">        The root of the gui</span>
+<span class="sd">    zone_left : tkinter.Frame</span>
+<span class="sd">        A zone on the left of the screen containing the buttons</span>
+<span class="sd">    btn1-7 : tkinter.Button </span>
+<span class="sd">        Button</span>
+<span class="sd">    center : str</span>
+<span class="sd">        &quot;yes&quot; if the origin matches with the center of the pcb</span>
+<span class="sd">        else &quot;no&quot;</span>
+<span class="sd">    list_btn: list</span>
+<span class="sd">        The list containing every buttons. Useful if you want to disable consecutive buttons.</span>
+
+
+<span class="sd">    Methods</span>
+<span class="sd">    --------------------</span>
+<span class="sd">    configure(title :str, bg: str)</span>
+<span class="sd">        Configuring the gui appearance</span>
+<span class="sd">    display()</span>
+<span class="sd">        Displays the gui</span>
+<span class="sd">    fct_quitter()</span>
+<span class="sd">        Action done when exit button is pressed</span>
+<span class="sd">    enable_btn(compteur)</span>
+<span class="sd">        Enables all the compteur&#39;th buttons and disables the others</span>
+<span class="sd">    fct_1()</span>
+<span class="sd">        Function triggered by pression the 1st button </span>
+<span class="sd">    fct_2()</span>
+<span class="sd">        Function triggered by pression the 2nd button</span>
+<span class="sd">    fct_3()</span>
+<span class="sd">        Function triggered by pression the 3rd button</span>
+<span class="sd">    fct_4()</span>
+<span class="sd">        Function triggered by pression the 4th button</span>
+<span class="sd">    fct_5()</span>
+<span class="sd">        Function triggered by pression the 5th button</span>
+<span class="sd">    fct_6()</span>
+<span class="sd">        Function triggered by pression the 6th button</span>
+<span class="sd">    fct_7()</span>
+<span class="sd">        Function triggered by pression the 7th button</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="App.__init__"><a class="viewcode-back" href="../../etesters.html#etesters.menu.App.__init__">[docs]</a>    <span class="nd">@typechecked</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span> <span class="p">:</span><span class="nb">str</span> <span class="o">=</span><span class="s1">&#39;ETESTERS&#39;</span><span class="p">,</span> <span class="n">bg</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;#2F4F4F&#39;</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span> <span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Init useful attributes for the gui as title, bg or _compteur.</span>
+<span class="sd">        _compteur prevents the user to do the steps in the wrong order.</span>
+
+<span class="sd">        ...</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------------</span>
+<span class="sd">        title : str, default = &#39;ETESTERS&#39;</span>
+<span class="sd">            the title of the gui</span>
+<span class="sd">        bg : str, default = &quot;#2F4F4F&quot;</span>
+<span class="sd">            the bg color</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">title</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">bg</span> <span class="o">=</span> <span class="n">bg</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_compteur</span> <span class="o">=</span> <span class="mi">1</span>
@@ -95,6 +159,18 @@
 
 <div class="viewcode-block" id="App.configure"><a class="viewcode-back" href="../../etesters.html#etesters.menu.App.configure">[docs]</a>    <span class="nd">@typechecked</span>
     <span class="k">def</span> <span class="nf">configure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span><span class="s1">&#39;ETESTERS&#39;</span><span class="p">,</span><span class="n">bg</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span><span class="s1">&#39;#2F4F4F&#39;</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        to configure appearance settings</span>
+
+<span class="sd">        ...</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        -------------</span>
+<span class="sd">        title : str, default = &#39;ETESTERS&#39;</span>
+<span class="sd">            title of the gui</span>
+<span class="sd">        bg: str, default = &#39;#2F4F4F&#39;</span>
+<span class="sd">            background color</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">title</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">bg</span> <span class="o">=</span> <span class="n">bg</span>
         <span class="k">return</span></div>
@@ -102,6 +178,9 @@
 
 <div class="viewcode-block" id="App.display"><a class="viewcode-back" href="../../etesters.html#etesters.menu.App.display">[docs]</a>    <span class="nd">@typechecked</span>
     <span class="k">def</span> <span class="nf">display</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span> <span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Displays the gui </span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">resizable</span><span class="p">(</span><span class="n">width</span><span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
@@ -137,6 +216,11 @@
 
 <div class="viewcode-block" id="App.fct_quitter"><a class="viewcode-back" href="../../etesters.html#etesters.menu.App.fct_quitter">[docs]</a>    <span class="nd">@typechecked</span>
     <span class="k">def</span> <span class="nf">fct_quitter</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Asks to close the gui if the user wants to leave</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Etes-vous sûr de vouloir quitter ?&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compteur</span> <span class="o">!=</span> <span class="mi">7</span><span class="p">:</span>
             <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Vous n&#39;avez pas terminé, êtes-vous sûr de vouloir quitter ? &quot;</span>
@@ -159,6 +243,11 @@
  
 <div class="viewcode-block" id="App.fct_1"><a class="viewcode-back" href="../../etesters.html#etesters.menu.App.fct_1">[docs]</a>    <span class="nd">@typechecked</span>
     <span class="k">def</span> <span class="nf">fct_1</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Function triggered when the first button is pressed. A gui is opened. The users has to select the folder which contains the production files.</span>
+<span class="sd">        The action can be remade as many times as wanted.</span>
+<span class="sd">        If the users closes the gui without selecting a folder, he cannot do the next action.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compteur</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">enable_btn</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="o">.</span><span class="n">reset_path</span><span class="p">()</span>
@@ -190,6 +279,10 @@
 
 <div class="viewcode-block" id="App.fct_2"><a class="viewcode-back" href="../../etesters.html#etesters.menu.App.fct_2">[docs]</a>    <span class="nd">@typechecked</span>
     <span class="k">def</span> <span class="nf">fct_2</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Function triggered when button 2 is pressed. It allows the user to select the two PnP files &amp; the two legend files in the folder he selected at previous step.</span>
+<span class="sd">        The step can be remade as many times as wanted.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compteur</span><span class="o">==</span><span class="mi">2</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">enable_btn</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_compteur</span> <span class="o">+=</span><span class="mi">1</span>
@@ -208,6 +301,10 @@
 
 <div class="viewcode-block" id="App.fct_3"><a class="viewcode-back" href="../../etesters.html#etesters.menu.App.fct_3">[docs]</a>    <span class="nd">@typechecked</span>
     <span class="k">def</span> <span class="nf">fct_3</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Function triggered when the 3rd button is pressed. </span>
+<span class="sd">        The user has to select the names of the testpoints he wants to keep on the test bench.        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compteur</span><span class="o">==</span><span class="mi">3</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">enable_btn</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_compteur</span><span class="o">+=</span><span class="mi">1</span>
@@ -230,6 +327,14 @@
 
 <div class="viewcode-block" id="App.fct_4"><a class="viewcode-back" href="../../etesters.html#etesters.menu.App.fct_4">[docs]</a>    <span class="nd">@typechecked</span>
     <span class="k">def</span> <span class="nf">fct_4</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Function triggered when the 4th button is pressed.</span>
+<span class="sd">        It opens an image of the bottom side of the card. The user has to recolor in &#39;red&#39; the testpoints that he wants to forget for the bench.</span>
+<span class="sd">        A gui is firstly openned and asks if the origin should match the center of the card.</span>
+<span class="sd">        The step can be remade as many times as wanted.</span>
+<span class="sd">        On the image, the blue point represents the origin.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compteur</span><span class="o">==</span><span class="mi">4</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">enable_btn</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_compteur</span><span class="o">+=</span><span class="mi">1</span>
@@ -253,6 +358,12 @@
 
 <div class="viewcode-block" id="App.fct_5"><a class="viewcode-back" href="../../etesters.html#etesters.menu.App.fct_5">[docs]</a>    <span class="nd">@typechecked</span>
     <span class="k">def</span> <span class="nf">fct_5</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>   
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Function triggered when the 5th button is pressed.</span>
+<span class="sd">        It opens an image of the top side of the card. The user has to recolor in &#39;red&#39; the testpoints that he wants to forget for the bench.</span>
+<span class="sd">        The step can be remade as many times as wanted.</span>
+<span class="sd">        On the image, the blue point represents the origin.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compteur</span><span class="o">==</span><span class="mi">5</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">enable_btn</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_compteur</span><span class="o">+=</span><span class="mi">1</span>
@@ -275,6 +386,11 @@
 
 <div class="viewcode-block" id="App.fct_6"><a class="viewcode-back" href="../../etesters.html#etesters.menu.App.fct_6">[docs]</a>    <span class="nd">@typechecked</span>
     <span class="k">def</span> <span class="nf">fct_6</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span> <span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Function triggered when the 6th button is pressed.</span>
+<span class="sd">        The user has to enter the size of the future pcb containing the test points.</span>
+<span class="sd">        The step can be remade as many times as wanted.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compteur</span><span class="o">==</span><span class="mi">6</span> <span class="p">:</span> 
             <span class="bp">self</span><span class="o">.</span><span class="n">enable_btn</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_compteur</span><span class="o">+=</span><span class="mi">1</span>
@@ -293,7 +409,11 @@
 
 <div class="viewcode-block" id="App.fct_7"><a class="viewcode-back" href="../../etesters.html#etesters.menu.App.fct_7">[docs]</a>    <span class="nd">@typechecked</span>
     <span class="k">def</span> <span class="nf">fct_7</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Function triggered when the 7th button is pressed.</span>
+<span class="sd">        A gui is openned and the user has to choose the repertory where the files will be saved.</span>
+<span class="sd">        The step can be remade as many times as wanted.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compteur</span><span class="o">==</span><span class="mi">7</span><span class="p">:</span>
             
             <span class="bp">self</span><span class="o">.</span><span class="n">enable_btn</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -315,6 +435,9 @@
 
 <div class="viewcode-block" id="App.enable_btn"><a class="viewcode-back" href="../../etesters.html#etesters.menu.App.enable_btn">[docs]</a>    <span class="nd">@typechecked</span>
     <span class="k">def</span> <span class="nf">enable_btn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">compteur</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Enable and disable consecutive buttons. </span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">list_btn</span><span class="p">))</span> <span class="p">:</span>
             <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">compteur</span> <span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">list_btn</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">state</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">NORMAL</span><span class="p">)</span>
