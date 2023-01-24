@@ -14,12 +14,18 @@ class DefaultSCH:
 
 	Methods
 	------------------
-	__init__
-	write_file
-	add_one_part
-	add_all_parts
+	__init__(file_path):
+		Initializes the class by reading a default sch file and storing it in a list
+	write_file(path):
+		Writes the new file in the folder specified in parameters
+	add_one_part(index, name, value, deviceset, device, library, package3d_urn)
+		Adds one part to the file
+	add_all_parts(df)
+		Adds all parts to the file
 	add_one_instance
-	add_all_instances
+		Adds one instance to the file
+	add_all_instances(df)
+		Adds all instances to the file
 
 	"""
 
@@ -43,7 +49,7 @@ class DefaultSCH:
 	@typechecked
 	def write_file(self, path: str)-> None:
 		"""
-		Write the new file in the folder specified in parameters
+		Writes the new file in the folder specified in parameters
 
 		Parameters
 		-------------
@@ -51,7 +57,7 @@ class DefaultSCH:
 			the folder where the user wants to save the file
 		
 		"""
-		f = open(path+"/scheme.sch", 'w')
+		f = open(path+"/etesters001.sch", 'w')
 		for line in self.file :
 			f.write(line+'\n')
 		f.close()
@@ -61,7 +67,7 @@ class DefaultSCH:
 	@typechecked
 	def add_one_part(self, index:int, name : str, value: str, deviceset: str ='TESPOINT', device: str='-SMD1.5MM', library: str='Generics_stg', package3d_urn="urn:adsk.eagle:package:19402626/2")-> None:
 		"""
-		Add one part to the file
+		Adds one part to the file
 
 		Parameters
 		-----------------------
@@ -80,7 +86,7 @@ class DefaultSCH:
 		package3d_urn: str
 			characteristic of a testpoint
 		"""
-		self.file.insert(index, '<part name="%s" library="%s" deviceset="%s" device="%s" package3d_urn="%s" value="%s"/>' %(name, library, deviceset, device, package3d_urn, value))
+		self.file.insert(index, '<part name="%s" library="%s" deviceset="%s" device="%s" package3d_urn="%s" value="%s"/>' %(name.strip(), library, deviceset, device, package3d_urn, value.strip()))
 		return
 
 
@@ -102,7 +108,7 @@ class DefaultSCH:
 
 
 	@typechecked
-	def add_one_instance(self, index: int, name: str, part: str, x:float, y: float, smashed: str ='yes', gate : str = 'TP1', size: str ='2.54', layer: str='95', font: str='vector')-> None:
+	def add_one_instance(self, index: int, part: str, x:float, y: float, smashed: str ='yes', gate : str = 'TP1', size: str ='2.54', layer: str='95', font: str='vector', ratio: str="16", align:str='center-left')-> None:
 		"""
 		Add one instance to the file
 
@@ -129,8 +135,8 @@ class DefaultSCH:
 		font: str
 			characteritic of a testpoint
 		"""
-		self.file.insert(index,'<instance part="%s" gate="%s" x="%f" y="%f" smashed="%s">' % (part,gate,x,y,smashed))
-		self.file.insert(index+1,'<attribute name="%s" x="%f" y="%f" size="%s" layer="%s" font="%s"/>' % (name,x,y,size,layer,font))
+		self.file.insert(index,'<instance part="%s" gate="%s" x="%.3f" y="%.3f" smashed="%s">' % (part,gate,x,y,smashed))
+		self.file.insert(index+1,'<attribute name="NAME" x="%.3f" y="%.3f" size="%s" layer="%s" font="%s" ratio="%s" align="%s"/>' % (x,y,size,layer,font,ratio,align))
 		self.file.insert(index+2,'</instance>')
 		return
 
@@ -147,8 +153,27 @@ class DefaultSCH:
 		"""
 		close_instances = self.file.index('</instances>')
 		for i in range(len(df)):
-			self.add_one_instance(close_instances , df['signal_name'][i], df['signal_name'][i], df['y'][i], df['x'][i])
+			self.add_one_instance(close_instances , df['signal_name'][i], 0, i*5.08)
 			close_instances +=3
+		return
+
+	@typechecked
+	def add_one_net(self,index: int, x: float, y: float, name: str, class_: str="0", gate: str="TP1", pin: str="P$1", width: str="0.1524", layer :str="95", size: str = '1.778')-> None:
+		self.file.insert(index,'<net name="%s" class="%s">' % (name.strip(),class_))
+		self.file.insert(index+1,'<segment>')
+		self.file.insert(index+2,'<pinref part="%s" gate="%s" pin="%s"/>' % (name.strip(), gate, pin))
+		self.file.insert(index+3, '<wire x1="%.3f" y1="%.3f" x2="%.3f" y2="%.3f" width="%s" layer="%s"/>' % (x-5.08,y,x-20.32,y,width,layer))
+		self.file.insert(index+4, '<label x="%.3f" y="%.3f" size="%s" layer="%s"/>' % (x-17.18,y,size,layer))
+		self.file.insert(index+5, '</segment>')
+		self.file.insert(index+6, '</net>')
+		return
+
+	@typechecked
+	def add_all_nets(self, df: pd.DataFrame):
+		close_nets = self.file.index('</nets>')
+		for i in range(len(df)):
+			self.add_one_net(close_nets, 0, i*5.08, df['signal_name'][i])
+			close_nets+=7
 		return
 
 
@@ -163,13 +188,21 @@ class DefaultBRD:
 
 	Methods
 	------------------
-	__init__
-	write_file
-	add_rectangular_board
-	add_one_element
-	add_all_elements
-	add_one_signal
-	add_all_signals
+	__init__(file_path):
+		Initializes the class by reading a default brd file and storing it in a list
+	write_file(path):
+		Write the new file in the folder specified in parameters
+	add_rectangular_board(x0,y0,x1,y1):
+		Adds a rectangular board to the file
+	add_one_element(index, name, x, y, value, package, library, package3d_urn, smashed, size ,layer, ratio, align):
+		Adds one element to the file
+	add_all_elements(df):
+		Add all elements to the file
+	add_one_signal(index, name, pad):
+		Add one signal to the file
+	add_all_signals(df):
+		Add al signals to the file
+
 
 	
 	"""
@@ -201,7 +234,7 @@ class DefaultBRD:
 		path : str
 			the folder where the user wants to save the file
 		"""
-		f = open(path+"/board.brd", 'w')
+		f = open(path+"/etesters001.brd", 'w')
 		for line in self.file :
 			f.write(line+'\n')
 		f.close()
@@ -233,7 +266,7 @@ class DefaultBRD:
 
 
 	@typechecked
-	def add_one_element(self , index: int, name: str, x:float, y:float, value: str, package: str, library: str = "Generics_stg", package3d_urn: str="urn:adsk.eagle:package:19402626/2", smashed: str="yes", size:float = 1 ,layer :int = 25, ratio: float= 16, align: str= 'center-left')-> None:
+	def add_one_element(self , index: int, name: str, x:float, y:float, value: str, package: str, library: str = "Generics_stg", package3d_urn: str="urn:adsk.eagle:package:19402626/2", smashed: str="yes", size:float = 1 ,layer :int = 25, ratio: int= 16, align: str= 'center-left', locked:str='yes')-> None:
 		"""
 		Add one element to the file
 
@@ -264,8 +297,8 @@ class DefaultBRD:
 		align:str
 			Characteritic of a test point
 		"""
-		self.file.insert(index,'<element name="%s" library="%s" package="%s" package3d_urn="%s" value="%s" x="%s" y="%s" smashed="%s">' % (name,library,package,package3d_urn,value,x,y,smashed))
-		self.file.insert(index+1,'<attribute name="%s" x="%f" y="%f" size="%f" layer="%d" ratio="%f" align="%s"/>' % (name,x,y,size,layer,ratio,align))
+		self.file.insert(index,'<element name="%s" library="%s" package="%s" package3d_urn="%s" value="%s" x="%.3f" y="%.3f" locked="%s" smashed="%s">' % (name.strip(),library,package.strip(),package3d_urn,value.strip(),x,y,locked,smashed))
+		self.file.insert(index+1,'<attribute name="NAME" x="%.3f" y="%.3f" size="%.3f" layer="%d" ratio="%d" align="%s"/>' % (x+1,y,size,layer,ratio,align))
 		self.file.insert(index+2,'</element>')
 		return
 
@@ -293,8 +326,8 @@ class DefaultBRD:
 		
 		"""
 
-		self.file.insert(index,'<signal name="%s">' % name)
-		self.file.insert(index+1,'<contactref element="%s" pad="%s"/>' % (name,pad))
+		self.file.insert(index,'<signal name="%s">' % name.strip())
+		self.file.insert(index+1,'<contactref element="%s" pad="%s"/>' % (name.strip(),pad))
 		self.file.insert(index+2,'</signal>')
 		return
 
@@ -357,6 +390,8 @@ def create_sch_file(folder: tp.Production_folder, path: str)-> None:
 	sch_file.add_all_instances(folder.final_tp_names_bot_df)
 	sch_file.add_all_parts(folder.final_tp_names_bot_df)
 	sch_file.add_all_parts(folder.final_tp_names_top_df)
+	sch_file.add_all_nets(folder.final_tp_names_bot_df)
+	sch_file.add_all_nets(folder.final_tp_names_top_df)
 	sch_file.write_file(path)
 	return
 

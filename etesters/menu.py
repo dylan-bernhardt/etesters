@@ -266,7 +266,7 @@ class App:
             self.enable_btn(0)
             self._compteur+=1
             image_bot = dg.GerberImage(self.folder, 'bottom')
-            self.center = tk.messagebox.askquestion("Center?","Voulez-vous déplacer le centre du repère au centre de la carte? (Fortement conseillé, peu potentiellement buggué si non.) ")
+            self.center = tk.messagebox.askquestion("Center?","Voulez-vous déplacer le centre du repère au centre de la carte? (Fortement conseillé, peut potentiellement bugguer si non.) ")
             if self.center =='yes':
                 image_bot.center_0_0()
             else :

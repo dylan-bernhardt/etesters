@@ -329,7 +329,7 @@ def draw_title(side: str, xmin: float, xmax: float, ymax: float, ymin : float)->
 	"""
 	turtle.pu()
 	turtle.goto((xmax+xmin)/2,ymax+((ymax-ymin)/720)*100)
-	text= 'Sélectionner les test points que vous souhaitez garder pour le banc, puis fermer.\n Ne fermez pas tant que l image n est pas apparue'
+	text= "Sélectionner les test points que vous souhaitez garder pour le banc, puis fermer.\n Ne fermez pas tant que l'image n'est pas apparue"
 	turtle.write(text, align='center', font=('Verdana',10,"normal"))
 	turtle.goto((xmax+xmin)/2,ymax+((ymax-ymin)/720)*60)
 	text= 'FACE : ' + side
