@@ -14,7 +14,6 @@ class App:
     """
     Gui to configure & export the files that will be used to build the electronic test bench
 
-    ...
 
     Attributes
     --------------------
@@ -68,14 +67,13 @@ class App:
         Init useful attributes for the gui as title, bg or _compteur.
         _compteur prevents the user to do the steps in the wrong order.
 
-        ...
-
         Parameters
         ----------------
         title : str, default = 'ETESTERS'
             the title of the gui
         bg : str, default = "#2F4F4F"
             the bg color
+
         """
 
         self.title = title
@@ -88,9 +86,7 @@ class App:
     @typechecked
     def configure(self,title: str ='ETESTERS',bg: str ='#2F4F4F')-> None:
         """
-        to configure appearance settings
-
-        ...
+        Configures the appearance settings
 
         Parameters
         -------------
@@ -98,6 +94,9 @@ class App:
             title of the gui
         bg: str, default = '#2F4F4F'
             background color
+
+        Returns
+        --------------
         """
         self.title = title
         self.bg = bg
@@ -322,7 +321,8 @@ class App:
         if self._compteur==6 : 
             self.enable_btn(0)
             self._compteur+=1
-            etesters.pcb_dimension.dimension_gui(self.folder, self.center).display(self.root, self.list_btn[:self._compteur])
+            self.dimension = etesters.pcb_dimension.pcb_dimension(self.folder, self.center)
+            self.dimension.display(self.root, self.list_btn[:self._compteur])
         
         else : 
             restart = tk.messagebox.askquestion("Restart","Etes-vous sûr de vouloir refaire cette étape ?")
@@ -346,7 +346,7 @@ class App:
             
             self.enable_btn(0)
             self._compteur+=1
-            df.files(self.folder).write_files(self.root)
+            df.download_files(self.root, self.folder, self.dimension)
             tk.messagebox.showinfo('INFO', 'Les nouveaux fichiers ont bien été créés dans le dossier de production')
             self.enable_btn(self._compteur)
 
@@ -365,6 +365,12 @@ class App:
     def enable_btn(self, compteur : int)-> None:
         """
         Enable and disable consecutive buttons. 
+
+        Parameters
+        ------------------
+        compteur : int
+            The number of button the user wants to enable.
+            For example, if compteur = 3, buttons 1, 2 & 3 will be enabled. Others will be disabled.
         """
         for i in range(len(self.list_btn)) :
             if i < compteur :

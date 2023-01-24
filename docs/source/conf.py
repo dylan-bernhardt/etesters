@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-
+import sphinx_rtd_theme
 import os
 import sys
 sys.path.insert(0, os.path.abspath('../../pucs_api/'))
@@ -22,6 +22,7 @@ author = 'Dylan Bernhardt'
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.doctest',
+    'sphinx.ext.intersphinx',
     'sphinx.ext.todo',
     'sphinx.ext.coverage',
     'sphinx.ext.mathjax',
@@ -32,7 +33,7 @@ extensions = [
     'sphinx_rtd_theme',
     "autodocsumm",
     "autoclass",
-    'sphinx_rtd_size',
+    "sphinx_rtd_size",
 ]
 
 
