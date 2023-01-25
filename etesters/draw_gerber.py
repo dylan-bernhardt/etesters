@@ -105,26 +105,33 @@ class GerberImage:
 		list_btn : list
 			the button of the menu that need to be enabled at the end of the step
 		"""
-
 		self.list_btn = list_btn
 		self.xmin,self.ymin,self.xmax,self.ymax= min_max_values(self.d, self.side)
-		self.folder.set_pcb_dimension(self.xmin, self.xmax, self.ymin, self.ymax)
-		self.canva = tk.Canvas(root)
-		self.canva.pack(side='right')
-		tk.Button(self.canva,bg='#436D6D', text='Valider', fg='white', command=self.btn_func).pack()
+		
 
-		screen=turtle.TurtleScreen(self.canva)
-		turtle.setup(width=1280, height=720)
-		turtle.setworldcoordinates(self.xmin,self.ymin,self.xmax,self.ymax+((self.ymax-self.ymin)/720)*150)
+		self.folder.set_pcb_dimension(self.xmin, self.xmax, self.ymin, self.ymax)
+		
+		turtle.setup(width=1600, height=900)
+		if self.side == "bottom":
+			turtle.setworldcoordinates(self.xmin+(50*abs(self.xmin-self.xmax)/1500),self.ymin-(100*(self.ymax-self.ymin)/700),self.xmax-(50*abs(self.xmin-self.xmax)/1500),self.ymax+(100*(self.ymax-self.ymin)/700))
+
+			
+			
+		if self.side == "top":
+			turtle.setworldcoordinates(self.xmin-(50*(self.xmax-self.xmin)/1500),self.ymin-(100*(self.ymax-self.ymin)/700),self.xmax+(50*(self.xmax-self.xmin)/1500),self.ymax+(100*(self.ymax-self.ymin)/700))
+			
+		
+		self._px_size_x = abs(self.xmax-self.xmin)/1500
+		self._px_size_y = abs(self.ymax - self.ymin)/700
 		turtle.tracer(0)
 		turtle.hideturtle()
 
-		draw_title(self.side, self.xmin, self.xmax, self.ymax, self.ymin)
-		turtle.update()
 
-		turtle.pu()
-		turtle.goto(0,0)
-		turtle.dot(20,'blue')
+		
+		
+		
+		draw_title(self.side, self.xmin, self.xmax, self.ymax, self.ymin, self._px_size_y)
+		turtle.update()
 
 		draw_gerber(self.d)
 		turtle.update()
@@ -132,12 +139,21 @@ class GerberImage:
 		draw_tp(self.tp_df)
 		turtle.update()
 
-		turtle.onscreenclick(self.recolor)
+		draw_axis(self.side, self.xmin, self.xmax, self.ymin, self.ymax, self._px_size_x, self._px_size_y)
+		turtle.update()
+
+		draw_coordinates(self.xmin, self.xmax, self.ymin, self.ymax)
+		turtle.update()
+
+		draw_legend(self.side, self.xmin, self.xmax, self.ymin, self.ymax, self._px_size_x, self._px_size_y)
+		turtle.update()
+
+		turtle.onscreenclick(self.btn)
 		return
 
 
 	@typechecked
-	def recolor(self,x,y)-> None:	
+	def btn(self,x,y)-> None:	
 		"""
 		Every test point is represented by a green dot
 		When you click on it, it became red
@@ -151,35 +167,52 @@ class GerberImage:
 		y: float
 			the y-axis value where the mouse pointer was when the user clicked
 		"""
+		sgn = 1
+		if self.side == "bottom":
+			sgn = -1
 		new_color = 'red'
 		for i in range(len(self.tp_df['x'])):
-			if abs(x-self.tp_df['x'][i])<10*abs(self.xmax-self.xmin)/1280 and abs(y-self.tp_df['y'][i])<10*abs(self.ymax-self.ymin)/720:
+			if abs(x-(self.tp_df['x'][i]))<=10*self._px_size_x and abs(y-self.tp_df['y'][i])<=10*self._px_size_y:
 				turtle.pu()
 				turtle.goto(self.tp_df['x'][i],self.tp_df['y'][i])
 				if self.tp_df['color'][i] == 'red':
 					new_color='green'
 				self.tp_df.at[i, 'color']=new_color    
 				turtle.dot(20,new_color)
-				
+
+
+
+		if abs(x-(self.xmin+sgn*700*self._px_size_x))<=10*self._px_size_x and abs(y-(self.ymin-80*self._px_size_y))<=10*self._px_size_y:
+			for i in range(len(self.tp_df['x'])):
+				turtle.pu()
+				turtle.goto(self.tp_df['x'][i],self.tp_df['y'][i])
+				turtle.dot(20,"green")
+				self.tp_df.at[i, 'color']="green"
+
+		if abs(x-(self.xmin+sgn*1000*self._px_size_x))<=10*self._px_size_x and abs(y-(self.ymin-80*self._px_size_y))<=10*self._px_size_y :
+			for i in range(len(self.tp_df['x'])):
+				turtle.pu()
+				turtle.goto(self.tp_df['x'][i],self.tp_df['y'][i])
+				turtle.dot(20,"red")
+				self.tp_df.at[i, 'color']="red"
+
+		if abs(x-(self.xmax-sgn*30*self._px_size_x))<=50*self._px_size_x and abs(y-(self.ymin-80*self._px_size_y))<= 20*self._px_size_y :
+			self.tp_df.drop(self.tp_df[self.tp_df['color'] == 'red'].index, inplace=True)
+			self.tp_df.drop(['color'], axis=1, inplace=True)
+			self.folder.enter_final_tp_names(self.tp_df.reset_index(),self.side)
+			turtle.bye()
+			for btn in self.list_btn :
+				btn.configure(state = tk.NORMAL)
+			return
+
+		
 		turtle.update()
+
+
+			
+		
+		
 		return			        
-
-
-	@typechecked
-	def btn_func(self)-> None:
-		"""
-		Function triggered when the validate btn is pressed
-		The tp names & characteritics for the test points selected are stored in the production folder object
-		The buttons in the menu are set enabled
-		"""
-		self.tp_df.drop(self.tp_df[self.tp_df['color'] == 'red'].index, inplace=True)
-		self.tp_df.drop(['color'], axis=1, inplace=True)
-		self.folder.enter_final_tp_names(self.tp_df.reset_index(),self.side)
-		self.canva.destroy()
-		for btn in self.list_btn :
-			btn.configure(state = tk.NORMAL)
-		return
-
 
 
 @typechecked
@@ -247,7 +280,7 @@ def min_max_values(d: dict, side: str='top')-> tuple:
 	side : str
 		Default = 'top'
 		the side of the card
-		if the side is bottom, we need to reverse the card to correctly see the legend. then xmin,xmax = xmax,xmin
+		if the side is bottom, we need to reverse the card to correctly see the legend ie. xmin,xmax = xmax,xmin
 	
 	Returns 
 	-----------------
@@ -308,7 +341,7 @@ def draw_tp(tp_df: pd.DataFrame)-> None:
 
 
 @typechecked
-def draw_title(side: str, xmin: float, xmax: float, ymax: float, ymin : float)-> None:
+def draw_title(side: str, xmin: float, xmax: float, ymax: float, ymin : float, _px_size_y: float)-> None:
 	"""
 	Draw the title of the windows on his top
 	It won't overlap the card drawing
@@ -328,11 +361,133 @@ def draw_title(side: str, xmin: float, xmax: float, ymax: float, ymin : float)->
 		dimension of the card drawing
 	"""
 	turtle.pu()
-	turtle.goto((xmax+xmin)/2,ymax+((ymax-ymin)/720)*100)
+	turtle.goto((xmax+xmin)/2,ymax+(60 * _px_size_y))
 	text= "Sélectionner les test points que vous souhaitez garder pour le banc, puis fermer.\n Ne fermez pas tant que l'image n'est pas apparue"
 	turtle.write(text, align='center', font=('Verdana',10,"normal"))
-	turtle.goto((xmax+xmin)/2,ymax+((ymax-ymin)/720)*60)
+	turtle.goto((xmax+xmin)/2,ymax+(35* _px_size_y))
 	text= 'FACE : ' + side
 	turtle.write(text, align='center', font=('Verdana',15,"bold"))
+	return
+
+
+@typechecked
+def draw_axis(side: str, xmin: float, xmax: float, ymin: float, ymax: float, _px_size_x: float, _px_size_y: float)->None:
+	if side == "bottom":
+		sgn=-1 
+	else:
+		sgn=+1 
+	_add_x = 50*_px_size_x
+	_add_y = 30*_px_size_y
+	turtle.pu()
+	turtle.goto(xmax+sgn*_add_x,0)
+	turtle.pd()
+	turtle.goto(xmin-sgn*_add_x,0)
+	turtle.pu()
+	turtle.goto(0,ymax+_add_y)
+	turtle.pd()
+	turtle.goto(0,ymin-_add_y)
+	turtle.pu()
+	turtle.goto(0,-5*_px_size_y)
+	turtle.pd()
+	turtle.circle(5*_px_size_y)
+	turtle.pu()
+
+	turtle.goto(xmax+sgn*_add_x-sgn*5*_px_size_x,5*_px_size_y)
+	turtle.pd()
+	turtle.goto(xmax+sgn*_add_x,0)
+	turtle.goto(xmax+sgn*_add_x-sgn*5*_px_size_x,-5*_px_size_y)
+	turtle.pu()
+
+	turtle.goto(xmin-sgn*_add_x+sgn*5*_px_size_x,5*_px_size_y)
+	turtle.pd()
+	turtle.goto(xmin-sgn*_add_x,0)
+	turtle.goto(xmin-sgn*_add_x+sgn*5*_px_size_x,-5*_px_size_y)
+	turtle.pu()
+
+	turtle.goto(5*_px_size_x,ymax+_add_y-5*_px_size_y)
+	turtle.pd()	
+	turtle.goto(0,ymax+_add_y)
+	turtle.goto(-5*_px_size_x,ymax+_add_y-5*_px_size_y)
+	turtle.pu()
+
+	turtle.goto(5*_px_size_x,ymin-_add_y+5*_px_size_y)
+	turtle.pd()
+	turtle.goto(0,ymin-_add_y)
+	turtle.goto(-5*_px_size_x,ymin-_add_y+5*_px_size_y)
+	turtle.pu()
+
+	return
+
+
+@typechecked
+def draw_coordinates(xmin: float,xmax: float,ymin: float,ymax: float)->None :
+	turtle.pu()
+	turtle.goto(0,ymax)
+	turtle.pd()
+	turtle.write("%.1f" % ymax, align='center', font=('Verdana',10,"normal"))
+
+	turtle.pu()
+	turtle.goto(0,ymin)
+	turtle.pd()
+	turtle.write("%.1f" % ymin, align='center', font=('Verdana',10,"normal"))
+
+	turtle.pu()
+	turtle.goto(xmax,0)
+	turtle.pd()
+	turtle.write("%.1f" % xmax, align='center', font=('Verdana',10,"normal"))
+
+	turtle.pu()
+	turtle.goto(xmin,0)
+	turtle.pd()
+	turtle.write("%.1f" % xmin, align='center', font=('Verdana',10,"normal"))
+	
+	return
+
+
+@typechecked
+def draw_legend(side: str, xmin: float, xmax: float, ymin: float, ymax: float, _px_size_x: float, _px_size_y: float)-> None:
+	sgn=1
+	if side == "bottom":
+		sgn = -1
+
+	turtle.pu()
+	turtle.goto(xmin+sgn*100*_px_size_x,ymin-80*_px_size_y)
+	turtle.dot(20,'green')
+	turtle.goto(xmin+sgn*200*_px_size_x, ymin-80*_px_size_y)
+	turtle.pd()
+	turtle.write("Sélectionné", align='right', font=('Verdana',10,"normal"))
+
+	turtle.pu()
+	turtle.goto(xmin+sgn*400*_px_size_x,ymin-80*_px_size_y)
+	turtle.dot(20,'red')
+	turtle.goto(xmin+sgn*550*_px_size_x, ymin-80*_px_size_y)
+	turtle.pd()
+	turtle.write("Non-sélectionné", align='right', font=('Verdana',10,"normal"))
+
+	turtle.pu()
+	turtle.goto(xmin+sgn*700*_px_size_x,ymin-80*_px_size_y)
+	turtle.dot(20,'grey')
+	turtle.goto(xmin+sgn*850*_px_size_x, ymin-80*_px_size_y)
+	turtle.pd()
+	turtle.write("Tout sélectionner", align='right', font=('Verdana',10,"normal"))
+
+	turtle.pu()
+	turtle.goto(xmin+sgn*1000*_px_size_x,ymin-80*_px_size_y)
+	turtle.dot(20,'grey')
+	turtle.goto(xmin+sgn*1150*_px_size_x, ymin-80*_px_size_y)
+	turtle.pd()
+	turtle.write("Tout désélectionner", align='right', font=('Verdana',10,"normal"))
+
+	turtle.pu()
+	turtle.goto(xmax-sgn*80*_px_size_x,ymin-60*_px_size_y)
+	turtle.pd()
+	turtle.goto(xmax+sgn*20*_px_size_x,ymin-60*_px_size_y)
+	turtle.goto(xmax+sgn*20*_px_size_x,ymin-100*_px_size_y)
+	turtle.goto(xmax-sgn*80*_px_size_x,ymin-100*_px_size_y)
+	turtle.goto(xmax-sgn*80*_px_size_x,ymin-60*_px_size_y)
+	turtle.pu()
+	turtle.goto(xmax-sgn*15*_px_size_x,ymin-90*_px_size_y)
+	turtle.write("Valider", align='right', font=('Verdana',10,"normal"))
+
 	return
 
