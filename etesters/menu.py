@@ -163,8 +163,11 @@ class App:
                 os.rmdir(self.folder.path+"/filtered_pnp")
             except (FileNotFoundError, AttributeError) :
                 pass
-        else: 
-            pass
+            try :
+               os.system("open %s" % self.new_path)
+            except AttributeError :
+                pass
+     
         return 
 
  
@@ -346,8 +349,8 @@ class App:
             
             self.enable_btn(0)
             self._compteur+=1
-            df.download_files(self.root, self.folder, self.dimension)
-            tk.messagebox.showinfo('INFO', 'Les nouveaux fichiers ont bien été créés dans le dossier de production')
+            self.new_path=df.download_files(self.root, self.folder, self.dimension)
+            tk.messagebox.showinfo('INFO', 'Les nouveaux fichiers ont bien été créés dans le dossier %s' % self.new_path)
             self.enable_btn(self._compteur)
 
         else :

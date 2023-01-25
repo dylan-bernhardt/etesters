@@ -362,7 +362,7 @@ def create_brd_file(folder: tp.Production_folder, dimension : etesters.pcb_dimen
 	dimension: pcb_dimension.pcb_dimension
 		dimension of the new pcb
 	path: str
-		the path where to create the file
+		the path where the file is created
 	"""
 	brd_file= DefaultBRD()
 	brd_file.add_rectangular_board(dimension.xmin, dimension.ymin, dimension.xmax, dimension.ymax)
@@ -378,12 +378,13 @@ def create_brd_file(folder: tp.Production_folder, dimension : etesters.pcb_dimen
 def create_sch_file(folder: tp.Production_folder, path: str)-> None:
 	"""
 	Create the .sch file for the new pcb 
+	
 	Parameters
 	----------------
 	folder : select_test_points.Production_folder
 		the production folder
 	path: str
-		the path where to create the file
+		the path where the file is created
 	"""
 	sch_file = DefaultSCH()
 	sch_file.add_all_instances(folder.final_tp_names_top_df)

@@ -79,10 +79,67 @@
 
 
 <div class="viewcode-block" id="Production_folder"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.Production_folder">[docs]</a><span class="k">class</span> <span class="nc">Production_folder</span> <span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents and contains the production folder and its characteristics</span>
+<span class="sd">    Contains also the choices done by the user</span>
 
+<span class="sd">    Attributes</span>
+<span class="sd">    ---------------</span>
+<span class="sd">    path : str</span>
+<span class="sd">        The path of the folder</span>
+<span class="sd">    pnp_bot : str</span>
+<span class="sd">        name of the pnp bot file</span>
+<span class="sd">    pnp_top : str</span>
+<span class="sd">        name of the pnp top file</span>
+<span class="sd">    legend_top : str</span>
+<span class="sd">        name of the legend top file</span>
+<span class="sd">    legend_bot : str</span>
+<span class="sd">        name of the legend bottom file</span>
+<span class="sd">    tp_names_top : str</span>
+<span class="sd">        list that contains the names of the testpoints for the top side</span>
+<span class="sd">    tp_names_bot : str</span>
+<span class="sd">        list that contains the names of the testpoints for the bottom side</span>
+<span class="sd">    final_tp_names_top_df : pandas.Dataframe</span>
+<span class="sd">        dataframe that contains the characteristics for the testpoints on the top side that the user chose</span>
+<span class="sd">    final_tp_names_bot_df : pandas.Dataframe</span>
+<span class="sd">        dataframe that contains the characteristics for the testpoints on the bottom side that the user chose</span>
+<span class="sd">    xmin: float</span>
+<span class="sd">        define the dimension of the pcb</span>
+<span class="sd">    xmax : float</span>
+<span class="sd">        define the dimension of the pcb</span>
+<span class="sd">    ymin: float</span>
+<span class="sd">        define the dimension of the pcb</span>
+<span class="sd">    ymax : float</span>
+<span class="sd">        define the dimension of the pcb</span>
+<span class="sd">    </span>
+<span class="sd">    </span>
+<span class="sd">    Methods</span>
+<span class="sd">    ---------------</span>
+<span class="sd">    __init__():</span>
+<span class="sd">        Initializes 2 lists which will contain the names of the testpoints</span>
+<span class="sd">    change_path(path):</span>
+<span class="sd">        Changes the folder path</span>
+<span class="sd">    reset_path() : </span>
+<span class="sd">        Resets the path</span>
+<span class="sd">    enter_files(pnp_bot, pnp_top, legend_top, legend_bot):</span>
+<span class="sd">        Sets the name of the different files</span>
+<span class="sd">    enter_tp_names(name, side):</span>
+<span class="sd">        Adds one name to the list tp_names_bot/top, depending on the side</span>
+<span class="sd">    tp_names_list_clear():</span>
+<span class="sd">        Resets the two list in order to rechoose the names</span>
+<span class="sd">    enter_final_tp_names(self, df, side):</span>
+<span class="sd">        Sets the user choice in a dataframe. </span>
+<span class="sd">    set_pcb_dimension(xmin, xmax, ymin, ymax):</span>
+<span class="sd">        set the size of the pcb describes in the production folder</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
 
 <div class="viewcode-block" id="Production_folder.__init__"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.Production_folder.__init__">[docs]</a>    <span class="nd">@typechecked</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes useful values</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tp_names_top</span><span class="o">=</span><span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tp_names_bot</span><span class="o">=</span><span class="p">[]</span>
         <span class="k">return</span> </div>
@@ -90,15 +147,41 @@
 
 <div class="viewcode-block" id="Production_folder.change_path"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.Production_folder.change_path">[docs]</a>    <span class="nd">@typechecked</span>
     <span class="k">def</span> <span class="nf">change_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Changes the current path </span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ---------------</span>
+<span class="sd">        path : str</span>
+<span class="sd">            the new path</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">path</span>
         <span class="k">return</span></div>
 
 
 <div class="viewcode-block" id="Production_folder.reset_path"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.Production_folder.reset_path">[docs]</a>    <span class="k">def</span> <span class="nf">reset_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Reset the current path</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span></div>
 
 <div class="viewcode-block" id="Production_folder.enter_files"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.Production_folder.enter_files">[docs]</a>    <span class="nd">@typechecked</span>
     <span class="k">def</span> <span class="nf">enter_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pnp_bot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">pnp_top</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">legend_top</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">legend_bot</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets the 4 file names</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ---------------</span>
+<span class="sd">        pnp_bot : str</span>
+<span class="sd">            name of the file</span>
+<span class="sd">        pnp_top: str</span>
+<span class="sd">            name of the file</span>
+<span class="sd">        legend_top : str</span>
+<span class="sd">            name of the file</span>
+<span class="sd">        legend bot : str</span>
+<span class="sd">            name of the file</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pnp_bot</span><span class="o">=</span><span class="n">pnp_bot</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pnp_top</span><span class="o">=</span><span class="n">pnp_top</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">legend_top</span> <span class="o">=</span> <span class="n">legend_top</span>
@@ -108,6 +191,17 @@
 
 <div class="viewcode-block" id="Production_folder.enter_tp_names"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.Production_folder.enter_tp_names">[docs]</a>    <span class="nd">@typechecked</span>
     <span class="k">def</span> <span class="nf">enter_tp_names</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">side</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add one name in the corresponding list</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ---------------</span>
+<span class="sd">        name : str</span>
+<span class="sd">            The name of the testpoint that the user chose</span>
+<span class="sd">        side : str</span>
+<span class="sd">            The side where the user users chose the testpoints</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">side</span> <span class="o">==</span><span class="s1">&#39;top&#39;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">tp_names_top</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">side</span> <span class="o">==</span> <span class="s1">&#39;bottom&#39;</span><span class="p">:</span>
@@ -119,6 +213,11 @@
 
 <div class="viewcode-block" id="Production_folder.tp_names_list_clear"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.Production_folder.tp_names_list_clear">[docs]</a>    <span class="nd">@typechecked</span>
     <span class="k">def</span> <span class="nf">tp_names_list_clear</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Clears the list that contains the names of the testpoints</span>
+<span class="sd">        It is useful when the user needs to choose again the names when a mistake has been done</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tp_names_top</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tp_names_bot</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
         <span class="k">return</span> </div>
@@ -126,6 +225,17 @@
 
 <div class="viewcode-block" id="Production_folder.enter_final_tp_names"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.Production_folder.enter_final_tp_names">[docs]</a>    <span class="nd">@typechecked</span>
     <span class="k">def</span> <span class="nf">enter_final_tp_names</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">side</span> <span class="p">:</span><span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets a dataframe in the class depending of the side</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ---------------</span>
+<span class="sd">        df : pandas.DataFrame</span>
+<span class="sd">            The dataframe which is filtered by the user choices</span>
+<span class="sd">        side : str</span>
+<span class="sd">            The side of the card where the made his choices</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">side</span><span class="o">==</span><span class="s1">&#39;top&#39;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">final_tp_names_top_df</span><span class="o">=</span><span class="n">df</span>
         <span class="k">elif</span> <span class="n">side</span><span class="o">==</span><span class="s1">&#39;bottom&#39;</span><span class="p">:</span>
@@ -137,18 +247,21 @@
 
 <div class="viewcode-block" id="Production_folder.set_pcb_dimension"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.Production_folder.set_pcb_dimension">[docs]</a>    <span class="nd">@typechecked</span>
     <span class="k">def</span> <span class="nf">set_pcb_dimension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xmin</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">xmax</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">ymin</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">ymax</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets the dimension of the pcb describes in the production folder</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ---------------</span>
+<span class="sd">        xmin : float</span>
+<span class="sd">        xmax: float</span>
+<span class="sd">        ymin: float</span>
+<span class="sd">        ymax: float</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">xmax</span> <span class="o">=</span> <span class="n">xmax</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">xmin</span> <span class="o">=</span> <span class="n">xmin</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ymin</span> <span class="o">=</span> <span class="n">ymin</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ymax</span> <span class="o">=</span> <span class="n">ymax</span>
-        <span class="k">return</span></div>
-
-<div class="viewcode-block" id="Production_folder.set_pcb_test_dimension"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.Production_folder.set_pcb_test_dimension">[docs]</a>    <span class="nd">@typechecked</span>
-    <span class="k">def</span> <span class="nf">set_pcb_test_dimension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xmin</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">xmax</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">ymin</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">ymax</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">xmax_pcb_test</span> <span class="o">=</span> <span class="n">xmax</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">xmin_pcb_test</span> <span class="o">=</span> <span class="n">xmin</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ymin_pcb_test</span> <span class="o">=</span> <span class="n">ymin</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ymax_pcb_test</span> <span class="o">=</span> <span class="n">ymax</span>
         <span class="k">return</span></div></div>
 
 
@@ -156,12 +269,25 @@
 <div class="viewcode-block" id="filter_test_points"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.filter_test_points">[docs]</a><span class="nd">@typechecked</span>
 <span class="k">def</span> <span class="nf">filter_test_points</span><span class="p">(</span><span class="n">pd</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">list_tp</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">column_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;package&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Filter a dataframe with test points</span>
-<span class="sd">    @param pd: dataframe to filter</span>
-<span class="sd">    @param list_tp: list of test points to filter</span>
-<span class="sd">    @param column_name: name of the column to filter</span>
-<span class="sd">    @return: filtered dataframe</span>
+<span class="sd">    Filtered a dataframe from a list of name.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ---------------</span>
+<span class="sd">    pd : pandas.DataFrame </span>
+<span class="sd">        The dataframe that needs to be filtered</span>
+<span class="sd">    list_tp : list</span>
+<span class="sd">        List of the testpoints names</span>
+<span class="sd">    column_name : str</span>
+<span class="sd">        Default = &#39;package&#39;</span>
+<span class="sd">        The column the users wants to filter</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    ---------------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">        The filtered dataframe.</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
+    
     <span class="n">filtered_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">[</span><span class="n">pd</span><span class="p">[</span><span class="n">column_name</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">list_tp</span><span class="p">)]</span>
     <span class="k">return</span> <span class="n">filtered_df</span></div>
 
@@ -169,11 +295,25 @@
 <div class="viewcode-block" id="filter_test_points_file"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.filter_test_points_file">[docs]</a><span class="nd">@typechecked</span>
 <span class="k">def</span> <span class="nf">filter_test_points_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">list_tp</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">folder_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">column_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;package&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Filter a csv file with test points</span>
-<span class="sd">    @param file_name: name of the csv file to filter</span>
-<span class="sd">    @param list_tp: list of test points to filter</span>
-<span class="sd">    @param column_name: name of the column to filter</span>
-<span class="sd">    @return: filtered dataframe</span>
+<span class="sd">    Filters a csv file with test points</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ---------------</span>
+<span class="sd">    file_name : str</span>
+<span class="sd">        file to filtered</span>
+<span class="sd">    list_tp : list</span>
+<span class="sd">        list of tp names</span>
+<span class="sd">    folder_path : str</span>
+<span class="sd">        path of the file</span>
+<span class="sd">    column_name : str</span>
+<span class="sd">        Default = &#39;package&#39;</span>
+<span class="sd">        column the user wants to filtered</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ---------------</span>
+<span class="sd">    pandas.DataFrame </span>
+<span class="sd">        The filtered dataframe</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">folder_path</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="n">file_name</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;signal_name&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;angle&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">column_name</span><span class="p">])</span>
     <span class="n">filtered_df</span> <span class="o">=</span> <span class="n">filter_test_points</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">list_tp</span><span class="p">,</span> <span class="n">column_name</span><span class="p">)</span>
@@ -184,10 +324,18 @@
 <span class="k">def</span> <span class="nf">create_filtered_test_points_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">list_tp</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">folder_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">column_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;package&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Create a new csv file with the filtered test points of a csv file</span>
-<span class="sd">    @param file_name: name of the csv file to filter</span>
-<span class="sd">    @param list_tp: list of test points to filter</span>
-<span class="sd">    @param column_name: name of the column to filter</span>
-<span class="sd">    @param filtered_name: name of the new csv file</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ---------------</span>
+<span class="sd">    file_name: str</span>
+<span class="sd">        name of the csv file to filter</span>
+<span class="sd">    list_tp : list</span>
+<span class="sd">        list of the tp names</span>
+<span class="sd">    folder_path :</span>
+<span class="sd">        the file path</span>
+<span class="sd">    column_name: str</span>
+<span class="sd">        the column to filter</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">filtered_name</span><span class="o">=</span> <span class="s1">&#39;FILTERED__&#39;</span><span class="o">+</span><span class="n">file_name</span>
     <span class="n">filtered_df</span> <span class="o">=</span> <span class="n">filter_test_points_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">list_tp</span><span class="p">,</span> <span class="n">folder_path</span><span class="p">,</span> <span class="n">column_name</span><span class="p">)</span>
@@ -202,9 +350,27 @@
 
 <div class="viewcode-block" id="gui_select_tp"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.gui_select_tp">[docs]</a><span class="nd">@typechecked</span>
 <span class="k">def</span> <span class="nf">gui_select_tp</span><span class="p">(</span><span class="n">folder</span><span class="p">:</span> <span class="n">Production_folder</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">,</span> <span class="n">list_btn</span><span class="p">:</span> <span class="nb">list</span> <span class="p">,</span> <span class="n">column_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;package&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A gui for the user to select the tp names</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ---------------</span>
+<span class="sd">    folder : Production_folder</span>
+<span class="sd">        the object that represents the production folder</span>
+<span class="sd">    root : tkinter.Tk</span>
+<span class="sd">        the root where the gui will be added</span>
+<span class="sd">    list_btn : list</span>
+<span class="sd">        list of the menu buttons that need to be enabled at the end of the step</span>
+<span class="sd">    column_name : str</span>
+<span class="sd">        column to filter</span>
+
+
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1">#@typechecked</span>
     <span class="k">def</span> <span class="nf">select_all_checkbutton1</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Function that selects all the tp names of the first side</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">btn1</span><span class="p">)):</span>
             <span class="k">if</span> <span class="n">select_all1</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
                 <span class="n">btn1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">select</span><span class="p">()</span>
@@ -214,6 +380,10 @@
 
     <span class="c1">#@typechecked</span>
     <span class="k">def</span> <span class="nf">select_all_checkbutton2</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Function that selects all the tp names of the seconde side</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">btn2</span><span class="p">)):</span>
             <span class="k">if</span> <span class="n">select_all2</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
                 <span class="n">btn2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">select</span><span class="p">()</span>
@@ -224,6 +394,12 @@
 
     <span class="nd">@typechecked</span>
     <span class="k">def</span> <span class="nf">exit1</span><span class="p">()</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Function triggered when the validate button from the first side is triggered</span>
+<span class="sd">        A new file is created with the tp chosen</span>
+
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">enable1</span><span class="p">)):</span>
             <span class="k">if</span> <span class="n">enable1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
                 <span class="n">folder</span><span class="o">.</span><span class="n">enter_tp_names</span><span class="p">(</span><span class="n">l1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
@@ -237,6 +413,11 @@
 
     <span class="nd">@typechecked</span>
     <span class="k">def</span> <span class="nf">exit2</span><span class="p">()</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Function triggered when the validate button from the second side is triggered</span>
+<span class="sd">        A new file is created with the tp chosen</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">enable2</span><span class="p">)):</span>
             <span class="k">if</span> <span class="n">enable2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
                 <span class="n">folder</span><span class="o">.</span><span class="n">enter_tp_names</span><span class="p">(</span><span class="n">l2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
@@ -296,9 +477,28 @@
 
 <div class="viewcode-block" id="gui_select_pnp_file"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.gui_select_pnp_file">[docs]</a><span class="nd">@typechecked</span>
 <span class="k">def</span> <span class="nf">gui_select_pnp_file</span><span class="p">(</span><span class="n">folder</span><span class="p">:</span> <span class="n">Production_folder</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">,</span> <span class="n">list_btn</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span> <span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A gui for the user to select the names of the pnp &amp; legend files</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ---------------</span>
+<span class="sd">    folder : Production_folder</span>
+<span class="sd">        The object that represents the production file</span>
+<span class="sd">    root : tkinter.Tk</span>
+<span class="sd">        the root where the gui will be added </span>
+<span class="sd">    list_btn : </span>
+<span class="sd">        the list of the menu btn that need to be enabled at the end of the step</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="nd">@typechecked</span>
     <span class="k">def</span> <span class="nf">validate_fct</span><span class="p">()</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Function triggered when the validate btn is pressed</span>
+<span class="sd">        It appends the chosen names to the list in the production folder</span>
+<span class="sd">        It also enables again the buttons on the menu </span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span> <span class="p">:</span>
             <span class="n">folder</span><span class="o">.</span><span class="n">enter_files</span><span class="p">(</span><span class="n">pnp_bot</span><span class="o">=</span><span class="n">list_box1</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">list_box1</span><span class="o">.</span><span class="n">curselection</span><span class="p">()),</span> <span class="n">pnp_top</span><span class="o">=</span><span class="n">list_box2</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">list_box2</span><span class="o">.</span><span class="n">curselection</span><span class="p">()),</span> <span class="n">legend_bot</span> <span class="o">=</span><span class="n">list_box3</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">list_box3</span><span class="o">.</span><span class="n">curselection</span><span class="p">()),</span> <span class="n">legend_top</span><span class="o">=</span> <span class="n">list_box4</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">list_box4</span><span class="o">.</span><span class="n">curselection</span><span class="p">()))</span>
         <span class="k">except</span> <span class="p">:</span>
@@ -340,6 +540,24 @@
 
 <div class="viewcode-block" id="create_files_listbox"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.create_files_listbox">[docs]</a><span class="nd">@typechecked</span>
 <span class="k">def</span> <span class="nf">create_files_listbox</span><span class="p">(</span><span class="n">root</span> <span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">,</span> <span class="n">folder_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">side</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create the list box of the file names that are in the production folder</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ---------------</span>
+<span class="sd">    root : tkinter.Tk</span>
+<span class="sd">        Root where the list box is created</span>
+<span class="sd">    folder_path : str</span>
+<span class="sd">        the folder that will be read</span>
+<span class="sd">        all the files that are in will be proposed to the user</span>
+
+<span class="sd">        </span>
+<span class="sd">    Returns</span>
+<span class="sd">    ---------------</span>
+<span class="sd">    tuple : </span>
+<span class="sd">        contains the list of the boxes and the list of their label</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">t</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span><span class="n">text</span><span class="o">+</span><span class="n">side</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
     <span class="n">label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span> <span class="n">t</span><span class="p">,</span> <span class="n">font</span> <span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">fg</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">bg</span> <span class="o">=</span><span class="s1">&#39;#436D6D&#39;</span><span class="p">)</span>
     
