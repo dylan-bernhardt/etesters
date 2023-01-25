@@ -199,7 +199,7 @@ class GerberImage:
 		if abs(x-(self.xmax-sgn*30*self._px_size_x))<=50*self._px_size_x and abs(y-(self.ymin-80*self._px_size_y))<= 20*self._px_size_y :
 			self.tp_df.drop(self.tp_df[self.tp_df['color'] == 'red'].index, inplace=True)
 			self.tp_df.drop(['color'], axis=1, inplace=True)
-			self.folder.enter_final_tp_names(self.tp_df.reset_index(),self.side)
+			self.folder.enter_final_tp_names(self.tp_df.reset_index(drop=True),self.side)
 			turtle.bye()
 			for btn in self.list_btn :
 				btn.configure(state = tk.NORMAL)
@@ -252,7 +252,7 @@ def rearrange_useful_values(lines :list)-> dict:
 	dict
 		rearranged dictionnary
 	"""
-	extract_dict = {'x': [], 'y': [], 'd': [], 'precision': 0}
+	extract_dict = {'x': [], 'y': [], 'd': [], 'precision_x': 0, 'precision_y': 0}
 	for i in lines :
 		fsla=i.find('FSLA')
 		x=i.find('X')
@@ -260,10 +260,11 @@ def rearrange_useful_values(lines :list)-> dict:
 		d=i.find('D')
 		star=i.find('*')
 		if x!=-1 and y!=-1 and fsla!=-1:
-			extract_dict['precision']=i[x+2]
+			extract_dict['precision_x']=i[x+2]
+			extract_dict['precision_y']=i[y+2]
 		if x== 0 and y!= -1 and d!= -1 and star!= -1:
-			extract_dict['x'].append(int(i[1:y])/(10**int(extract_dict['precision'])))
-			extract_dict['y'].append(int(i[y+1:d])/(10**int(extract_dict['precision'])))
+			extract_dict['x'].append(int(i[1:y])/(10**int(extract_dict['precision_x'])))
+			extract_dict['y'].append(int(i[y+1:d])/(10**int(extract_dict['precision_y'])))
 			extract_dict['d'].append(int(i[d+1:d+3]))
 	return extract_dict
 
