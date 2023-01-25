@@ -486,7 +486,7 @@ def draw_legend(side: str, xmin: float, xmax: float, ymin: float, ymax: float, _
 	turtle.goto(xmax-sgn*80*_px_size_x,ymin-100*_px_size_y)
 	turtle.goto(xmax-sgn*80*_px_size_x,ymin-60*_px_size_y)
 	turtle.pu()
-	turtle.goto(xmax-sgn*15*_px_size_x,ymin-90*_px_size_y)
+	turtle.goto(xmax-sgn*9*_px_size_x,ymin-90*_px_size_y)
 	turtle.write("Valider", align='right', font=('Verdana',10,"normal"))
 
 	return
