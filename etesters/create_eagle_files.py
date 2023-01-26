@@ -162,7 +162,7 @@ class DefaultSCH:
 		self.file.insert(index,'<net name="%s" class="%s">' % (name.strip(),class_))
 		self.file.insert(index+1,'<segment>')
 		self.file.insert(index+2,'<pinref part="%s" gate="%s" pin="%s"/>' % (name.strip(), gate, pin))
-		self.file.insert(index+3, '<wire x1="%.3f" y1="%.3f" x2="%.3f" y2="%.3f" width="%s" layer="%s"/>' % (x-5.08,y,x-20.32,y,width,layer))
+		self.file.insert(index+3, '<wire x1="%.3f" y1="%.3f" x2="%.3f" y2="%.3f" width="%s" layer="91"/>' % (x-5.08,y,x-20.32,y,width))
 		self.file.insert(index+4, '<label x="%.3f" y="%.3f" size="%s" layer="%s"/>' % (x-17.18,y,size,layer))
 		self.file.insert(index+5, '</segment>')
 		self.file.insert(index+6, '</net>')

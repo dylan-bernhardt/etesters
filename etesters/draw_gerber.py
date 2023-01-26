@@ -48,7 +48,7 @@ class GerberImage:
 	"""
 
 	@typechecked
-	def __init__(self,folder: tp.Production_folder, side: str)-> None:
+	def __init__(self,folder: tp.Production_folder, side: str, df: pd.DataFrame, d: dict)-> None:
 		"""
 		Initialize and rearrange the useful values
 
@@ -63,15 +63,15 @@ class GerberImage:
 		importlib.reload(turtle)
 		self.folder = folder
 		self.side=side
-		if side=='top':
-			self.d = rearrange_useful_values(read_gerber(self.folder.legend_top, self.folder.path))
-			self.tp_df= pd.read_csv(self.folder.path+'/filtered_pnp/'+'FILTERED__'+self.folder.pnp_top, delimiter=',')
-			self.tp_df=self.tp_df.assign(color='green')
+		self.tp_df=df.assign(color='green')
+		self.d = d
 
-		elif side=='bottom':
-			self.d = rearrange_useful_values(read_gerber(self.folder.legend_bot, self.folder.path))
-			self.tp_df= pd.read_csv(self.folder.path+'/filtered_pnp/'+'FILTERED__'+self.folder.pnp_bot, delimiter=',')
-			self.tp_df=self.tp_df.assign(color='green')
+			
+			
+
+		
+			
+			
 		return
 		
 

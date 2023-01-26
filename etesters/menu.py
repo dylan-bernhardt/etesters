@@ -2,11 +2,13 @@ import tkinter as tk
 import os
 from tkinter import filedialog
 from typeguard import typechecked
+import pandas as pd
 import etesters.create_eagle_files as eagle
 import etesters.select_test_points as tp
 import etesters.draw_gerber as dg
 import etesters.download_files as df
 import etesters.pcb_dimension
+import etesters.excellon_files as exc
 
 
 
@@ -121,7 +123,9 @@ class App:
         self.btn4 = tk.Button(self.zone_left, width = 60, text="[4] Selectionner les points de test à garder pour la face bottom", fg="white", bg=self.bg, command = self.fct_4, state=tk.DISABLED)
         self.btn5 = tk.Button(self.zone_left, width = 60, text="[5] Selectionner les points de test à garder pour la face top", fg="white", bg=self.bg, command =self.fct_5, state=tk.DISABLED)
         self.btn6 = tk.Button(self.zone_left, width = 60, text="[6] Entrer les dimensions du pcb de test", fg="white", bg=self.bg, command = self.fct_6, state=tk.DISABLED)
-        self.btn7 = tk.Button(self.zone_left, width = 60, text="[7] Télécharger les nouveaux fichiers", fg="white", bg=self.bg, command = self.fct_7, state=tk.DISABLED)
+        self.btn7 = tk.Button(self.zone_left, width = 60, text="[7] Sélectionner le fichier excellon", fg="white", bg=self.bg, command = self.fct_7, state=tk.DISABLED)
+        self.btn8 = tk.Button(self.zone_left, width = 60, text="[8] Sélectionner les points d'intérêt à garder", fg="white", bg=self.bg, command = self.fct_8, state=tk.DISABLED)
+        self.btn9 = tk.Button(self.zone_left, width = 60, text="[9] Télécharger les nouveaux fichiers", fg="white", bg=self.bg, command = self.fct_9, state=tk.DISABLED)
         self.btnquitter = tk.Button(self.zone_left, width = 60, text="Quitter", fg="white", bg=self.bg, command=self.fct_quitter)
         
         self.zone_left.pack(fill=tk.Y, side='left')
@@ -133,9 +137,11 @@ class App:
         self.btn5.pack(padx=10,pady=10)
         self.btn6.pack(padx=10,pady=10)
         self.btn7.pack(padx=10,pady=10)
+        self.btn8.pack(padx=10,pady=10)
+        self.btn9.pack(padx=10,pady=10)
         self.btnquitter.pack( padx=10,pady=10)
 
-        self.list_btn = [self.btn1, self.btn2, self.btn3, self.btn4, self.btn5, self.btn6, self.btn7]
+        self.list_btn = [self.btn1, self.btn2, self.btn3, self.btn4, self.btn5, self.btn6, self.btn7, self.btn8, self.btn9]
 
         self.root.mainloop()
         return
@@ -167,6 +173,7 @@ class App:
                os.system("open %s" % self.new_path)
             except AttributeError :
                 pass
+             
      
         return 
 
@@ -268,7 +275,9 @@ class App:
         if self._compteur==4:
             self.enable_btn(0)
             self._compteur+=1
-            image_bot = dg.GerberImage(self.folder, 'bottom')
+            d = dg.rearrange_useful_values(dg.read_gerber(self.folder.legend_bot, self.folder.path))
+            tp_df= pd.read_csv(self.folder.path+'/filtered_pnp/'+'FILTERED__'+self.folder.pnp_bot, delimiter=',')
+            image_bot = dg.GerberImage(self.folder, 'bottom', tp_df, d)
             self.center = tk.messagebox.askquestion("Center?","Voulez-vous déplacer le centre du repère au centre de la carte? (Fortement conseillé, peut potentiellement bugguer si non.) ")
             if self.center =='yes':
                 image_bot.center_0_0()
@@ -297,7 +306,9 @@ class App:
         if self._compteur==5:
             self.enable_btn(0)
             self._compteur+=1
-            image_top = dg.GerberImage(self.folder,'top')
+            d = dg.rearrange_useful_values(dg.read_gerber(self.folder.legend_top, self.folder.path))
+            tp_df= pd.read_csv(self.folder.path+'/filtered_pnp/'+'FILTERED__'+self.folder.pnp_top, delimiter=',')
+            image_top = dg.GerberImage(self.folder,'top', tp_df, d)
             if self.center == 'yes':
                 image_top.center_0_0()
             else : 
@@ -338,14 +349,59 @@ class App:
         return 
 
 
+
+
+    def fct_7(self)-> None :
+        if self._compteur==7:
+            
+            self.enable_btn(0)
+            self._compteur+=1
+            exc.gui_select_excellon_files(self.folder).display(self.root, self.list_btn[:self._compteur])
+                       
+
+        else :
+            restart = tk.messagebox.askquestion("Restart","Etes-vous sûr de vouloir refaire cette étape ?")
+            if restart=='yes':
+                self._compteur =7
+                self.fct_7()
+            else : 
+                pass
+
+        return  
+
+
+    def fct_8(self)-> None :
+        if self._compteur==8:
+            self.enable_btn(0)
+            self._compteur+=1
+            tmp= self.folder.final_tp_names_top_df
+            d= dg.rearrange_useful_values(dg.read_gerber(self.folder.legend_top, self.folder.path))
+            df = exc.extract_values(exc.read_excellon(self.folder.path+"/"+self.folder.excellon_non_plated))
+            image_non_plated = dg.GerberImage(self.folder, 'top', df, d)
+            if self.center =='yes':
+                image_non_plated.center_0_0()
+
+            image_non_plated.draw(self.root, self.list_btn[:self._compteur])
+                                    
+
+        else :
+            restart = tk.messagebox.askquestion("Restart","Etes-vous sûr de vouloir refaire cette étape ?")
+            if restart=='yes':
+                self._compteur =8
+                self.fct_8()
+            else : 
+                pass
+
+        return
+
     @typechecked
-    def fct_7(self)-> None:
+    def fct_9(self)-> None:
         """
         Function triggered when the 7th button is pressed.
         A gui is openned and the user has to choose the repertory where the files will be saved.
         The step can be remade as many times as wanted.
         """
-        if self._compteur==7:
+        if self._compteur==9:
             
             self.enable_btn(0)
             self._compteur+=1
@@ -356,13 +412,12 @@ class App:
         else :
             restart = tk.messagebox.askquestion("Restart","Etes-vous sûr de vouloir refaire cette étape ?")
             if restart=='yes':
-                self._compteur =7
-                self.fct_7()
+                self._compteur =9
+                self.fct_9()
             else : 
                 pass
 
-        return      
-
+        return    
 
     @typechecked
     def enable_btn(self, compteur : int)-> None:

@@ -95,7 +95,7 @@ class Production_folder :
         self.path = ""
 
     @typechecked
-    def enter_files(self, pnp_bot: str, pnp_top: str, legend_top: str, legend_bot: str)-> None:
+    def enter_pnp_and_legend_files(self, pnp_bot: str, pnp_top: str, legend_top: str, legend_bot: str)-> None:
         """
         Sets the 4 file names
 
@@ -115,6 +115,12 @@ class Production_folder :
         self.legend_top = legend_top
         self.legend_bot=legend_bot
         return 
+
+    @typechecked
+    def enter_excellon_files(self, excellon_non_plated: str)-> None :
+        
+        self.excellon_non_plated =excellon_non_plated
+        return
 
 
     @typechecked
@@ -165,11 +171,16 @@ class Production_folder :
 
         """
         if side=='top':
-            self.final_tp_names_top_df=df
+            if hasattr(self,  'final_tp_names_top_df') :
+                self.final_tp_names_top_df=pd.concat([self.final_tp_names_top_df, df], ignore_index=True)
+            else : 
+                self.final_tp_names_top_df=df
         elif side=='bottom':
-            self.final_tp_names_bot_df=df
-        else :
-            pass
+            if hasattr(self,  'final_tp_names_bot_df') :
+                self.final_tp_names_bot_df=pd.concat([self.final_tp_names_bot_df, df], ignore_index=True)
+            else : 
+                self.final_tp_names_bot_df=df
+
         return
 
 
@@ -429,7 +440,7 @@ def gui_select_pnp_file(folder: Production_folder, root: tk.Tk, list_btn: list)-
 
         """
         try :
-            folder.enter_files(pnp_bot=list_box1.get(list_box1.curselection()), pnp_top=list_box2.get(list_box2.curselection()), legend_bot =list_box3.get(list_box3.curselection()), legend_top= list_box4.get(list_box4.curselection()))
+            folder.enter_pnp_and_legend_files(pnp_bot=list_box1.get(list_box1.curselection()), pnp_top=list_box2.get(list_box2.curselection()), legend_bot =list_box3.get(list_box3.curselection()), legend_top= list_box4.get(list_box4.curselection()))
         except :
             tk.messagebox.showwarning(title = 'ATTENTION', message = "Attention ! Tous les fichiers n'ont pas été sélectionné")
             pass
