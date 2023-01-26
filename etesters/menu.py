@@ -422,11 +422,12 @@ class App:
         A gui is openned and the user has to choose the repertory where the files will be saved.
         The step can be remade as many times as wanted.
         """
-           
-        self.new_path=df.download_files(self.root, self.folder, self.dimension)
-        tk.messagebox.showinfo('INFO', 'Les nouveaux fichiers ont bien été créés dans le dossier %s' % self.new_path)
-        self.enable_btn(self._compteur)
-
+        try :
+            self.new_path=df.download_files(self.root, self.folder, self.dimension)
+            tk.messagebox.showinfo('INFO', 'Les nouveaux fichiers ont bien été créés dans le dossier %s' % self.new_path)
+            self.enable_btn(self._compteur)
+        except TypeError:
+            pass
         return    
 
     @typechecked
