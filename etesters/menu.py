@@ -359,7 +359,7 @@ class App:
 
 
 
-
+    @typechecked
     def fct_7(self)-> None :
         """
         Function triggered when the 7th button is pressed
@@ -382,7 +382,7 @@ class App:
 
         return  
 
-
+    @typechecked
     def fct_8(self)-> None :
         """
         Function triggered when the 8 button is pressed

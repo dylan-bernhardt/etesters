@@ -131,9 +131,9 @@ class DefaultSCH:
 		part: str
 			characteristic of a testpoint
 		x: float
-			characteristic of a testpoint
+			x position
 		y: float
-			characteristic of a testpoint
+			y position
 		smashed : str
 			Default = 'yes'
 			characteristic of a testpoint
@@ -188,9 +188,9 @@ class DefaultSCH:
 		index: int
 			the index where the net will be added
 		x: float
-			characteristic of a testpoint
+			x position
 		y: float
-			characteristic of a testpoint
+			y position
 		name :str
 			characteristic of a testpoint
 		class_: str
@@ -313,13 +313,13 @@ class DefaultBRD:
 		Parameters
 		-------------------
 		x0 :float
-			 specified the size of the new pcb
+			 minimum x value
 		y0 :float
-			 specified the size of the new pcb
+			 minimum y value
 		x1 :float
-			 specified the size of the new pcb
+			maximum x value	 
 		y1 :float
-			 specified the size of the new pcb
+			 maximum y value
 		"""
 		close_board = self.file.index('</plain>')
 		self.file.insert(close_board,'<wire x1="%d" y1="%d" x2="%d" y2="%d" width="0" layer="20"/>' % (x0, y0, x0, y1))
@@ -341,7 +341,9 @@ class DefaultBRD:
 		name :str
 			characteristic of a test point
 		x:float
-			characteristic of a test point
+			x position
+		y: float
+			y position
 		value:str
 			characteristic of a test point
 		package: str

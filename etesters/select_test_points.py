@@ -89,12 +89,13 @@ class Production_folder :
         self.path = path
         return
 
-
-    def reset_path(self):
+    @typechecked
+    def reset_path(self)-> None:
         """
         Reset the current path
         """
         self.path = ""
+        return
 
     @typechecked
     def enter_pnp_and_legend_files(self, pnp_bot: str, pnp_top: str, legend_top: str, legend_bot: str)-> None:
@@ -204,9 +205,13 @@ class Production_folder :
         Parameters
         ---------------
         xmin : float
+            minimum x value
         xmax: float
+            maximum x value
         ymin: float
+            minimum y value
         ymax: float
+            minimum y value
 
         """
         self.xmax = xmax

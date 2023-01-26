@@ -23,13 +23,13 @@ class GerberImage:
 		the dataframe is filtered by the user choice
 		the testpoints represented by a red dot are removed
 	xmin: float
-		size of the card
+		minimum x value
 	xmax: float
-		size of the card
+		maximum x value
 	ymin: float
-		size of the card
+		minimum y value
 	ymax: float
-		size of the card
+		maximum y value
 
 	Methods
 	-------------------------
@@ -65,13 +65,6 @@ class GerberImage:
 		self.side=side
 		self.tp_df=df.assign(color='green')
 		self.d = d
-
-			
-			
-
-		
-			
-			
 		return
 		
 
@@ -126,10 +119,6 @@ class GerberImage:
 		turtle.tracer(0)
 		turtle.hideturtle()
 
-
-		
-		
-		
 		draw_title(self.side, self.xmin, self.xmax, self.ymax, self.ymin, self._px_size_y)
 		turtle.update()
 
@@ -207,11 +196,6 @@ class GerberImage:
 
 		
 		turtle.update()
-
-
-			
-		
-		
 		return			        
 
 
@@ -353,13 +337,13 @@ def draw_title(side: str, xmin: float, xmax: float, ymax: float, ymin : float, _
 	side : str
 		the side of the drawing
 	xmin : float
-		dimension of the card drawing
+		minimum x value
 	ymin: float
-		dimension of the card drawing
+		minimum y value
 	xmax: float
-		dimension of the card drawing
+		maximum x value
 	ymax: float
-		dimension of the card drawing
+		maximum y value
 	"""
 	turtle.pu()
 	turtle.goto((xmax+xmin)/2,ymax+(60 * _px_size_y))
@@ -381,13 +365,13 @@ def draw_axis(side: str, xmin: float, xmax: float, ymin: float, ymax: float, _px
 	side : str
 		the side of the card that is drawn
 	xmin :float
-		the size of the card
+		minimum x value
 	xmax : float
-		the size of the card
+		maximum x value
 	ymin: float
-		the size of the card
+		minimum y value
 	ymax: float
-		the size of the card
+		maximum y value
 	_px_size_x: float
 		the length of a pixel on the x-axis
 	_px_size_y : float
@@ -449,9 +433,13 @@ def draw_coordinates(xmin: float,xmax: float,ymin: float,ymax: float)->None :
 	Parameters
 	-------------------------
 	xmin : float
+		minimum x value
 	xmax: float
+		maximum x value
 	ymin: float
+		minimum y value
 	ymax: float
+		maximum y value
 
 	"""
 	turtle.pu()
@@ -486,9 +474,13 @@ def draw_legend(side: str, xmin: float, xmax: float, ymin: float, ymax: float, _
 	Parameters 
 	-----------------------
 	xmin: float
+		minimum x value
 	xmax : float
+		maximum x value
 	ymin: float
+		minimum y value
 	ymax: float
+		maximum y value
 	_px_size_x: float
 		the length of a pixel on the x-axis
 	_px_size_y: float

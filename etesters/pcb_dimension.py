@@ -1,5 +1,6 @@
 import tkinter as tk
 import etesters.select_test_points as tp
+from typeguard import typechecked
 
 class pcb_dimension :
     """
@@ -37,7 +38,7 @@ class pcb_dimension :
         Display the gui
 
     """
-
+    @typechecked
     def __init__(self,folder: tp.Production_folder, center: str)-> None :
         """
         Initializes the useful elements as attributes for the class
@@ -55,6 +56,7 @@ class pcb_dimension :
         self.folder = folder
         return 
 
+    @typechecked
     def set_pcb_dimension(self, xmin: float, xmax: float, ymin: float, ymax:float)->None:
         """
         sets the pcb dimension
@@ -73,6 +75,7 @@ class pcb_dimension :
         return
 
 
+    @typechecked
     def validate_fct(self)-> None:
         """
         Function triggered when the validate button is pressed.
@@ -92,6 +95,8 @@ class pcb_dimension :
         
         return  
 
+
+    @typechecked
     def display(self, root: tk.Tk , list_btn :list ) -> None :
         """
         Display the gui. There are two spinboxes and one validate button.
