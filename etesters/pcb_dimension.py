@@ -56,6 +56,16 @@ class pcb_dimension :
         return 
 
     def set_pcb_dimension(self, xmin: float, xmax: float, ymin: float, ymax:float)->None:
+        """
+        sets the pcb dimension
+
+        Parameters
+        --------------------
+        xmin : float
+        xmax: float
+        ymin: float
+        ymax: float
+        """
         self.xmin = xmin
         self.ymin = ymin
         self.xmax=xmax

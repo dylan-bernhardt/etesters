@@ -11,6 +11,8 @@ class DefaultSCH:
 
 	Attributes
 	-------------------
+	file: list
+		list of the lines of the default file
 
 	Methods
 	------------------
@@ -18,14 +20,18 @@ class DefaultSCH:
 		Initializes the class by reading a default sch file and storing it in a list
 	write_file(path):
 		Writes the new file in the folder specified in parameters
-	add_one_part(index, name, value, deviceset, device, library, package3d_urn)
+	add_one_part(index, name, value, deviceset, device, library, package3d_urn):
 		Adds one part to the file
-	add_all_parts(df)
+	add_all_parts(df):
 		Adds all parts to the file
-	add_one_instance
+	add_one_instance( index, part, x, y, smashed, gate, size, layer, font, ratio, align):
 		Adds one instance to the file
-	add_all_instances(df)
+	add_all_instances(df):
 		Adds all instances to the file
+	add_one_net(index, x, y, name, class_, gate, pin, width,layer,size):
+		Adds one net to the file
+	add_all_nets(df)
+		Adds all nets to the file
 
 	"""
 
@@ -72,18 +78,22 @@ class DefaultSCH:
 		Parameters
 		-----------------------
 		index: int
-			characteristic of a testpoint
+			the index where the part will be added
 		name: str
 			characteristic of a testpoint
 		value :str
 			characteristic of a testpoint
 		deviceset : str
+			Default = 'TESPOINT'
 			characteristic of a testpoint
 		device: str
+		Default = '-SMD1.5MM'
 			characteristic of a testpoint
 		library: str
+			Default = 'Generics_stg'
 			characteristic of a testpoint
 		package3d_urn: str
+			Default = "urn:adsk.eagle:package:19402626/2"
 			characteristic of a testpoint
 		"""
 		self.file.insert(index, '<part name="%s" library="%s" deviceset="%s" device="%s" package3d_urn="%s" value="%s"/>' %(name.strip(), library, deviceset, device, package3d_urn, value.strip()))
@@ -110,30 +120,41 @@ class DefaultSCH:
 	@typechecked
 	def add_one_instance(self, index: int, part: str, x:float, y: float, smashed: str ='yes', gate : str = 'TP1', size: str ='2.54', layer: str='95', font: str='vector', ratio: str="16", align:str='center-left')-> None:
 		"""
-		Add one instance to the file
+		Adds one instance to the file
 
 		Parameters
 		------------------------------
 		index: int
-			characteritic of a testpoint
+			the index where the instance will be added
 		name: str
-			characteritic of a testpoint
+			characteristic of a testpoint
 		part: str
-			characteritic of a testpoint
+			characteristic of a testpoint
 		x: float
-			characteritic of a testpoint
+			characteristic of a testpoint
 		y: float
-			characteritic of a testpoint
+			characteristic of a testpoint
 		smashed : str
-			characteritic of a testpoint
+			Default = 'yes'
+			characteristic of a testpoint
 		gate: str
-			characteritic of a testpoint
+			Default = 'TP1'
+			characteristic of a testpoint
 		size: str
-			characteritic of a testpoint
-		lauer: str
-			characteritic of a testpoint
+			default = '2.54'
+			characteristic of a testpoint
+		layer: str
+			default = '95'
+			characteristic of a testpoint
 		font: str
-			characteritic of a testpoint
+			default = 'vector'
+			characteristic of a testpoint
+		ratio: str
+			default='16'
+			characteristic of a testpoint
+		align: str
+			default = 'center-left'
+			characteristic of a testpoint
 		"""
 		self.file.insert(index,'<instance part="%s" gate="%s" x="%.3f" y="%.3f" smashed="%s">' % (part,gate,x,y,smashed))
 		self.file.insert(index+1,'<attribute name="NAME" x="%.3f" y="%.3f" size="%s" layer="%s" font="%s" ratio="%s" align="%s"/>' % (x,y,size,layer,font,ratio,align))
@@ -159,6 +180,39 @@ class DefaultSCH:
 
 	@typechecked
 	def add_one_net(self,index: int, x: float, y: float, name: str, class_: str="0", gate: str="TP1", pin: str="P$1", width: str="0.1524", layer :str="95", size: str = '1.778')-> None:
+		"""
+		Adds one net to the file
+
+		Parameters
+		--------------------
+		index: int
+			the index where the net will be added
+		x: float
+			characteristic of a testpoint
+		y: float
+			characteristic of a testpoint
+		name :str
+			characteristic of a testpoint
+		class_: str
+			default = '0'
+			characteristic of a testpoint
+		gate: str
+			default = 'TP1'
+			characteristic of a testpoint
+		pin: str
+			default = 'P$1'
+			characteristic of a testpoint
+		width: str
+			default = '0.1524'
+			characteristic of a testpoint
+		layer : str
+			default = '95'
+			characteristic of a testpoint
+		size : str
+			default = '1.778'
+			characteristic of a testpoint
+
+		"""
 		self.file.insert(index,'<net name="%s" class="%s">' % (name.strip(),class_))
 		self.file.insert(index+1,'<segment>')
 		self.file.insert(index+2,'<pinref part="%s" gate="%s" pin="%s"/>' % (name.strip(), gate, pin))
@@ -169,7 +223,15 @@ class DefaultSCH:
 		return
 
 	@typechecked
-	def add_all_nets(self, df: pd.DataFrame):
+	def add_all_nets(self, df: pd.DataFrame)->None:
+		"""
+		Adds all nets to the file, from a df
+
+		Parameters
+		-----------------
+		df: pandas.DataFrame
+			the dataframe contains the characteristics of the tp that the users chose
+		"""
 		close_nets = self.file.index('</nets>')
 		for i in range(len(df)):
 			self.add_one_net(close_nets, 0, i*5.08, df['signal_name'][i])
@@ -185,6 +247,8 @@ class DefaultBRD:
 
 	Attributes
 	-------------------
+	file: list
+		list of the lines of the default file
 
 	Methods
 	------------------
@@ -227,7 +291,7 @@ class DefaultBRD:
 	@typechecked
 	def write_file(self, path)-> None:
 		"""
-		Write the new file in the folder specified in parameters
+		Writes the new file in the folder specified in parameters
 
 		Parameters
 		-------------
@@ -268,34 +332,44 @@ class DefaultBRD:
 	@typechecked
 	def add_one_element(self , index: int, name: str, x:float, y:float, value: str, package: str, library: str = "Generics_stg", package3d_urn: str="urn:adsk.eagle:package:19402626/2", smashed: str="yes", size:float = 1 ,layer :int = 25, ratio: int= 16, align: str= 'center-left', locked:str='yes')-> None:
 		"""
-		Add one element to the file
+		Adds one element to the file
 
 		Parameters
 		-------------------
 		index:int
-			Characteritic of a test point
+			the index where the element will be added
 		name :str
-			Characteritic of a test point
+			characteristic of a test point
 		x:float
-			Characteritic of a test point
+			characteristic of a test point
 		value:str
-			Characteritic of a test point
+			characteristic of a test point
 		package: str
-			Characteritic of a test point
+			characteristic of a test point
 		library: str
-			Characteritic of a test point
+			default = "Generics_stg"
+			characteristic of a test point
 		package3d_urn:str
-			Characteritic of a test point
+		default = "urn:adsk.eagle:package:19402626/2"
+			characteristic of a test point
 		smashed:str
-			Characteritic of a test point
-		soze:float
-			Characteritic of a test point
+		default = "yes"
+			characteristic of a test point
+		size:float
+			default = 1
+			characteristic of a test point
 		layer:int
-			Characteritic of a test point
+			default = 25
+			characteristic of a test point
 		ratio:float
-			Characteritic of a test point
+			default = 16
+			characteristic of a test point
 		align:str
-			Characteritic of a test point
+			default = "center-left"
+			characteristic of a test point
+		locked : str
+			default = 'yes'
+			characterisitc of a test point
 		"""
 		self.file.insert(index,'<element name="%s" library="%s" package="%s" package3d_urn="%s" value="%s" x="%.3f" y="%.3f" locked="%s" smashed="%s">' % (name.strip(),library,package.strip(),package3d_urn,value.strip(),x,y,locked,smashed))
 		self.file.insert(index+1,'<attribute name="NAME" x="%.3f" y="%.3f" size="%.3f" layer="%d" ratio="%d" align="%s"/>' % (x+1,y,size,layer,ratio,align))
@@ -323,7 +397,17 @@ class DefaultBRD:
 	@typechecked
 	def add_one_signal(self, index, name: str, pad: str='1')-> None:
 		"""
-		
+		Adds one signal to the file
+
+		Parameters
+		------------------------------
+		index: int
+			the index where the signal will be added
+		name : str
+			characteristic of the tp
+		pad : str
+			default = '1'
+			characteristic of the tp
 		"""
 
 		self.file.insert(index,'<signal name="%s">' % name.strip())

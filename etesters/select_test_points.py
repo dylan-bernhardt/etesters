@@ -23,10 +23,12 @@ class Production_folder :
         name of the legend top file
     legend_bot : str
         name of the legend bottom file
+    excellon_non_plated :
+        name of the excellon non plated file
     tp_names_top : str
         list that contains the names of the testpoints for the top side
     tp_names_bot : str
-        list that contains the names of the testpoints for the bottom side
+        list that contains the names of the testpoints for the bottom side    
     final_tp_names_top_df : pandas.Dataframe
         dataframe that contains the characteristics for the testpoints on the top side that the user chose
     final_tp_names_bot_df : pandas.Dataframe
@@ -118,6 +120,14 @@ class Production_folder :
 
     @typechecked
     def enter_excellon_files(self, excellon_non_plated: str)-> None :
+        """
+        Sets the name of the excellon file
+
+        Parameters
+        ----------------------
+        excellon-non-plated : str
+            the name of the file
+        """
         
         self.excellon_non_plated =excellon_non_plated
         return
@@ -161,6 +171,7 @@ class Production_folder :
     def enter_final_tp_names(self, df: pd.DataFrame, side :str)-> None:
         """
         Sets a dataframe in the class depending of the side
+        It adds the elements of the dataframe in parameters to the dataframe which already exists
 
         Parameters
         ---------------
@@ -321,7 +332,7 @@ def gui_select_tp(folder: Production_folder, root: tk.Tk, list_btn: list , colum
     #@typechecked
     def select_all_checkbutton2(*args)-> None:
         """
-        Function that selects all the tp names of the seconde side
+        Function that selects all the tp names of the second side
 
         """
         for i in range(len(btn2)):
@@ -337,6 +348,7 @@ def gui_select_tp(folder: Production_folder, root: tk.Tk, list_btn: list , colum
         """
         Function triggered when the validate button from the first side is triggered
         A new file is created with the tp chosen
+        When both has been activated, the menu buttons are enabled again
 
 
         """
@@ -356,6 +368,7 @@ def gui_select_tp(folder: Production_folder, root: tk.Tk, list_btn: list , colum
         """
         Function triggered when the validate button from the second side is triggered
         A new file is created with the tp chosen
+        When both has been activated, the menu buttons are enabled again
 
         """
         for i in range(len(enable2)):

@@ -6,13 +6,35 @@ import tkinter as tk
 
 @typechecked
 def read_excellon(path: str)->list :
+    """
+    read the excellon file and stores its lines in a list
+
+    Parameters
+    --------------------------
+    path : str
+        the path of the file that will be read
+    """
     f = open(path,'r')
     l = f.read().splitlines()
     f.close()
     return l
 
 @typechecked
-def extract_values(l :list):
+def extract_values(l :list)-> pd.DataFrame:
+    """
+    extracts and sorts the values from the list in a dataframe
+
+    Parameters
+    ------------------
+    l: list
+        the list that contains the lines of the file
+
+    Returns
+    --------------
+    pd.DataFrame
+        the sorted dataframe
+    """
+
     d = {'signal_name': [], 'x' : [], 'y': [], 'angle': [], 'value': [], 'package': []}
     dot = l[5].find("0.0")
     precision = len(l[5]) - dot - 2
@@ -35,14 +57,41 @@ def extract_values(l :list):
 
 
 class gui_select_excellon_files:
+    """
+    A gui for the user so he can choose the correct file name
 
+    Attributes
+    ---------------------
+    folder: tp.Production_folder
+        the object that contains the production folder and every information about it
+
+    Methods
+    --------------------
+    __init__(folder):
+        initializes the class
+    validate_fct():
+        the function triggered when the validate button is pressed
+    display(root, list_btn)
+        diplays the guy
+    """
     @typechecked
     def __init__(self, folder : tp.Production_folder) -> None:
+        """
+        initializes the class
+
+        Parameters
+        -------------------------
+        folder : Production_folder
+            the object that ocntaisn the production folder and every information about it
+        """
         self.folder = folder
         return
 
     @typechecked
     def validate_fct(self)-> None:
+        """
+        the function triggered when the validate button is pressed
+        """
         try:
             self.folder.enter_excellon_files(excellon_non_plated=self.list_box1.get(self.list_box1.curselection()))
         
@@ -58,6 +107,16 @@ class gui_select_excellon_files:
 
     @typechecked
     def display(self, root: tk.Tk, list_btn: list)-> None :
+        """
+        displays the gui
+
+        Parameters
+        ------------------
+        root: Tk
+            the root where the gui will be added
+        list_btn: list
+            the list of the menu buttons that will need to be enabled after the step
+        """
         self.list_btn = list_btn 
 
         self.frame = tk.Frame(root, bg ='#436D6D')

@@ -19,7 +19,7 @@ class GerberImage:
 	side: str
 		the side of the drawing
 	tp_df: pandas.DataFrame
-		dataframe that contains characteritic of the test point
+		dataframe that contains the characteritics of the test point to print
 		the dataframe is filtered by the user choice
 		the testpoints represented by a red dot are removed
 	xmin: float
@@ -34,14 +34,14 @@ class GerberImage:
 	Methods
 	-------------------------
 	__init__(folder,side):
-		Initialize and rearrange the useful values
+		Initialize useful values
 	center_0_0():
 		center the center of the card
 	draw(root,list_btn):
 		Draw the title, the card and his testpoints on a blank page
 		A validate button is also create
-	recolor(x,y):
-		recolor the testpoint when you click on it
+	btn(x,y):
+		finds which button is pressed and does the corresponding actions
 	btn_funct():
 		validate btn function
 	
@@ -50,7 +50,7 @@ class GerberImage:
 	@typechecked
 	def __init__(self,folder: tp.Production_folder, side: str, df: pd.DataFrame, d: dict)-> None:
 		"""
-		Initialize and rearrange the useful values
+		Initialize useful values
 
 		Parameters
 		--------------
@@ -95,7 +95,7 @@ class GerberImage:
 	@typechecked
 	def draw(self, root: tk.Tk, list_btn: list)-> None:
 		"""
-		Draw the title, the card and his testpoints on a blank page
+		Draws the title, the card, the legend, the axis and his testpoints on a blank page
 		A validate button is also created
 
 		Parameters 
@@ -218,7 +218,7 @@ class GerberImage:
 @typechecked
 def read_gerber(file_name :str,folder_path: str)-> list :
 	"""
-	Read a gerber file and stored its lines in a list
+	Reads a gerber file and stores its lines in a list
 
 	Parameters
 	-------------------
@@ -241,7 +241,7 @@ def read_gerber(file_name :str,folder_path: str)-> list :
 @typechecked
 def rearrange_useful_values(lines :list)-> dict:
 	"""
-	Rearrange the useful values from the list of the lines of the gerber file
+	Rearranges the useful values from the list of the lines of the gerber file (especially the legend ones)
 
 	Parameters
 	---------------------
@@ -272,7 +272,7 @@ def rearrange_useful_values(lines :list)-> dict:
 @typechecked
 def min_max_values(d: dict, side: str='top')-> tuple:
 	"""
-	Extract and set the min,max of the card
+	Extracts and sets the min,max of the card
 
 	Parameters
 	-----------------
@@ -301,7 +301,7 @@ def min_max_values(d: dict, side: str='top')-> tuple:
 @typechecked
 def draw_gerber(d: dict)-> None:
 	"""
-	draw the gerber file
+	draws the gerber file
 	the gerber file values are stored in a dict
 
 	Parameters
@@ -327,7 +327,7 @@ def draw_gerber(d: dict)-> None:
 @typechecked
 def draw_tp(tp_df: pd.DataFrame)-> None:
 	"""
-	Draw a green dot for every test points 
+	Draws a green dot for every test points 
 
 	Parameters
 	----------------
@@ -344,7 +344,7 @@ def draw_tp(tp_df: pd.DataFrame)-> None:
 @typechecked
 def draw_title(side: str, xmin: float, xmax: float, ymax: float, ymin : float, _px_size_y: float)-> None:
 	"""
-	Draw the title of the windows on his top
+	Draws the title of the windows on his top
 	It won't overlap the card drawing
 
 
@@ -373,6 +373,27 @@ def draw_title(side: str, xmin: float, xmax: float, ymax: float, ymin : float, _
 
 @typechecked
 def draw_axis(side: str, xmin: float, xmax: float, ymin: float, ymax: float, _px_size_x: float, _px_size_y: float)->None:
+	"""
+	Draws the axis and the origin
+
+	Parameters
+	-------------------
+	side : str
+		the side of the card that is drawn
+	xmin :float
+		the size of the card
+	xmax : float
+		the size of the card
+	ymin: float
+		the size of the card
+	ymax: float
+		the size of the card
+	_px_size_x: float
+		the length of a pixel on the x-axis
+	_px_size_y : float
+		the length of a pixel on the y-axis
+
+	"""
 	if side == "bottom":
 		sgn=-1 
 	else:
@@ -422,6 +443,17 @@ def draw_axis(side: str, xmin: float, xmax: float, ymin: float, ymax: float, _px
 
 @typechecked
 def draw_coordinates(xmin: float,xmax: float,ymin: float,ymax: float)->None :
+	"""
+	draws the coordinated of the extremal values
+
+	Parameters
+	-------------------------
+	xmin : float
+	xmax: float
+	ymin: float
+	ymax: float
+
+	"""
 	turtle.pu()
 	turtle.goto(0,ymax)
 	turtle.pd()
@@ -447,6 +479,21 @@ def draw_coordinates(xmin: float,xmax: float,ymin: float,ymax: float)->None :
 
 @typechecked
 def draw_legend(side: str, xmin: float, xmax: float, ymin: float, ymax: float, _px_size_x: float, _px_size_y: float)-> None:
+
+	"""
+	Draws the legend of the drawing
+
+	Parameters 
+	-----------------------
+	xmin: float
+	xmax : float
+	ymin: float
+	ymax: float
+	_px_size_x: float
+		the length of a pixel on the x-axis
+	_px_size_y: float
+		the length of a pixel on the y-axis
+	"""
 	sgn=1
 	if side == "bottom":
 		sgn = -1

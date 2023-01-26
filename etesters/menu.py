@@ -14,7 +14,7 @@ import etesters.excellon_files as exc
 
 class App:
     """
-    Gui to configure & export the files that will be used to build the electronic test bench
+    Gui to configure & export the files that will be used in order to build the electronic test bench
 
 
     Attributes
@@ -28,7 +28,7 @@ class App:
     root : tkinter.Tk
         The root of the gui
     zone_left : tkinter.Frame
-        A zone on the left of the screen containing the buttons
+        A zone on the left of the screen containing buttons
     btn1-7 : tkinter.Button 
         Button
     center : str
@@ -41,27 +41,31 @@ class App:
     Methods
     --------------------
     configure(title :str, bg: str)
-        Configuring the gui appearance
+        Configures the gui appearance
     display()
         Displays the gui
     fct_quitter()
         Action done when exit button is pressed
     enable_btn(compteur)
-        Enables all the compteur'th buttons and disables the others
+        Enables the first "compteur" buttons and disables the others
     fct_1()
-        Function triggered by pression the 1st button 
+        Function triggered when the 1st button is pressed
     fct_2()
-        Function triggered by pression the 2nd button
+        Function triggered when the 2nd button is pressed
     fct_3()
-        Function triggered by pression the 3rd button
+        Function triggered when the 3rd button is pressed
     fct_4()
-        Function triggered by pression the 4th button
+        Function triggered when the 4th button is pressed
     fct_5()
-        Function triggered by pression the 5th button
+        Function triggered when the 5th button is pressed
     fct_6()
-        Function triggered by pression the 6th button
+        Function triggered when the 6th button is pressed
     fct_7()
-        Function triggered by pression the 7th button
+        Function triggered when the 7th button is pressed
+    fct_8()
+        Function triggered when the 8th button is pressed
+    fct_9()
+        Function triggered when the 9th button is pressed
     """
     @typechecked
     def __init__(self, title :str ='ETESTERS', bg: str = '#2F4F4F')-> None :
@@ -151,6 +155,7 @@ class App:
     def fct_quitter(self)-> None:
         """
         Asks to close the gui if the user wants to leave
+        Open the folder where the new files are stored, if it exists
 
         """
 
@@ -181,7 +186,7 @@ class App:
     @typechecked
     def fct_1(self)-> None:
         """
-        Function triggered when the first button is pressed. A gui is opened. The users has to select the folder which contains the production files.
+        Function triggered when the first button is pressed. A gui is opened. The user has to select the folder which contains the production files.
         The action can be remade as many times as wanted.
         If the users closes the gui without selecting a folder, he cannot do the next action.
         """
@@ -266,10 +271,9 @@ class App:
     def fct_4(self)-> None:
         """
         Function triggered when the 4th button is pressed.
-        It opens an image of the bottom side of the card. The user has to recolor in 'red' the testpoints that he wants to forget for the bench.
+        It opens an drawing of the bottom side of the card. The user has to recolor in 'red' the testpoints that he wants to forget for the bench.
         A gui is firstly openned and asks if the origin should match the center of the card.
         The step can be remade as many times as wanted.
-        On the image, the blue point represents the origin.
 
         """
         if self._compteur==4:
@@ -299,9 +303,9 @@ class App:
     def fct_5(self)-> None:   
         """
         Function triggered when the 5th button is pressed.
-        It opens an image of the top side of the card. The user has to recolor in 'red' the testpoints that he wants to forget for the bench.
+        It opens an drawing of the top side of the card. The user has to recolor in 'red' the testpoints that he wants to forget for the bench.
         The step can be remade as many times as wanted.
-        On the image, the blue point represents the origin.
+      
         """
         if self._compteur==5:
             self.enable_btn(0)
@@ -352,6 +356,10 @@ class App:
 
 
     def fct_7(self)-> None :
+        """
+        Function triggered when the 7th button is pressed
+        The user has to choose the name of the excellon file
+        """
         if self._compteur==7:
             
             self.enable_btn(0)
@@ -371,6 +379,11 @@ class App:
 
 
     def fct_8(self)-> None :
+        """
+        Function triggered when the 8 button is pressed
+        It opens a drawing of the card
+        The user has to recolor in red the hole he doesn't want to keep for the test bench
+        """
         if self._compteur==8:
             self.enable_btn(0)
             self._compteur+=1
@@ -397,7 +410,7 @@ class App:
     @typechecked
     def fct_9(self)-> None:
         """
-        Function triggered when the 7th button is pressed.
+        Function triggered when the 9th button is pressed.
         A gui is openned and the user has to choose the repertory where the files will be saved.
         The step can be remade as many times as wanted.
         """
