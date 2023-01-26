@@ -180,18 +180,18 @@ class Production_folder :
         side : str
             The side of the card where the made his choices
 
-        """
+        """ 
         if side=='top':
-            if hasattr(self,  'final_tp_names_top_df') :
-                self.final_tp_names_top_df=pd.concat([self.final_tp_names_top_df, df], ignore_index=True)
-            else : 
-                self.final_tp_names_top_df=df
+            
+            self.final_tp_names_top_df=pd.concat([self.final_tp_names_top_df, df], ignore_index=True)
+            print(self.final_tp_names_top_df)
+            
+            
         elif side=='bottom':
-            if hasattr(self,  'final_tp_names_bot_df') :
-                self.final_tp_names_bot_df=pd.concat([self.final_tp_names_bot_df, df], ignore_index=True)
-            else : 
-                self.final_tp_names_bot_df=df
+            
+            self.final_tp_names_bot_df=pd.concat([self.final_tp_names_bot_df, df], ignore_index=True)
 
+        
         return
 
 
