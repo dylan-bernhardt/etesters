@@ -183,13 +183,9 @@ class Production_folder :
 
         """ 
         if side=='top':
-            
             self.final_tp_names_top_df=pd.concat([self.final_tp_names_top_df, df], ignore_index=True)
-            print(self.final_tp_names_top_df)
-            
             
         elif side=='bottom':
-            
             self.final_tp_names_bot_df=pd.concat([self.final_tp_names_bot_df, df], ignore_index=True)
 
         
