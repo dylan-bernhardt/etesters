@@ -3,6 +3,8 @@ from typeguard import typechecked
 import etesters.select_test_points as tp
 import etesters.pcb_dimension
 
+import etesters
+
 
 
 class DefaultSCH:
@@ -36,19 +38,20 @@ class DefaultSCH:
 	"""
 
 	@typechecked
-	def __init__(self, file_path: str = './eagle_default/default.sch')-> None:
+	def __init__(self, file_path: str)-> None:
 		"""
 		Initializes the class by reading a default sch file and storing it in a list
 
 		Parameters
 		----------------------
 		file_path : str
-			Default = './eagle_default/default.sch'
+			Default = './default.sch'
 			The path of the default file that will modified
 		"""
 		f = open(file_path,'r')
 		self.file = f.read().splitlines()
 		f.close()
+		self._nb_tp_already_written = 0
 		return
 	
 
@@ -174,7 +177,7 @@ class DefaultSCH:
 		"""
 		close_instances = self.file.index('</instances>')
 		for i in range(len(df)):
-			self.add_one_instance(close_instances , df['signal_name'][i], 0, i*5.08)
+			self.add_one_instance(close_instances , df['signal_name'][i], 0, (i+self._nb_tp_already_written)*5.08)
 			close_instances +=3
 		return
 
@@ -234,8 +237,10 @@ class DefaultSCH:
 		"""
 		close_nets = self.file.index('</nets>')
 		for i in range(len(df)):
-			self.add_one_net(close_nets, 0, i*5.08, df['signal_name'][i])
+			self.add_one_net(close_nets, 0, (i+self._nb_tp_already_written)*5.08, df['signal_name'][i])
 			close_nets+=7
+		self._nb_tp_already_written = len(df)
+
 		return
 
 
@@ -272,14 +277,13 @@ class DefaultBRD:
 	"""
 
 	@typechecked
-	def __init__(self, file_path: str= './eagle_default/default.brd')-> None:
+	def __init__(self, file_path: str)-> None:
 		"""
 		Initializes the class by reading a default brd file and storing it in a list
 
 		Parameters
 		----------------------
 		file_path : str
-			Default = './eagle_default/default.brd'
 			The path of the default file that will modified
 		"""
 		f = open(file_path,'r')
@@ -450,12 +454,12 @@ def create_brd_file(folder: tp.Production_folder, dimension : etesters.pcb_dimen
 	path: str
 		the path where the file is created
 	"""
-	brd_file= DefaultBRD()
+	brd_file= DefaultBRD(etesters.__path__[0] + "/default.brd")
 	brd_file.add_rectangular_board(dimension.xmin, dimension.ymin, dimension.xmax, dimension.ymax)
-	brd_file.add_all_elements(folder.final_tp_names_top_df)
 	brd_file.add_all_elements(folder.final_tp_names_bot_df)
-	brd_file.add_all_signals(folder.final_tp_names_top_df)
+	brd_file.add_all_elements(folder.final_tp_names_top_df)
 	brd_file.add_all_signals(folder.final_tp_names_bot_df)
+	brd_file.add_all_signals(folder.final_tp_names_top_df)
 	brd_file.write_file(path)
 	return
 
@@ -472,12 +476,12 @@ def create_sch_file(folder: tp.Production_folder, path: str)-> None:
 	path: str
 		the path where the file is created
 	"""
-	sch_file = DefaultSCH()
-	sch_file.add_all_instances(folder.final_tp_names_top_df)
+	sch_file = DefaultSCH(etesters.__path__[0] + "/default.sch")
 	sch_file.add_all_instances(folder.final_tp_names_bot_df)
 	sch_file.add_all_parts(folder.final_tp_names_bot_df)
-	sch_file.add_all_parts(folder.final_tp_names_top_df)
 	sch_file.add_all_nets(folder.final_tp_names_bot_df)
+	sch_file.add_all_instances(folder.final_tp_names_top_df)
+	sch_file.add_all_parts(folder.final_tp_names_top_df)
 	sch_file.add_all_nets(folder.final_tp_names_top_df)
 	sch_file.write_file(path)
 	return
