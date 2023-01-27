@@ -64,9 +64,13 @@ class pcb_dimension :
         Parameters
         --------------------
         xmin : float
+            minimum x value
         xmax: float
+            maximum x value
         ymin: float
+            minimum y value
         ymax: float
+            maximum y value
         """
         self.xmin = xmin
         self.ymin = ymin

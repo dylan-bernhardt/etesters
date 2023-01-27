@@ -95,10 +95,12 @@
 <span class="sd">        name of the legend top file</span>
 <span class="sd">    legend_bot : str</span>
 <span class="sd">        name of the legend bottom file</span>
+<span class="sd">    excellon_non_plated :</span>
+<span class="sd">        name of the excellon non plated file</span>
 <span class="sd">    tp_names_top : str</span>
 <span class="sd">        list that contains the names of the testpoints for the top side</span>
 <span class="sd">    tp_names_bot : str</span>
-<span class="sd">        list that contains the names of the testpoints for the bottom side</span>
+<span class="sd">        list that contains the names of the testpoints for the bottom side    </span>
 <span class="sd">    final_tp_names_top_df : pandas.Dataframe</span>
 <span class="sd">        dataframe that contains the characteristics for the testpoints on the top side that the user chose</span>
 <span class="sd">    final_tp_names_bot_df : pandas.Dataframe</span>
@@ -159,15 +161,16 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">path</span>
         <span class="k">return</span></div>
 
-
-<div class="viewcode-block" id="Production_folder.reset_path"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.Production_folder.reset_path">[docs]</a>    <span class="k">def</span> <span class="nf">reset_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Production_folder.reset_path"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.Production_folder.reset_path">[docs]</a>    <span class="nd">@typechecked</span>
+    <span class="k">def</span> <span class="nf">reset_path</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Reset the current path</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">return</span></div>
 
-<div class="viewcode-block" id="Production_folder.enter_files"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.Production_folder.enter_files">[docs]</a>    <span class="nd">@typechecked</span>
-    <span class="k">def</span> <span class="nf">enter_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pnp_bot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">pnp_top</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">legend_top</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">legend_bot</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="Production_folder.enter_pnp_and_legend_files"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.Production_folder.enter_pnp_and_legend_files">[docs]</a>    <span class="nd">@typechecked</span>
+    <span class="k">def</span> <span class="nf">enter_pnp_and_legend_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pnp_bot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">pnp_top</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">legend_top</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">legend_bot</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Sets the 4 file names</span>
 
@@ -187,6 +190,20 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">legend_top</span> <span class="o">=</span> <span class="n">legend_top</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">legend_bot</span><span class="o">=</span><span class="n">legend_bot</span>
         <span class="k">return</span> </div>
+
+<div class="viewcode-block" id="Production_folder.enter_excellon_files"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.Production_folder.enter_excellon_files">[docs]</a>    <span class="nd">@typechecked</span>
+    <span class="k">def</span> <span class="nf">enter_excellon_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">excellon_non_plated</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span> <span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets the name of the excellon file</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------------------</span>
+<span class="sd">        excellon-non-plated : str</span>
+<span class="sd">            the name of the file</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">excellon_non_plated</span> <span class="o">=</span><span class="n">excellon_non_plated</span>
+        <span class="k">return</span></div>
 
 
 <div class="viewcode-block" id="Production_folder.enter_tp_names"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.Production_folder.enter_tp_names">[docs]</a>    <span class="nd">@typechecked</span>
@@ -227,6 +244,7 @@
     <span class="k">def</span> <span class="nf">enter_final_tp_names</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">side</span> <span class="p">:</span><span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Sets a dataframe in the class depending of the side</span>
+<span class="sd">        It adds the elements of the dataframe in parameters to the dataframe which already exists</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ---------------</span>
@@ -235,14 +253,20 @@
 <span class="sd">        side : str</span>
 <span class="sd">            The side of the card where the made his choices</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span> 
         <span class="k">if</span> <span class="n">side</span><span class="o">==</span><span class="s1">&#39;top&#39;</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">final_tp_names_top_df</span><span class="o">=</span><span class="n">df</span>
+            
+            <span class="bp">self</span><span class="o">.</span><span class="n">final_tp_names_top_df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">final_tp_names_top_df</span><span class="p">,</span> <span class="n">df</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">final_tp_names_top_df</span><span class="p">)</span>
+            
+            
         <span class="k">elif</span> <span class="n">side</span><span class="o">==</span><span class="s1">&#39;bottom&#39;</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">final_tp_names_bot_df</span><span class="o">=</span><span class="n">df</span>
-        <span class="k">else</span> <span class="p">:</span>
-            <span class="k">pass</span>
+            
+            <span class="bp">self</span><span class="o">.</span><span class="n">final_tp_names_bot_df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">final_tp_names_bot_df</span><span class="p">,</span> <span class="n">df</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        
         <span class="k">return</span></div>
+
 
 
 <div class="viewcode-block" id="Production_folder.set_pcb_dimension"><a class="viewcode-back" href="../../etesters.html#etesters.select_test_points.Production_folder.set_pcb_dimension">[docs]</a>    <span class="nd">@typechecked</span>
@@ -253,9 +277,13 @@
 <span class="sd">        Parameters</span>
 <span class="sd">        ---------------</span>
 <span class="sd">        xmin : float</span>
+<span class="sd">            minimum x value</span>
 <span class="sd">        xmax: float</span>
+<span class="sd">            maximum x value</span>
 <span class="sd">        ymin: float</span>
+<span class="sd">            minimum y value</span>
 <span class="sd">        ymax: float</span>
+<span class="sd">            minimum y value</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">xmax</span> <span class="o">=</span> <span class="n">xmax</span>
@@ -381,7 +409,7 @@
     <span class="c1">#@typechecked</span>
     <span class="k">def</span> <span class="nf">select_all_checkbutton2</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Function that selects all the tp names of the seconde side</span>
+<span class="sd">        Function that selects all the tp names of the second side</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">btn2</span><span class="p">)):</span>
@@ -397,6 +425,7 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Function triggered when the validate button from the first side is triggered</span>
 <span class="sd">        A new file is created with the tp chosen</span>
+<span class="sd">        When both has been activated, the menu buttons are enabled again</span>
 
 
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -416,6 +445,7 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Function triggered when the validate button from the second side is triggered</span>
 <span class="sd">        A new file is created with the tp chosen</span>
+<span class="sd">        When both has been activated, the menu buttons are enabled again</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">enable2</span><span class="p">)):</span>
@@ -500,7 +530,7 @@
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span> <span class="p">:</span>
-            <span class="n">folder</span><span class="o">.</span><span class="n">enter_files</span><span class="p">(</span><span class="n">pnp_bot</span><span class="o">=</span><span class="n">list_box1</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">list_box1</span><span class="o">.</span><span class="n">curselection</span><span class="p">()),</span> <span class="n">pnp_top</span><span class="o">=</span><span class="n">list_box2</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">list_box2</span><span class="o">.</span><span class="n">curselection</span><span class="p">()),</span> <span class="n">legend_bot</span> <span class="o">=</span><span class="n">list_box3</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">list_box3</span><span class="o">.</span><span class="n">curselection</span><span class="p">()),</span> <span class="n">legend_top</span><span class="o">=</span> <span class="n">list_box4</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">list_box4</span><span class="o">.</span><span class="n">curselection</span><span class="p">()))</span>
+            <span class="n">folder</span><span class="o">.</span><span class="n">enter_pnp_and_legend_files</span><span class="p">(</span><span class="n">pnp_bot</span><span class="o">=</span><span class="n">list_box1</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">list_box1</span><span class="o">.</span><span class="n">curselection</span><span class="p">()),</span> <span class="n">pnp_top</span><span class="o">=</span><span class="n">list_box2</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">list_box2</span><span class="o">.</span><span class="n">curselection</span><span class="p">()),</span> <span class="n">legend_bot</span> <span class="o">=</span><span class="n">list_box3</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">list_box3</span><span class="o">.</span><span class="n">curselection</span><span class="p">()),</span> <span class="n">legend_top</span><span class="o">=</span> <span class="n">list_box4</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">list_box4</span><span class="o">.</span><span class="n">curselection</span><span class="p">()))</span>
         <span class="k">except</span> <span class="p">:</span>
             <span class="n">tk</span><span class="o">.</span><span class="n">messagebox</span><span class="o">.</span><span class="n">showwarning</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;ATTENTION&#39;</span><span class="p">,</span> <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;Attention ! Tous les fichiers n&#39;ont pas été sélectionné&quot;</span><span class="p">)</span>
             <span class="k">pass</span>

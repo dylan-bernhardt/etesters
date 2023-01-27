@@ -83,6 +83,8 @@
 
 <span class="sd">	Attributes</span>
 <span class="sd">	-------------------</span>
+<span class="sd">	file: list</span>
+<span class="sd">		list of the lines of the default file</span>
 
 <span class="sd">	Methods</span>
 <span class="sd">	------------------</span>
@@ -90,14 +92,18 @@
 <span class="sd">		Initializes the class by reading a default sch file and storing it in a list</span>
 <span class="sd">	write_file(path):</span>
 <span class="sd">		Writes the new file in the folder specified in parameters</span>
-<span class="sd">	add_one_part(index, name, value, deviceset, device, library, package3d_urn)</span>
+<span class="sd">	add_one_part(index, name, value, deviceset, device, library, package3d_urn):</span>
 <span class="sd">		Adds one part to the file</span>
-<span class="sd">	add_all_parts(df)</span>
+<span class="sd">	add_all_parts(df):</span>
 <span class="sd">		Adds all parts to the file</span>
-<span class="sd">	add_one_instance</span>
+<span class="sd">	add_one_instance( index, part, x, y, smashed, gate, size, layer, font, ratio, align):</span>
 <span class="sd">		Adds one instance to the file</span>
-<span class="sd">	add_all_instances(df)</span>
+<span class="sd">	add_all_instances(df):</span>
 <span class="sd">		Adds all instances to the file</span>
+<span class="sd">	add_one_net(index, x, y, name, class_, gate, pin, width,layer,size):</span>
+<span class="sd">		Adds one net to the file</span>
+<span class="sd">	add_all_nets(df)</span>
+<span class="sd">		Adds all nets to the file</span>
 
 <span class="sd">	&quot;&quot;&quot;</span>
 
@@ -144,18 +150,22 @@
 <span class="sd">		Parameters</span>
 <span class="sd">		-----------------------</span>
 <span class="sd">		index: int</span>
-<span class="sd">			characteristic of a testpoint</span>
+<span class="sd">			the index where the part will be added</span>
 <span class="sd">		name: str</span>
 <span class="sd">			characteristic of a testpoint</span>
 <span class="sd">		value :str</span>
 <span class="sd">			characteristic of a testpoint</span>
 <span class="sd">		deviceset : str</span>
+<span class="sd">			Default = &#39;TESPOINT&#39;</span>
 <span class="sd">			characteristic of a testpoint</span>
 <span class="sd">		device: str</span>
+<span class="sd">		Default = &#39;-SMD1.5MM&#39;</span>
 <span class="sd">			characteristic of a testpoint</span>
 <span class="sd">		library: str</span>
+<span class="sd">			Default = &#39;Generics_stg&#39;</span>
 <span class="sd">			characteristic of a testpoint</span>
 <span class="sd">		package3d_urn: str</span>
+<span class="sd">			Default = &quot;urn:adsk.eagle:package:19402626/2&quot;</span>
 <span class="sd">			characteristic of a testpoint</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="s1">&#39;&lt;part name=&quot;</span><span class="si">%s</span><span class="s1">&quot; library=&quot;</span><span class="si">%s</span><span class="s1">&quot; deviceset=&quot;</span><span class="si">%s</span><span class="s1">&quot; device=&quot;</span><span class="si">%s</span><span class="s1">&quot; package3d_urn=&quot;</span><span class="si">%s</span><span class="s1">&quot; value=&quot;</span><span class="si">%s</span><span class="s1">&quot;/&gt;&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">name</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="n">library</span><span class="p">,</span> <span class="n">deviceset</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">package3d_urn</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()))</span>
@@ -182,30 +192,41 @@
 <div class="viewcode-block" id="DefaultSCH.add_one_instance"><a class="viewcode-back" href="../../etesters.html#etesters.create_eagle_files.DefaultSCH.add_one_instance">[docs]</a>	<span class="nd">@typechecked</span>
 	<span class="k">def</span> <span class="nf">add_one_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">part</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span><span class="nb">float</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">smashed</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span><span class="s1">&#39;yes&#39;</span><span class="p">,</span> <span class="n">gate</span> <span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;TP1&#39;</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span><span class="s1">&#39;2.54&#39;</span><span class="p">,</span> <span class="n">layer</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;95&#39;</span><span class="p">,</span> <span class="n">font</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;vector&#39;</span><span class="p">,</span> <span class="n">ratio</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;16&quot;</span><span class="p">,</span> <span class="n">align</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;center-left&#39;</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">		Add one instance to the file</span>
+<span class="sd">		Adds one instance to the file</span>
 
 <span class="sd">		Parameters</span>
 <span class="sd">		------------------------------</span>
 <span class="sd">		index: int</span>
-<span class="sd">			characteritic of a testpoint</span>
+<span class="sd">			the index where the instance will be added</span>
 <span class="sd">		name: str</span>
-<span class="sd">			characteritic of a testpoint</span>
+<span class="sd">			characteristic of a testpoint</span>
 <span class="sd">		part: str</span>
-<span class="sd">			characteritic of a testpoint</span>
+<span class="sd">			characteristic of a testpoint</span>
 <span class="sd">		x: float</span>
-<span class="sd">			characteritic of a testpoint</span>
+<span class="sd">			x position</span>
 <span class="sd">		y: float</span>
-<span class="sd">			characteritic of a testpoint</span>
+<span class="sd">			y position</span>
 <span class="sd">		smashed : str</span>
-<span class="sd">			characteritic of a testpoint</span>
+<span class="sd">			Default = &#39;yes&#39;</span>
+<span class="sd">			characteristic of a testpoint</span>
 <span class="sd">		gate: str</span>
-<span class="sd">			characteritic of a testpoint</span>
+<span class="sd">			Default = &#39;TP1&#39;</span>
+<span class="sd">			characteristic of a testpoint</span>
 <span class="sd">		size: str</span>
-<span class="sd">			characteritic of a testpoint</span>
-<span class="sd">		lauer: str</span>
-<span class="sd">			characteritic of a testpoint</span>
+<span class="sd">			default = &#39;2.54&#39;</span>
+<span class="sd">			characteristic of a testpoint</span>
+<span class="sd">		layer: str</span>
+<span class="sd">			default = &#39;95&#39;</span>
+<span class="sd">			characteristic of a testpoint</span>
 <span class="sd">		font: str</span>
-<span class="sd">			characteritic of a testpoint</span>
+<span class="sd">			default = &#39;vector&#39;</span>
+<span class="sd">			characteristic of a testpoint</span>
+<span class="sd">		ratio: str</span>
+<span class="sd">			default=&#39;16&#39;</span>
+<span class="sd">			characteristic of a testpoint</span>
+<span class="sd">		align: str</span>
+<span class="sd">			default = &#39;center-left&#39;</span>
+<span class="sd">			characteristic of a testpoint</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="s1">&#39;&lt;instance part=&quot;</span><span class="si">%s</span><span class="s1">&quot; gate=&quot;</span><span class="si">%s</span><span class="s1">&quot; x=&quot;</span><span class="si">%.3f</span><span class="s1">&quot; y=&quot;</span><span class="si">%.3f</span><span class="s1">&quot; smashed=&quot;</span><span class="si">%s</span><span class="s1">&quot;&gt;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">part</span><span class="p">,</span><span class="n">gate</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">smashed</span><span class="p">))</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;&lt;attribute name=&quot;NAME&quot; x=&quot;</span><span class="si">%.3f</span><span class="s1">&quot; y=&quot;</span><span class="si">%.3f</span><span class="s1">&quot; size=&quot;</span><span class="si">%s</span><span class="s1">&quot; layer=&quot;</span><span class="si">%s</span><span class="s1">&quot; font=&quot;</span><span class="si">%s</span><span class="s1">&quot; ratio=&quot;</span><span class="si">%s</span><span class="s1">&quot; align=&quot;</span><span class="si">%s</span><span class="s1">&quot;/&gt;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">size</span><span class="p">,</span><span class="n">layer</span><span class="p">,</span><span class="n">font</span><span class="p">,</span><span class="n">ratio</span><span class="p">,</span><span class="n">align</span><span class="p">))</span>
@@ -231,17 +252,58 @@
 
 <div class="viewcode-block" id="DefaultSCH.add_one_net"><a class="viewcode-back" href="../../etesters.html#etesters.create_eagle_files.DefaultSCH.add_one_net">[docs]</a>	<span class="nd">@typechecked</span>
 	<span class="k">def</span> <span class="nf">add_one_net</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">class_</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">gate</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;TP1&quot;</span><span class="p">,</span> <span class="n">pin</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;P$1&quot;</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;0.1524&quot;</span><span class="p">,</span> <span class="n">layer</span> <span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;95&quot;</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;1.778&#39;</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Adds one net to the file</span>
+
+<span class="sd">		Parameters</span>
+<span class="sd">		--------------------</span>
+<span class="sd">		index: int</span>
+<span class="sd">			the index where the net will be added</span>
+<span class="sd">		x: float</span>
+<span class="sd">			x position</span>
+<span class="sd">		y: float</span>
+<span class="sd">			y position</span>
+<span class="sd">		name :str</span>
+<span class="sd">			characteristic of a testpoint</span>
+<span class="sd">		class_: str</span>
+<span class="sd">			default = &#39;0&#39;</span>
+<span class="sd">			characteristic of a testpoint</span>
+<span class="sd">		gate: str</span>
+<span class="sd">			default = &#39;TP1&#39;</span>
+<span class="sd">			characteristic of a testpoint</span>
+<span class="sd">		pin: str</span>
+<span class="sd">			default = &#39;P$1&#39;</span>
+<span class="sd">			characteristic of a testpoint</span>
+<span class="sd">		width: str</span>
+<span class="sd">			default = &#39;0.1524&#39;</span>
+<span class="sd">			characteristic of a testpoint</span>
+<span class="sd">		layer : str</span>
+<span class="sd">			default = &#39;95&#39;</span>
+<span class="sd">			characteristic of a testpoint</span>
+<span class="sd">		size : str</span>
+<span class="sd">			default = &#39;1.778&#39;</span>
+<span class="sd">			characteristic of a testpoint</span>
+
+<span class="sd">		&quot;&quot;&quot;</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="s1">&#39;&lt;net name=&quot;</span><span class="si">%s</span><span class="s1">&quot; class=&quot;</span><span class="si">%s</span><span class="s1">&quot;&gt;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span><span class="n">class_</span><span class="p">))</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;&lt;segment&gt;&#39;</span><span class="p">)</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">index</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;&lt;pinref part=&quot;</span><span class="si">%s</span><span class="s1">&quot; gate=&quot;</span><span class="si">%s</span><span class="s1">&quot; pin=&quot;</span><span class="si">%s</span><span class="s1">&quot;/&gt;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="n">gate</span><span class="p">,</span> <span class="n">pin</span><span class="p">))</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">index</span><span class="o">+</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;&lt;wire x1=&quot;</span><span class="si">%.3f</span><span class="s1">&quot; y1=&quot;</span><span class="si">%.3f</span><span class="s1">&quot; x2=&quot;</span><span class="si">%.3f</span><span class="s1">&quot; y2=&quot;</span><span class="si">%.3f</span><span class="s1">&quot; width=&quot;</span><span class="si">%s</span><span class="s1">&quot; layer=&quot;</span><span class="si">%s</span><span class="s1">&quot;/&gt;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mf">5.08</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="o">-</span><span class="mf">20.32</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">layer</span><span class="p">))</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">index</span><span class="o">+</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;&lt;wire x1=&quot;</span><span class="si">%.3f</span><span class="s1">&quot; y1=&quot;</span><span class="si">%.3f</span><span class="s1">&quot; x2=&quot;</span><span class="si">%.3f</span><span class="s1">&quot; y2=&quot;</span><span class="si">%.3f</span><span class="s1">&quot; width=&quot;</span><span class="si">%s</span><span class="s1">&quot; layer=&quot;91&quot;/&gt;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mf">5.08</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="o">-</span><span class="mf">20.32</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">width</span><span class="p">))</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">index</span><span class="o">+</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;&lt;label x=&quot;</span><span class="si">%.3f</span><span class="s1">&quot; y=&quot;</span><span class="si">%.3f</span><span class="s1">&quot; size=&quot;</span><span class="si">%s</span><span class="s1">&quot; layer=&quot;</span><span class="si">%s</span><span class="s1">&quot;/&gt;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mf">17.18</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">size</span><span class="p">,</span><span class="n">layer</span><span class="p">))</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">index</span><span class="o">+</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;&lt;/segment&gt;&#39;</span><span class="p">)</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">index</span><span class="o">+</span><span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;&lt;/net&gt;&#39;</span><span class="p">)</span>
 		<span class="k">return</span></div>
 
 <div class="viewcode-block" id="DefaultSCH.add_all_nets"><a class="viewcode-back" href="../../etesters.html#etesters.create_eagle_files.DefaultSCH.add_all_nets">[docs]</a>	<span class="nd">@typechecked</span>
-	<span class="k">def</span> <span class="nf">add_all_nets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+	<span class="k">def</span> <span class="nf">add_all_nets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span><span class="o">-&gt;</span><span class="kc">None</span><span class="p">:</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Adds all nets to the file, from a df</span>
+
+<span class="sd">		Parameters</span>
+<span class="sd">		-----------------</span>
+<span class="sd">		df: pandas.DataFrame</span>
+<span class="sd">			the dataframe contains the characteristics of the tp that the users chose</span>
+<span class="sd">		&quot;&quot;&quot;</span>
 		<span class="n">close_nets</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;&lt;/nets&gt;&#39;</span><span class="p">)</span>
 		<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)):</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">add_one_net</span><span class="p">(</span><span class="n">close_nets</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="o">*</span><span class="mf">5.08</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;signal_name&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
@@ -257,6 +319,8 @@
 
 <span class="sd">	Attributes</span>
 <span class="sd">	-------------------</span>
+<span class="sd">	file: list</span>
+<span class="sd">		list of the lines of the default file</span>
 
 <span class="sd">	Methods</span>
 <span class="sd">	------------------</span>
@@ -299,7 +363,7 @@
 <div class="viewcode-block" id="DefaultBRD.write_file"><a class="viewcode-back" href="../../etesters.html#etesters.create_eagle_files.DefaultBRD.write_file">[docs]</a>	<span class="nd">@typechecked</span>
 	<span class="k">def</span> <span class="nf">write_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">		Write the new file in the folder specified in parameters</span>
+<span class="sd">		Writes the new file in the folder specified in parameters</span>
 
 <span class="sd">		Parameters</span>
 <span class="sd">		-------------</span>
@@ -321,13 +385,13 @@
 <span class="sd">		Parameters</span>
 <span class="sd">		-------------------</span>
 <span class="sd">		x0 :float</span>
-<span class="sd">			 specified the size of the new pcb</span>
+<span class="sd">			 minimum x value</span>
 <span class="sd">		y0 :float</span>
-<span class="sd">			 specified the size of the new pcb</span>
+<span class="sd">			 minimum y value</span>
 <span class="sd">		x1 :float</span>
-<span class="sd">			 specified the size of the new pcb</span>
+<span class="sd">			maximum x value	 </span>
 <span class="sd">		y1 :float</span>
-<span class="sd">			 specified the size of the new pcb</span>
+<span class="sd">			 maximum y value</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="n">close_board</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;&lt;/plain&gt;&#39;</span><span class="p">)</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">close_board</span><span class="p">,</span><span class="s1">&#39;&lt;wire x1=&quot;</span><span class="si">%d</span><span class="s1">&quot; y1=&quot;</span><span class="si">%d</span><span class="s1">&quot; x2=&quot;</span><span class="si">%d</span><span class="s1">&quot; y2=&quot;</span><span class="si">%d</span><span class="s1">&quot; width=&quot;0&quot; layer=&quot;20&quot;/&gt;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y1</span><span class="p">))</span>
@@ -340,34 +404,46 @@
 <div class="viewcode-block" id="DefaultBRD.add_one_element"><a class="viewcode-back" href="../../etesters.html#etesters.create_eagle_files.DefaultBRD.add_one_element">[docs]</a>	<span class="nd">@typechecked</span>
 	<span class="k">def</span> <span class="nf">add_one_element</span><span class="p">(</span><span class="bp">self</span> <span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span><span class="nb">float</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span><span class="nb">float</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">package</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">library</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Generics_stg&quot;</span><span class="p">,</span> <span class="n">package3d_urn</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;urn:adsk.eagle:package:19402626/2&quot;</span><span class="p">,</span> <span class="n">smashed</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span><span class="nb">float</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">,</span><span class="n">layer</span> <span class="p">:</span><span class="nb">int</span> <span class="o">=</span> <span class="mi">25</span><span class="p">,</span> <span class="n">ratio</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span> <span class="mi">16</span><span class="p">,</span> <span class="n">align</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span> <span class="s1">&#39;center-left&#39;</span><span class="p">,</span> <span class="n">locked</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;yes&#39;</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">		Add one element to the file</span>
+<span class="sd">		Adds one element to the file</span>
 
 <span class="sd">		Parameters</span>
 <span class="sd">		-------------------</span>
 <span class="sd">		index:int</span>
-<span class="sd">			Characteritic of a test point</span>
+<span class="sd">			the index where the element will be added</span>
 <span class="sd">		name :str</span>
-<span class="sd">			Characteritic of a test point</span>
+<span class="sd">			characteristic of a test point</span>
 <span class="sd">		x:float</span>
-<span class="sd">			Characteritic of a test point</span>
+<span class="sd">			x position</span>
+<span class="sd">		y: float</span>
+<span class="sd">			y position</span>
 <span class="sd">		value:str</span>
-<span class="sd">			Characteritic of a test point</span>
+<span class="sd">			characteristic of a test point</span>
 <span class="sd">		package: str</span>
-<span class="sd">			Characteritic of a test point</span>
+<span class="sd">			characteristic of a test point</span>
 <span class="sd">		library: str</span>
-<span class="sd">			Characteritic of a test point</span>
+<span class="sd">			default = &quot;Generics_stg&quot;</span>
+<span class="sd">			characteristic of a test point</span>
 <span class="sd">		package3d_urn:str</span>
-<span class="sd">			Characteritic of a test point</span>
+<span class="sd">		default = &quot;urn:adsk.eagle:package:19402626/2&quot;</span>
+<span class="sd">			characteristic of a test point</span>
 <span class="sd">		smashed:str</span>
-<span class="sd">			Characteritic of a test point</span>
-<span class="sd">		soze:float</span>
-<span class="sd">			Characteritic of a test point</span>
+<span class="sd">		default = &quot;yes&quot;</span>
+<span class="sd">			characteristic of a test point</span>
+<span class="sd">		size:float</span>
+<span class="sd">			default = 1</span>
+<span class="sd">			characteristic of a test point</span>
 <span class="sd">		layer:int</span>
-<span class="sd">			Characteritic of a test point</span>
+<span class="sd">			default = 25</span>
+<span class="sd">			characteristic of a test point</span>
 <span class="sd">		ratio:float</span>
-<span class="sd">			Characteritic of a test point</span>
+<span class="sd">			default = 16</span>
+<span class="sd">			characteristic of a test point</span>
 <span class="sd">		align:str</span>
-<span class="sd">			Characteritic of a test point</span>
+<span class="sd">			default = &quot;center-left&quot;</span>
+<span class="sd">			characteristic of a test point</span>
+<span class="sd">		locked : str</span>
+<span class="sd">			default = &#39;yes&#39;</span>
+<span class="sd">			characterisitc of a test point</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="s1">&#39;&lt;element name=&quot;</span><span class="si">%s</span><span class="s1">&quot; library=&quot;</span><span class="si">%s</span><span class="s1">&quot; package=&quot;</span><span class="si">%s</span><span class="s1">&quot; package3d_urn=&quot;</span><span class="si">%s</span><span class="s1">&quot; value=&quot;</span><span class="si">%s</span><span class="s1">&quot; x=&quot;</span><span class="si">%.3f</span><span class="s1">&quot; y=&quot;</span><span class="si">%.3f</span><span class="s1">&quot; locked=&quot;</span><span class="si">%s</span><span class="s1">&quot; smashed=&quot;</span><span class="si">%s</span><span class="s1">&quot;&gt;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span><span class="n">library</span><span class="p">,</span><span class="n">package</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span><span class="n">package3d_urn</span><span class="p">,</span><span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">locked</span><span class="p">,</span><span class="n">smashed</span><span class="p">))</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;&lt;attribute name=&quot;NAME&quot; x=&quot;</span><span class="si">%.3f</span><span class="s1">&quot; y=&quot;</span><span class="si">%.3f</span><span class="s1">&quot; size=&quot;</span><span class="si">%.3f</span><span class="s1">&quot; layer=&quot;</span><span class="si">%d</span><span class="s1">&quot; ratio=&quot;</span><span class="si">%d</span><span class="s1">&quot; align=&quot;</span><span class="si">%s</span><span class="s1">&quot;/&gt;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">size</span><span class="p">,</span><span class="n">layer</span><span class="p">,</span><span class="n">ratio</span><span class="p">,</span><span class="n">align</span><span class="p">))</span>
@@ -395,7 +471,17 @@
 <div class="viewcode-block" id="DefaultBRD.add_one_signal"><a class="viewcode-back" href="../../etesters.html#etesters.create_eagle_files.DefaultBRD.add_one_signal">[docs]</a>	<span class="nd">@typechecked</span>
 	<span class="k">def</span> <span class="nf">add_one_signal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">pad</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">		</span>
+<span class="sd">		Adds one signal to the file</span>
+
+<span class="sd">		Parameters</span>
+<span class="sd">		------------------------------</span>
+<span class="sd">		index: int</span>
+<span class="sd">			the index where the signal will be added</span>
+<span class="sd">		name : str</span>
+<span class="sd">			characteristic of the tp</span>
+<span class="sd">		pad : str</span>
+<span class="sd">			default = &#39;1&#39;</span>
+<span class="sd">			characteristic of the tp</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 
 		<span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="s1">&#39;&lt;signal name=&quot;</span><span class="si">%s</span><span class="s1">&quot;&gt;&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
@@ -450,6 +536,7 @@
 <span class="k">def</span> <span class="nf">create_sch_file</span><span class="p">(</span><span class="n">folder</span><span class="p">:</span> <span class="n">tp</span><span class="o">.</span><span class="n">Production_folder</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">	</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">	Create the .sch file for the new pcb </span>
+<span class="sd">	</span>
 <span class="sd">	Parameters</span>
 <span class="sd">	----------------</span>
 <span class="sd">	folder : select_test_points.Production_folder</span>

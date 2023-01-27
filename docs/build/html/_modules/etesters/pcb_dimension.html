@@ -72,6 +72,7 @@
   <h1>Source code for etesters.pcb_dimension</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
 <span class="kn">import</span> <span class="nn">etesters.select_test_points</span> <span class="k">as</span> <span class="nn">tp</span>
+<span class="kn">from</span> <span class="nn">typeguard</span> <span class="kn">import</span> <span class="n">typechecked</span>
 
 <div class="viewcode-block" id="pcb_dimension"><a class="viewcode-back" href="../../etesters.html#etesters.pcb_dimension.pcb_dimension">[docs]</a><span class="k">class</span> <span class="nc">pcb_dimension</span> <span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -109,8 +110,8 @@
 <span class="sd">        Display the gui</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-
-<div class="viewcode-block" id="pcb_dimension.__init__"><a class="viewcode-back" href="../../etesters.html#etesters.pcb_dimension.pcb_dimension.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">folder</span><span class="p">:</span> <span class="n">tp</span><span class="o">.</span><span class="n">Production_folder</span><span class="p">,</span> <span class="n">center</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span> <span class="p">:</span>
+<div class="viewcode-block" id="pcb_dimension.__init__"><a class="viewcode-back" href="../../etesters.html#etesters.pcb_dimension.pcb_dimension.__init__">[docs]</a>    <span class="nd">@typechecked</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">folder</span><span class="p">:</span> <span class="n">tp</span><span class="o">.</span><span class="n">Production_folder</span><span class="p">,</span> <span class="n">center</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span> <span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initializes the useful elements as attributes for the class</span>
 
@@ -127,7 +128,18 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">folder</span> <span class="o">=</span> <span class="n">folder</span>
         <span class="k">return</span> </div>
 
-<div class="viewcode-block" id="pcb_dimension.set_pcb_dimension"><a class="viewcode-back" href="../../etesters.html#etesters.pcb_dimension.pcb_dimension.set_pcb_dimension">[docs]</a>    <span class="k">def</span> <span class="nf">set_pcb_dimension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xmin</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">xmax</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">ymin</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">ymax</span><span class="p">:</span><span class="nb">float</span><span class="p">)</span><span class="o">-&gt;</span><span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="pcb_dimension.set_pcb_dimension"><a class="viewcode-back" href="../../etesters.html#etesters.pcb_dimension.pcb_dimension.set_pcb_dimension">[docs]</a>    <span class="nd">@typechecked</span>
+    <span class="k">def</span> <span class="nf">set_pcb_dimension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xmin</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">xmax</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">ymin</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">ymax</span><span class="p">:</span><span class="nb">float</span><span class="p">)</span><span class="o">-&gt;</span><span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        sets the pcb dimension</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        --------------------</span>
+<span class="sd">        xmin : float</span>
+<span class="sd">        xmax: float</span>
+<span class="sd">        ymin: float</span>
+<span class="sd">        ymax: float</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">xmin</span> <span class="o">=</span> <span class="n">xmin</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ymin</span> <span class="o">=</span> <span class="n">ymin</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">xmax</span><span class="o">=</span><span class="n">xmax</span>
@@ -135,7 +147,8 @@
         <span class="k">return</span></div>
 
 
-<div class="viewcode-block" id="pcb_dimension.validate_fct"><a class="viewcode-back" href="../../etesters.html#etesters.pcb_dimension.pcb_dimension.validate_fct">[docs]</a>    <span class="k">def</span> <span class="nf">validate_fct</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="pcb_dimension.validate_fct"><a class="viewcode-back" href="../../etesters.html#etesters.pcb_dimension.pcb_dimension.validate_fct">[docs]</a>    <span class="nd">@typechecked</span>
+    <span class="k">def</span> <span class="nf">validate_fct</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Function triggered when the validate button is pressed.</span>
 <span class="sd">        It sets the dimension in the class.</span>
@@ -154,7 +167,9 @@
         
         <span class="k">return</span>  </div>
 
-<div class="viewcode-block" id="pcb_dimension.display"><a class="viewcode-back" href="../../etesters.html#etesters.pcb_dimension.pcb_dimension.display">[docs]</a>    <span class="k">def</span> <span class="nf">display</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span> <span class="p">,</span> <span class="n">list_btn</span> <span class="p">:</span><span class="nb">list</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span> <span class="p">:</span>
+
+<div class="viewcode-block" id="pcb_dimension.display"><a class="viewcode-back" href="../../etesters.html#etesters.pcb_dimension.pcb_dimension.display">[docs]</a>    <span class="nd">@typechecked</span>
+    <span class="k">def</span> <span class="nf">display</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span> <span class="p">,</span> <span class="n">list_btn</span> <span class="p">:</span><span class="nb">list</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span> <span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Display the gui. There are two spinboxes and one validate button.</span>
 

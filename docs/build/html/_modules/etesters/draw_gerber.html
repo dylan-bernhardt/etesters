@@ -91,38 +91,38 @@
 <span class="sd">	side: str</span>
 <span class="sd">		the side of the drawing</span>
 <span class="sd">	tp_df: pandas.DataFrame</span>
-<span class="sd">		dataframe that contains characteritic of the test point</span>
+<span class="sd">		dataframe that contains the characteritics of the test point to print</span>
 <span class="sd">		the dataframe is filtered by the user choice</span>
 <span class="sd">		the testpoints represented by a red dot are removed</span>
 <span class="sd">	xmin: float</span>
-<span class="sd">		size of the card</span>
+<span class="sd">		minimum x value</span>
 <span class="sd">	xmax: float</span>
-<span class="sd">		size of the card</span>
+<span class="sd">		maximum x value</span>
 <span class="sd">	ymin: float</span>
-<span class="sd">		size of the card</span>
+<span class="sd">		minimum y value</span>
 <span class="sd">	ymax: float</span>
-<span class="sd">		size of the card</span>
+<span class="sd">		maximum y value</span>
 
 <span class="sd">	Methods</span>
 <span class="sd">	-------------------------</span>
 <span class="sd">	__init__(folder,side):</span>
-<span class="sd">		Initialize and rearrange the useful values</span>
+<span class="sd">		Initialize useful values</span>
 <span class="sd">	center_0_0():</span>
 <span class="sd">		center the center of the card</span>
 <span class="sd">	draw(root,list_btn):</span>
 <span class="sd">		Draw the title, the card and his testpoints on a blank page</span>
 <span class="sd">		A validate button is also create</span>
-<span class="sd">	recolor(x,y):</span>
-<span class="sd">		recolor the testpoint when you click on it</span>
+<span class="sd">	btn(x,y):</span>
+<span class="sd">		finds which button is pressed and does the corresponding actions</span>
 <span class="sd">	btn_funct():</span>
 <span class="sd">		validate btn function</span>
 <span class="sd">	</span>
 <span class="sd">	&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="GerberImage.__init__"><a class="viewcode-back" href="../../etesters.html#etesters.draw_gerber.GerberImage.__init__">[docs]</a>	<span class="nd">@typechecked</span>
-	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">folder</span><span class="p">:</span> <span class="n">tp</span><span class="o">.</span><span class="n">Production_folder</span><span class="p">,</span> <span class="n">side</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">folder</span><span class="p">:</span> <span class="n">tp</span><span class="o">.</span><span class="n">Production_folder</span><span class="p">,</span> <span class="n">side</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">		Initialize and rearrange the useful values</span>
+<span class="sd">		Initialize useful values</span>
 
 <span class="sd">		Parameters</span>
 <span class="sd">		--------------</span>
@@ -135,15 +135,8 @@
 		<span class="n">importlib</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">turtle</span><span class="p">)</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">folder</span> <span class="o">=</span> <span class="n">folder</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">side</span><span class="o">=</span><span class="n">side</span>
-		<span class="k">if</span> <span class="n">side</span><span class="o">==</span><span class="s1">&#39;top&#39;</span><span class="p">:</span>
-			<span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">=</span> <span class="n">rearrange_useful_values</span><span class="p">(</span><span class="n">read_gerber</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="o">.</span><span class="n">legend_top</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="o">.</span><span class="n">path</span><span class="p">))</span>
-			<span class="bp">self</span><span class="o">.</span><span class="n">tp_df</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="o">.</span><span class="n">path</span><span class="o">+</span><span class="s1">&#39;/filtered_pnp/&#39;</span><span class="o">+</span><span class="s1">&#39;FILTERED__&#39;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="o">.</span><span class="n">pnp_top</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
-			<span class="bp">self</span><span class="o">.</span><span class="n">tp_df</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tp_df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
-
-		<span class="k">elif</span> <span class="n">side</span><span class="o">==</span><span class="s1">&#39;bottom&#39;</span><span class="p">:</span>
-			<span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">=</span> <span class="n">rearrange_useful_values</span><span class="p">(</span><span class="n">read_gerber</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="o">.</span><span class="n">legend_bot</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="o">.</span><span class="n">path</span><span class="p">))</span>
-			<span class="bp">self</span><span class="o">.</span><span class="n">tp_df</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="o">.</span><span class="n">path</span><span class="o">+</span><span class="s1">&#39;/filtered_pnp/&#39;</span><span class="o">+</span><span class="s1">&#39;FILTERED__&#39;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="o">.</span><span class="n">pnp_bot</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
-			<span class="bp">self</span><span class="o">.</span><span class="n">tp_df</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tp_df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">tp_df</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">=</span> <span class="n">d</span>
 		<span class="k">return</span></div>
 		
 
@@ -167,7 +160,7 @@
 <div class="viewcode-block" id="GerberImage.draw"><a class="viewcode-back" href="../../etesters.html#etesters.draw_gerber.GerberImage.draw">[docs]</a>	<span class="nd">@typechecked</span>
 	<span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">,</span> <span class="n">list_btn</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">		Draw the title, the card and his testpoints on a blank page</span>
+<span class="sd">		Draws the title, the card, the legend, the axis and his testpoints on a blank page</span>
 <span class="sd">		A validate button is also created</span>
 
 <span class="sd">		Parameters </span>
@@ -198,10 +191,6 @@
 		<span class="n">turtle</span><span class="o">.</span><span class="n">tracer</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 		<span class="n">turtle</span><span class="o">.</span><span class="n">hideturtle</span><span class="p">()</span>
 
-
-		
-		
-		
 		<span class="n">draw_title</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">side</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xmin</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xmax</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ymax</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ymin</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_px_size_y</span><span class="p">)</span>
 		<span class="n">turtle</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 
@@ -271,7 +260,7 @@
 		<span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">xmax</span><span class="o">-</span><span class="n">sgn</span><span class="o">*</span><span class="mi">30</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_px_size_x</span><span class="p">))</span><span class="o">&lt;=</span><span class="mi">50</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_px_size_x</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ymin</span><span class="o">-</span><span class="mi">80</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_px_size_y</span><span class="p">))</span><span class="o">&lt;=</span> <span class="mi">20</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_px_size_y</span> <span class="p">:</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">tp_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tp_df</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">tp_df</span><span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;red&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">tp_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;color&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-			<span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="o">.</span><span class="n">enter_final_tp_names</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tp_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span><span class="bp">self</span><span class="o">.</span><span class="n">side</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="o">.</span><span class="n">enter_final_tp_names</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tp_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span><span class="bp">self</span><span class="o">.</span><span class="n">side</span><span class="p">)</span>
 			<span class="n">turtle</span><span class="o">.</span><span class="n">bye</span><span class="p">()</span>
 			<span class="k">for</span> <span class="n">btn</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">list_btn</span> <span class="p">:</span>
 				<span class="n">btn</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">state</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">NORMAL</span><span class="p">)</span>
@@ -279,18 +268,13 @@
 
 		
 		<span class="n">turtle</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
-
-
-			
-		
-		
 		<span class="k">return</span>			        </div></div>
 
 
 <div class="viewcode-block" id="read_gerber"><a class="viewcode-back" href="../../etesters.html#etesters.draw_gerber.read_gerber">[docs]</a><span class="nd">@typechecked</span>
 <span class="k">def</span> <span class="nf">read_gerber</span><span class="p">(</span><span class="n">file_name</span> <span class="p">:</span><span class="nb">str</span><span class="p">,</span><span class="n">folder_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">list</span> <span class="p">:</span>
 <span class="w">	</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">	Read a gerber file and stored its lines in a list</span>
+<span class="sd">	Reads a gerber file and stores its lines in a list</span>
 
 <span class="sd">	Parameters</span>
 <span class="sd">	-------------------</span>
@@ -313,7 +297,7 @@
 <div class="viewcode-block" id="rearrange_useful_values"><a class="viewcode-back" href="../../etesters.html#etesters.draw_gerber.rearrange_useful_values">[docs]</a><span class="nd">@typechecked</span>
 <span class="k">def</span> <span class="nf">rearrange_useful_values</span><span class="p">(</span><span class="n">lines</span> <span class="p">:</span><span class="nb">list</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">	</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">	Rearrange the useful values from the list of the lines of the gerber file</span>
+<span class="sd">	Rearranges the useful values from the list of the lines of the gerber file (especially the legend ones)</span>
 
 <span class="sd">	Parameters</span>
 <span class="sd">	---------------------</span>
@@ -324,7 +308,7 @@
 <span class="sd">	dict</span>
 <span class="sd">		rearranged dictionnary</span>
 <span class="sd">	&quot;&quot;&quot;</span>
-	<span class="n">extract_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">&#39;precision&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+	<span class="n">extract_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">&#39;precision_x&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;precision_y&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
 	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lines</span> <span class="p">:</span>
 		<span class="n">fsla</span><span class="o">=</span><span class="n">i</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;FSLA&#39;</span><span class="p">)</span>
 		<span class="n">x</span><span class="o">=</span><span class="n">i</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
@@ -332,10 +316,11 @@
 		<span class="n">d</span><span class="o">=</span><span class="n">i</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>
 		<span class="n">star</span><span class="o">=</span><span class="n">i</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">)</span>
 		<span class="k">if</span> <span class="n">x</span><span class="o">!=-</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">y</span><span class="o">!=-</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">fsla</span><span class="o">!=-</span><span class="mi">1</span><span class="p">:</span>
-			<span class="n">extract_dict</span><span class="p">[</span><span class="s1">&#39;precision&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">i</span><span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span>
+			<span class="n">extract_dict</span><span class="p">[</span><span class="s1">&#39;precision_x&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">i</span><span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span>
+			<span class="n">extract_dict</span><span class="p">[</span><span class="s1">&#39;precision_y&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">i</span><span class="p">[</span><span class="n">y</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span>
 		<span class="k">if</span> <span class="n">x</span><span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">y</span><span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">d</span><span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">star</span><span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
-			<span class="n">extract_dict</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">y</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="nb">int</span><span class="p">(</span><span class="n">extract_dict</span><span class="p">[</span><span class="s1">&#39;precision&#39;</span><span class="p">])))</span>
-			<span class="n">extract_dict</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">d</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="nb">int</span><span class="p">(</span><span class="n">extract_dict</span><span class="p">[</span><span class="s1">&#39;precision&#39;</span><span class="p">])))</span>
+			<span class="n">extract_dict</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">y</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="nb">int</span><span class="p">(</span><span class="n">extract_dict</span><span class="p">[</span><span class="s1">&#39;precision_x&#39;</span><span class="p">])))</span>
+			<span class="n">extract_dict</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">d</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="nb">int</span><span class="p">(</span><span class="n">extract_dict</span><span class="p">[</span><span class="s1">&#39;precision_y&#39;</span><span class="p">])))</span>
 			<span class="n">extract_dict</span><span class="p">[</span><span class="s1">&#39;d&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="n">d</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">d</span><span class="o">+</span><span class="mi">3</span><span class="p">]))</span>
 	<span class="k">return</span> <span class="n">extract_dict</span></div>
 
@@ -343,7 +328,7 @@
 <div class="viewcode-block" id="min_max_values"><a class="viewcode-back" href="../../etesters.html#etesters.draw_gerber.min_max_values">[docs]</a><span class="nd">@typechecked</span>
 <span class="k">def</span> <span class="nf">min_max_values</span><span class="p">(</span><span class="n">d</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">side</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
 <span class="w">	</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">	Extract and set the min,max of the card</span>
+<span class="sd">	Extracts and sets the min,max of the card</span>
 
 <span class="sd">	Parameters</span>
 <span class="sd">	-----------------</span>
@@ -372,7 +357,7 @@
 <div class="viewcode-block" id="draw_gerber"><a class="viewcode-back" href="../../etesters.html#etesters.draw_gerber.draw_gerber">[docs]</a><span class="nd">@typechecked</span>
 <span class="k">def</span> <span class="nf">draw_gerber</span><span class="p">(</span><span class="n">d</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">	</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">	draw the gerber file</span>
+<span class="sd">	draws the gerber file</span>
 <span class="sd">	the gerber file values are stored in a dict</span>
 
 <span class="sd">	Parameters</span>
@@ -398,7 +383,7 @@
 <div class="viewcode-block" id="draw_tp"><a class="viewcode-back" href="../../etesters.html#etesters.draw_gerber.draw_tp">[docs]</a><span class="nd">@typechecked</span>
 <span class="k">def</span> <span class="nf">draw_tp</span><span class="p">(</span><span class="n">tp_df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">	</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">	Draw a green dot for every test points </span>
+<span class="sd">	Draws a green dot for every test points </span>
 
 <span class="sd">	Parameters</span>
 <span class="sd">	----------------</span>
@@ -415,7 +400,7 @@
 <div class="viewcode-block" id="draw_title"><a class="viewcode-back" href="../../etesters.html#etesters.draw_gerber.draw_title">[docs]</a><span class="nd">@typechecked</span>
 <span class="k">def</span> <span class="nf">draw_title</span><span class="p">(</span><span class="n">side</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">xmin</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">xmax</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">ymax</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">ymin</span> <span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_px_size_y</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">	</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">	Draw the title of the windows on his top</span>
+<span class="sd">	Draws the title of the windows on his top</span>
 <span class="sd">	It won&#39;t overlap the card drawing</span>
 
 
@@ -424,13 +409,13 @@
 <span class="sd">	side : str</span>
 <span class="sd">		the side of the drawing</span>
 <span class="sd">	xmin : float</span>
-<span class="sd">		dimension of the card drawing</span>
+<span class="sd">		minimum x value</span>
 <span class="sd">	ymin: float</span>
-<span class="sd">		dimension of the card drawing</span>
+<span class="sd">		minimum y value</span>
 <span class="sd">	xmax: float</span>
-<span class="sd">		dimension of the card drawing</span>
+<span class="sd">		maximum x value</span>
 <span class="sd">	ymax: float</span>
-<span class="sd">		dimension of the card drawing</span>
+<span class="sd">		maximum y value</span>
 <span class="sd">	&quot;&quot;&quot;</span>
 	<span class="n">turtle</span><span class="o">.</span><span class="n">pu</span><span class="p">()</span>
 	<span class="n">turtle</span><span class="o">.</span><span class="n">goto</span><span class="p">((</span><span class="n">xmax</span><span class="o">+</span><span class="n">xmin</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">ymax</span><span class="o">+</span><span class="p">(</span><span class="mi">60</span> <span class="o">*</span> <span class="n">_px_size_y</span><span class="p">))</span>
@@ -444,6 +429,27 @@
 
 <div class="viewcode-block" id="draw_axis"><a class="viewcode-back" href="../../etesters.html#etesters.draw_gerber.draw_axis">[docs]</a><span class="nd">@typechecked</span>
 <span class="k">def</span> <span class="nf">draw_axis</span><span class="p">(</span><span class="n">side</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">xmin</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">xmax</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">ymin</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">ymax</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_px_size_x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_px_size_y</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span><span class="o">-&gt;</span><span class="kc">None</span><span class="p">:</span>
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Draws the axis and the origin</span>
+
+<span class="sd">	Parameters</span>
+<span class="sd">	-------------------</span>
+<span class="sd">	side : str</span>
+<span class="sd">		the side of the card that is drawn</span>
+<span class="sd">	xmin :float</span>
+<span class="sd">		minimum x value</span>
+<span class="sd">	xmax : float</span>
+<span class="sd">		maximum x value</span>
+<span class="sd">	ymin: float</span>
+<span class="sd">		minimum y value</span>
+<span class="sd">	ymax: float</span>
+<span class="sd">		maximum y value</span>
+<span class="sd">	_px_size_x: float</span>
+<span class="sd">		the length of a pixel on the x-axis</span>
+<span class="sd">	_px_size_y : float</span>
+<span class="sd">		the length of a pixel on the y-axis</span>
+
+<span class="sd">	&quot;&quot;&quot;</span>
 	<span class="k">if</span> <span class="n">side</span> <span class="o">==</span> <span class="s2">&quot;bottom&quot;</span><span class="p">:</span>
 		<span class="n">sgn</span><span class="o">=-</span><span class="mi">1</span> 
 	<span class="k">else</span><span class="p">:</span>
@@ -493,6 +499,21 @@
 
 <div class="viewcode-block" id="draw_coordinates"><a class="viewcode-back" href="../../etesters.html#etesters.draw_gerber.draw_coordinates">[docs]</a><span class="nd">@typechecked</span>
 <span class="k">def</span> <span class="nf">draw_coordinates</span><span class="p">(</span><span class="n">xmin</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span><span class="n">xmax</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span><span class="n">ymin</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span><span class="n">ymax</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span><span class="o">-&gt;</span><span class="kc">None</span> <span class="p">:</span>
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	draws the coordinated of the extremal values</span>
+
+<span class="sd">	Parameters</span>
+<span class="sd">	-------------------------</span>
+<span class="sd">	xmin : float</span>
+<span class="sd">		minimum x value</span>
+<span class="sd">	xmax: float</span>
+<span class="sd">		maximum x value</span>
+<span class="sd">	ymin: float</span>
+<span class="sd">		minimum y value</span>
+<span class="sd">	ymax: float</span>
+<span class="sd">		maximum y value</span>
+
+<span class="sd">	&quot;&quot;&quot;</span>
 	<span class="n">turtle</span><span class="o">.</span><span class="n">pu</span><span class="p">()</span>
 	<span class="n">turtle</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">ymax</span><span class="p">)</span>
 	<span class="n">turtle</span><span class="o">.</span><span class="n">pd</span><span class="p">()</span>
@@ -518,6 +539,25 @@
 
 <div class="viewcode-block" id="draw_legend"><a class="viewcode-back" href="../../etesters.html#etesters.draw_gerber.draw_legend">[docs]</a><span class="nd">@typechecked</span>
 <span class="k">def</span> <span class="nf">draw_legend</span><span class="p">(</span><span class="n">side</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">xmin</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">xmax</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">ymin</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">ymax</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_px_size_x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_px_size_y</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Draws the legend of the drawing</span>
+
+<span class="sd">	Parameters </span>
+<span class="sd">	-----------------------</span>
+<span class="sd">	xmin: float</span>
+<span class="sd">		minimum x value</span>
+<span class="sd">	xmax : float</span>
+<span class="sd">		maximum x value</span>
+<span class="sd">	ymin: float</span>
+<span class="sd">		minimum y value</span>
+<span class="sd">	ymax: float</span>
+<span class="sd">		maximum y value</span>
+<span class="sd">	_px_size_x: float</span>
+<span class="sd">		the length of a pixel on the x-axis</span>
+<span class="sd">	_px_size_y: float</span>
+<span class="sd">		the length of a pixel on the y-axis</span>
+<span class="sd">	&quot;&quot;&quot;</span>
 	<span class="n">sgn</span><span class="o">=</span><span class="mi">1</span>
 	<span class="k">if</span> <span class="n">side</span> <span class="o">==</span> <span class="s2">&quot;bottom&quot;</span><span class="p">:</span>
 		<span class="n">sgn</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
@@ -558,7 +598,7 @@
 	<span class="n">turtle</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="n">xmax</span><span class="o">-</span><span class="n">sgn</span><span class="o">*</span><span class="mi">80</span><span class="o">*</span><span class="n">_px_size_x</span><span class="p">,</span><span class="n">ymin</span><span class="o">-</span><span class="mi">100</span><span class="o">*</span><span class="n">_px_size_y</span><span class="p">)</span>
 	<span class="n">turtle</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="n">xmax</span><span class="o">-</span><span class="n">sgn</span><span class="o">*</span><span class="mi">80</span><span class="o">*</span><span class="n">_px_size_x</span><span class="p">,</span><span class="n">ymin</span><span class="o">-</span><span class="mi">60</span><span class="o">*</span><span class="n">_px_size_y</span><span class="p">)</span>
 	<span class="n">turtle</span><span class="o">.</span><span class="n">pu</span><span class="p">()</span>
-	<span class="n">turtle</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="n">xmax</span><span class="o">-</span><span class="n">sgn</span><span class="o">*</span><span class="mi">15</span><span class="o">*</span><span class="n">_px_size_x</span><span class="p">,</span><span class="n">ymin</span><span class="o">-</span><span class="mi">90</span><span class="o">*</span><span class="n">_px_size_y</span><span class="p">)</span>
+	<span class="n">turtle</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="n">xmax</span><span class="o">-</span><span class="n">sgn</span><span class="o">*</span><span class="mi">9</span><span class="o">*</span><span class="n">_px_size_x</span><span class="p">,</span><span class="n">ymin</span><span class="o">-</span><span class="mi">90</span><span class="o">*</span><span class="n">_px_size_y</span><span class="p">)</span>
 	<span class="n">turtle</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Valider&quot;</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Verdana&#39;</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="s2">&quot;normal&quot;</span><span class="p">))</span>
 
 	<span class="k">return</span></div>
