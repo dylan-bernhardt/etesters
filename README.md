@@ -1,11 +1,11 @@
 # etesters
 
-## Présentation
+## Presentation
 
-A partir des fichiers de production (Gerber RS-274X), le module permet de sélectionner les points d'intérêts à garder pour la construction d'un banc de test.
+A partir des fichiers de production (Gerber RS-274X), le package permet de sélectionner les points d'intérêts à garder pour la construction d'un banc de test.
 
 
-## Installation
+## Install
 
 Installer pip si ce n'est pas déjà fait
 ```
@@ -16,15 +16,15 @@ Installer le module
 ```
 git clone https://github.com/dxl0/etesters.git
 cd etesters
-pip install estesters
+pip install .
 ```
 
-## Quick use
+## Use
 
 ```
 touch app.py
 echo "import etesters" >> app.py
-echo "etesters.App().display()
+echo "etesters.App().display() >> app.py
 python3 app.py
 ```
 
