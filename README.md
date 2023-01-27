@@ -6,4 +6,4 @@ A partir des fichiers de production (Gerber RS-274X), l'application permet de s√
 
 ## Doc
 
-[Cliquez ici](./docs/build/html/index.html)
+La doc se trouve au format html dans [/docs/build/html/index.html](/docs/build/html/index.html) .
