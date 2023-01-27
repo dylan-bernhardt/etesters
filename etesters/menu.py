@@ -68,7 +68,7 @@ class App:
         Function triggered when the 9th button is pressed
     """
     @typechecked
-    def __init__(self, title :str ='ETESTERS', bg: str = '#2F4F4F')-> None :
+    def __init__(self, title :str ='ETESTERS', bg: str = '#2f4f4f')-> None :
         """
         Init useful attributes for the gui as title, bg or _compteur.
         _compteur prevents the user to do the steps in the wrong order.
@@ -448,3 +448,5 @@ class App:
                 self.list_btn[i].configure(state = tk.DISABLED)
 
         return
+
+

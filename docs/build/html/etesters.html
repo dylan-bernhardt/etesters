@@ -135,10 +135,10 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.create_eagle_files.DefaultBRD" title="etesters.create_eagle_files.DefaultBRD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DefaultBRD</span></code></a>([file_path])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.create_eagle_files.DefaultBRD" title="etesters.create_eagle_files.DefaultBRD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DefaultBRD</span></code></a>(file_path)</p></td>
 <td><p>A default .sch file that can be automatically modified and written</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#etesters.create_eagle_files.DefaultSCH" title="etesters.create_eagle_files.DefaultSCH"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DefaultSCH</span></code></a>([file_path])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#etesters.create_eagle_files.DefaultSCH" title="etesters.create_eagle_files.DefaultSCH"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DefaultSCH</span></code></a>(file_path)</p></td>
 <td><p>A default .sch file that can be automatically modified and written</p></td>
 </tr>
 </tbody>
@@ -160,7 +160,7 @@
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="etesters.create_eagle_files.DefaultBRD">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">etesters.create_eagle_files.</span></span><span class="sig-name descname"><span class="pre">DefaultBRD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./eagle_default/default.brd'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/etesters/create_eagle_files.html#DefaultBRD"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.create_eagle_files.DefaultBRD" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">etesters.create_eagle_files.</span></span><span class="sig-name descname"><span class="pre">DefaultBRD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/etesters/create_eagle_files.html#DefaultBRD"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.create_eagle_files.DefaultBRD" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>A default .sch file that can be automatically modified and written</p>
 <dl class="py attribute">
@@ -223,7 +223,7 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.create_eagle_files.DefaultBRD.__init__" title="etesters.create_eagle_files.DefaultBRD.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([file_path])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.create_eagle_files.DefaultBRD.__init__" title="etesters.create_eagle_files.DefaultBRD.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(file_path)</p></td>
 <td><p>Initializes the class by reading a default brd file and storing it in a list</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#etesters.create_eagle_files.DefaultBRD.add_all_elements" title="etesters.create_eagle_files.DefaultBRD.add_all_elements"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_all_elements</span></code></a>(df)</p></td>
@@ -248,12 +248,11 @@
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="etesters.create_eagle_files.DefaultBRD.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./eagle_default/default.brd'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/create_eagle_files.html#DefaultBRD.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.create_eagle_files.DefaultBRD.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/create_eagle_files.html#DefaultBRD.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.create_eagle_files.DefaultBRD.__init__" title="Permalink to this definition"></a></dt>
 <dd><p>Initializes the class by reading a default brd file and storing it in a list</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Default = ‘./eagle_default/default.brd’
-The path of the default file that will modified</p>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – The path of the default file that will modified</p>
 </dd>
 </dl>
 </dd></dl>
@@ -361,7 +360,7 @@ characteristic of the tp</p></li>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="etesters.create_eagle_files.DefaultSCH">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">etesters.create_eagle_files.</span></span><span class="sig-name descname"><span class="pre">DefaultSCH</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./eagle_default/default.sch'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/etesters/create_eagle_files.html#DefaultSCH"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.create_eagle_files.DefaultSCH" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">etesters.create_eagle_files.</span></span><span class="sig-name descname"><span class="pre">DefaultSCH</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/etesters/create_eagle_files.html#DefaultSCH"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.create_eagle_files.DefaultSCH" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>A default .sch file that can be automatically modified and written</p>
 <dl class="py attribute">
@@ -430,7 +429,7 @@ characteristic of the tp</p></li>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.create_eagle_files.DefaultSCH.__init__" title="etesters.create_eagle_files.DefaultSCH.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([file_path])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#etesters.create_eagle_files.DefaultSCH.__init__" title="etesters.create_eagle_files.DefaultSCH.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(file_path)</p></td>
 <td><p>Initializes the class by reading a default sch file and storing it in a list</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#etesters.create_eagle_files.DefaultSCH.add_all_instances" title="etesters.create_eagle_files.DefaultSCH.add_all_instances"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_all_instances</span></code></a>(df)</p></td>
@@ -458,11 +457,11 @@ characteristic of the tp</p></li>
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="etesters.create_eagle_files.DefaultSCH.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./eagle_default/default.sch'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/create_eagle_files.html#DefaultSCH.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.create_eagle_files.DefaultSCH.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/create_eagle_files.html#DefaultSCH.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.create_eagle_files.DefaultSCH.__init__" title="Permalink to this definition"></a></dt>
 <dd><p>Initializes the class by reading a default sch file and storing it in a list</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Default = ‘./eagle_default/default.sch’
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Default = ‘./default.sch’
 The path of the default file that will modified</p>
 </dd>
 </dl>
@@ -1075,7 +1074,7 @@ if the side is bottom, we need to reverse the card to correctly see the legend i
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="etesters.menu.App">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">etesters.menu.</span></span><span class="sig-name descname"><span class="pre">App</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ETESTERS'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'#2F4F4F'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/etesters/menu.html#App"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">etesters.menu.</span></span><span class="sig-name descname"><span class="pre">App</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ETESTERS'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'#2f4f4f'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/etesters/menu.html#App"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Gui to configure &amp; export the files that will be used in order to build the electronic test bench</p>
 <dl class="py attribute">
@@ -1298,7 +1297,7 @@ else “no”</p>
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="etesters.menu.App.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ETESTERS'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'#2F4F4F'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ETESTERS'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'#2f4f4f'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/etesters/menu.html#App.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#etesters.menu.App.__init__" title="Permalink to this definition"></a></dt>
 <dd><p>Init useful attributes for the gui as title, bg or _compteur.
 _compteur prevents the user to do the steps in the wrong order.</p>
 <dl class="field-list simple">
@@ -1615,10 +1614,10 @@ Open the folder where the new files are stored, if it exists</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>xmin</strong> (<em>float</em>) – </p></li>
-<li><p><strong>xmax</strong> (<em>float</em>) – </p></li>
-<li><p><strong>ymin</strong> (<em>float</em>) – </p></li>
-<li><p><strong>ymax</strong> (<em>float</em>) – </p></li>
+<li><p><strong>xmin</strong> (<em>float</em>) – minimum x value</p></li>
+<li><p><strong>xmax</strong> (<em>float</em>) – maximum x value</p></li>
+<li><p><strong>ymin</strong> (<em>float</em>) – minimum y value</p></li>
+<li><p><strong>ymax</strong> (<em>float</em>) – maximum y value</p></li>
 </ul>
 </dd>
 </dl>

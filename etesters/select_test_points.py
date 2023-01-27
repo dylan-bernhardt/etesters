@@ -3,6 +3,7 @@ from typeguard import typechecked
 import tkinter as tk
 import os
 import etesters.menu as menu
+from etesters.lighten_color import lighten
 
 
 
@@ -424,8 +425,8 @@ def gui_select_tp(folder: Production_folder, root: tk.Tk, list_btn: list , colum
     select_all2.trace("w", select_all_checkbutton2)
     tk.Checkbutton(frame2 ,text = "Select all",variable=select_all2, onvalue=1, offvalue=0).pack(pady=10, padx=5, anchor = tk.W)
 
-    tk.Button(frame1, text= 'Valider', command = exit1, fg="white", bg ='#2F4F4F').pack(padx=20,pady=20, anchor=tk.S)
-    tk.Button(frame2, text= 'Valider', command = exit2, fg="white", bg ='#2F4F4F').pack(padx=20,pady=20, anchor=tk.S)
+    tk.Button(frame1, text= 'Valider', command = exit1, fg="white", bg =root['bg']).pack(padx=20,pady=20, anchor=tk.S)
+    tk.Button(frame2, text= 'Valider', command = exit2, fg="white", bg =root['bg']).pack(padx=20,pady=20, anchor=tk.S)
     return
 
 
@@ -463,7 +464,7 @@ def gui_select_pnp_file(folder: Production_folder, root: tk.Tk, list_btn: list)-
             btn.configure(state = tk.NORMAL)    
         
 
-    frame = tk.Frame(root, bg ='#436D6D')
+    frame = tk.Frame(root, bg =lighten(root['bg']))
     frame.pack(fill=tk.Y, side='right')
 
     list_box1,label1 = create_files_listbox(frame, folder.path, 'bottom', 'Selectionner les fichiers P&P pour la face : ')
@@ -487,7 +488,7 @@ def gui_select_pnp_file(folder: Production_folder, root: tk.Tk, list_btn: list)-
     label4.grid(row =2, column=1, padx=10)
     list_box4.grid(row = 3, column=1)
 
-    tk.Button(frame, text="Valider",fg="white", bg ='#436D6D', command=validate_fct).grid(row=4, column =1, pady=15, padx=50)
+    tk.Button(frame, text="Valider",fg="white", bg =lighten(root["bg"]), command=validate_fct).grid(row=4, column =1, pady=15, padx=50)
     
     return 
 
@@ -513,10 +514,10 @@ def create_files_listbox(root : tk.Frame, folder_path: str, side: str, text: str
 
     """
     t='\n'+text+side+'\n'
-    label = tk.Label(root, text= t, font =(10), fg="white", bg ='#436D6D')
+    label = tk.Label(root, text= t, font =(10), fg="white", bg =lighten(root.master['bg']))
     
     l=os.listdir(folder_path)
-    list_box = tk.Listbox(root, height=len(l),width = 40, relief='flat', selectbackground="#2F4F4F", bg ='#436D6D', fg = 'white', selectforeground ='white', exportselection = False, highlightcolor = 'white')
+    list_box = tk.Listbox(root, height=len(l),width = 40, relief='flat', selectbackground=root.master["bg"], bg =lighten(root.master['bg']), fg = 'white', selectforeground ='white', exportselection = False, highlightcolor = 'white')
     for i in range(len(l)):
         list_box.insert(i,l[i]) 
 

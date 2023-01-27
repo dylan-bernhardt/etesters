@@ -2,6 +2,7 @@ from typeguard import typechecked
 import pandas as pd
 import etesters.select_test_points as tp
 import tkinter as tk
+from etesters.lighten_color import lighten
 
 
 @typechecked
@@ -119,7 +120,7 @@ class gui_select_excellon_files:
         """
         self.list_btn = list_btn 
 
-        self.frame = tk.Frame(root, bg ='#436D6D')
+        self.frame = tk.Frame(root, bg =lighten(root['bg']))
         self.frame.pack(fill=tk.Y, side='right')
 
         self.list_box1,label1 = tp.create_files_listbox(self.frame, self.folder.path, '', 'Selectionner les fichiers Excellon non-Plated : ')
@@ -128,7 +129,7 @@ class gui_select_excellon_files:
         label1.grid(row = 0, column=0, padx=10)
         self.list_box1.grid(row = 1, column=0)
 
-        tk.Button(self.frame, text="Valider",fg="white", bg ='#436D6D', command=self.validate_fct).grid(row=2, column =0, pady=15, padx=50)
+        tk.Button(self.frame, text="Valider",fg="white", bg =lighten(root['bg']), command=self.validate_fct).grid(row=2, column =0, pady=15, padx=50)
 
         return
 

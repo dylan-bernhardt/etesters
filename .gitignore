@@ -1,6 +1,2 @@
 *.pyc
-/production/filtered_pnp
-/production/new_files
-/new
 test.py
-/new_files
